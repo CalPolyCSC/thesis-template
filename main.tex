@@ -1,0 +1,105 @@
+\documentclass[12pt]{ucthesis}
+
+\usepackage{etex}
+\usepackage[morefloats=125]{morefloats}
+\usepackage[hyphens]{url}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[letterpaper]{geometry}
+\usepackage[overload]{textcase}
+\usepackage{color}
+\usepackage[nonumberlist,toc]{glossaries}
+\usepackage{wrapfig}
+\usepackage{longtable}
+\usepackage{morefloats}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage[titletoc]{appendix}
+\usepackage{cleveref}
+\usepackage[]{algorithm2e}
+
+\makeindex
+\makeglossaries
+
+\bibliographystyle{abbrv}
+
+\setlength{\parindent}{0.25in} \setlength{\parskip}{6pt}
+\geometry{verbose,nohead,tmargin=1in,bmargin=1in,lmargin=1.5in,rmargin=1in}
+\setcounter{tocdepth}{2}
+
+% Different font in captions (single-spaced, bold) ------------
+\newcommand{\captionfonts}{\small\bf\ssp}
+
+\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
+
+\makeatletter  % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\captionfonts #1: #2\par}
+  \else
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+\makeatother   % Cancel the effect of \makeatletter
+% ---------------------------------------
+
+% Define Appendix refs
+\crefname{app}{appendix}{appendices}
+\Crefname{app}{Appendix}{Appendices}
+
+\begin{document}
+
+% Declarations for Front Matter
+\input{frontmatter}
+
+\maketitle
+
+\begin{frontmatter}
+
+% Custom made for Cal Poly (by Mark Barry, modified by Andrew Tsui).
+\copyrightpage
+
+% Custom made for Cal Poly (by Andrew Tsui).
+\committeemembershippage
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\begin{acknowledgements}
+\input{acknowledgements}
+\end{acknowledgements}
+
+\tableofcontents
+
+\listoftables
+
+\listoffigures
+
+\end{frontmatter}
+
+\pagestyle{plain}
+
+\renewcommand{\baselinestretch}{1.66}
+
+\input{chapter-outline}
+
+\clearpage
+\begin{flushleft}
+\nocite{*}
+\bibliography{bibliography}
+\bibliographystyle{plain}
+\end{flushleft}
+
+\begin{appendices}
+\input{appendix-outline}
+\end{appendices}
+
+\end{document}
