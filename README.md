@@ -5,7 +5,7 @@ A LaTeX template for CSC Master's theses which conforms to the guidelines given 
 Most files have examples on how they should be used inside of them. I've compiled this handy checklist below which outlines what you need to do to start writing (besides overcoming the overwhelming mountain of things you'd rather be doing).
 
 - [ ] Update the ```frontmatter.tex``` file. This is where all the basics are defined, your thesis title, your name, your committee members, etc.
-- [ ] Start writing chapters! Every chapter goes inside of the ```chapters``` folder and should be imported in the ```chapter-outline.tex``` file using the ```\include{chapters/your-chapter.tex}``` syntax. This makes reordering chapters a breeze! (Trust me, you'll do it)
+- [ ] Start writing chapters! Every chapter goes inside of the ```chapters``` folder and should be imported in the ```chapter-outline.tex``` file using the ```\include{chapters/your-chapter}``` syntax. This makes reordering chapters a breeze! (Trust me, you'll do it)
 - [ ] Drop all of your fancy graphs into the ```figures``` folder for safe keeping
 - [ ] Got some appendices? You're covered, same idea as with chapters, but using ```appendix-outline.tex``` and the ```appendices``` folder instead.
 - [ ] Write your abstract in ```abstract.tex```. That's it. The template takes care of all the formatting for you.
