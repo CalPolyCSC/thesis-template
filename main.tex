@@ -19,12 +19,26 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{makecell}
-\usepackage[titletoc]{appendix}
+\usepackage{appendix}
 \usepackage{cleveref}
 \usepackage[]{algorithm2e}
+\usepackage{titlesec}
 
 \makeindex
 \makeglossaries
+
+% Shrink the size of headers
+\titleformat{\chapter}[display]
+        {\normalfont\normalsize\centering}{\chaptertitlename\ \thechapter}{0pt}{\normalsize\uppercase}
+        \titlespacing*{\chapter}
+{0pt}{-20pt}{4.3ex plus .2ex}
+
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\small\bfseries}
+\titleformat*{\subsubsection}{\small\bfseries}
+\titleformat*{\paragraph}{\small\bfseries}
+\titleformat*{\subparagraph}{\small\bfseries}
 
 \bibliographystyle{abbrv}
 
@@ -83,6 +97,11 @@
 
 \listoffigures
 
+% Add CHAPTER into table of contents.
+\addtocontents{toc}{%
+   \noindent CHAPTER
+}
+
 \end{frontmatter}
 
 \pagestyle{plain}
@@ -98,6 +117,15 @@
 \bibliographystyle{plain}
 \end{flushleft}
 
+% Indents Appendix in Table of Contents
+\makeatletter
+\addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+\makeatother
+
+% Hack to make Appendices to appear in Table of Contents
+\addtocontents{toc}{%
+   \noindent APPENDICES
+}
 \begin{appendices}
 \input{appendix-outline}
 \end{appendices}
