@@ -931,7 +931,7 @@ Thesis Committee Chair
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\contentsname
         \@mkboth{\uppercase{\contentsname}}{\uppercase{\contentsname}}}%
-  {\ssp\@starttoc{toc} \addtocontents{toc}{\hfill Page}}\if@restonecol\twocolumn\fi}
+  {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}\if@restonecol\twocolumn\fi}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
    \addvspace{2.25em plus\p@}% space above part line
@@ -984,7 +984,7 @@ Thesis Committee Chair
   \chapter*{\listfigurename\@mkboth{\uppercase{\listfigurename}}%
 {\uppercase{\listfigurename}}}
    \addcontentsline{toc}{chapter}{\listfigurename}
-   {\ssp\@starttoc{lof} \addtocontents{lof}{\hspace{1.5em}Figure\hfill Page}}\if@restonecol
+   {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}\if@restonecol
     \twocolumn\fi}
 
 \def\l@figure{\@dottedtocline{1}{1.5em}{3.2em}}
@@ -1010,7 +1010,7 @@ Thesis Committee Chair
   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
 {\uppercase{\listtablename}}}
    \addcontentsline{toc}{chapter}{\listtablename}
-   {\ssp\@starttoc{lot}\addtocontents{lot}{\hspace{1.5em}Table\hfill Page}}\if@restonecol
+   {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}\if@restonecol
     \twocolumn\fi}
 
 
