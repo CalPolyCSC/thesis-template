@@ -1039,20 +1039,15 @@ Thesis Committee Chair
 %%               as it says in the comment in latex.tex
 %% RmS 92/01/14: Set \p@enumiv to {} and \theenumiv to \arabic{enumiv}
 %%               to get correct references
-
-\usepackage{enumitem}
-
-
-
 \def\thebibliography#1{\chapter*{\bibname\@mkboth{%
 \uppercase{\bibname}}{\uppercase{\bibname}}}
   \addcontentsline{toc}{chapter}{\bibname}
-  \list{}{
+  \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
     \usecounter{enumiv}%
     \let\p@enumiv\@empty
     \def\theenumiv{\arabic{enumiv}}}%
-    \begin{enumerate}[label={[\arabic{enumi}]},
-        itemindent=*,leftmargin=4em, align=left]
     \def\newblock{\hskip .11em plus.33em minus.07em }%
     \sloppy\clubpenalty4000\widowpenalty4000
     \sfcode`\.=\@m}
