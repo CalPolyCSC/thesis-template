@@ -381,7 +381,7 @@
 
 \par
 
-TITLE:  Program Visualization: An Exploration Of Graph Based Visualizations To Assist In Student Learning And Programmatic Evaluation      \par
+TITLE:  \@title      \par
 AUTHOR: \@author     \par
 DATE SUBMITTED: \@degreemonth~\@degreeyear
 
