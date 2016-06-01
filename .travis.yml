@@ -1,0 +1,8 @@
+dist: trusty
+sudo: required
+install:
+   - sudo apt-get install -y texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-font-utils texlive-fonts-extra texlive-fonts-recommended texlive-generic-recommended texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-pictures texlive-pstricks texlive-publishers texlive-science
+   - sudo apt-get install -y latexmk
+
+script:
+   - latexmk -pdf -interaction=nonstopmode -f main.tex
