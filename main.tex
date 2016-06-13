@@ -23,15 +23,17 @@
 \usepackage{cleveref}
 \usepackage[]{algorithm2e}
 \usepackage{titlesec}
+\usepackage{ifthen}
 
 \makeindex
 \makeglossaries
 
 % Shrink the size of headers
 \titleformat{\chapter}[display]
-        {\normalfont\normalsize\centering}{\chaptertitlename\ \thechapter}{0pt}{\normalsize\uppercase}
-        \titlespacing*{\chapter}
-{0pt}{-20pt}{4.3ex plus .2ex}
+        {\normalfont\normalsize\centering}
+        {\ifthenelse{\equal{\thechapter}{A}}{APPENDICES\\[4.3ex]}{}\chaptertitlename\ \thechapter}
+        {0pt}{\normalsize\uppercase}
+\titlespacing*{\chapter}{0pt}{-20pt}{4.3ex plus .2ex}
 
 
 \titleformat*{\section}{\normalsize\bfseries}
