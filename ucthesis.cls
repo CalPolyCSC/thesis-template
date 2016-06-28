@@ -1050,7 +1050,8 @@ Thesis Committee Chair
     \def\theenumiv{\arabic{enumiv}}}%
     \def\newblock{\hskip .11em plus.33em minus.07em }%
     \sloppy\clubpenalty4000\widowpenalty4000
-    \sfcode`\.=\@m}
+    \sfcode`\.=\@m
+    \raggedright}
 
 %% 91/08/26 FMI & RmS: introduced warning instead of error
 
