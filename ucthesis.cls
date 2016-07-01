@@ -603,7 +603,7 @@ Thesis Committee Chair
 %   This is implemented by \let'in \\ equal \@centercr.
 %
 \def\verse{\par\let\\=\@centercr
-  \list{}{\ssp\itemsep\z@ \itemindent -1.5em\listparindent \itemindent
+  \list{}{\itemsep\z@ \itemindent -1.5em\listparindent \itemindent
           \rightmargin\leftmargin\advance\leftmargin 1.5em}\item[]}
 \let\endverse\endlist
 
@@ -611,14 +611,14 @@ Thesis Committee Chair
 %   Fills lines
 %   Indents paragraph
 %
-\def\quotation{\par\list{}{\ssp\listparindent 1.5em
+\def\quotation{\par\list{}{\listparindent 1.5em
     \itemindent\listparindent
     \rightmargin\leftmargin\parsep \z@ plus\p@}\item[]}
 \let\endquotation=\endlist
 
 % QUOTE -- same as quotation except no paragraph indentation,
 %
-\def\quote{\par\list{}{\ssp\rightmargin\leftmargin}\item[]}
+\def\quote{\par\list{}{\rightmargin\leftmargin}\item[]}
 \let\endquote=\endlist
 
 % DESCRIPTION
@@ -1050,7 +1050,8 @@ Thesis Committee Chair
     \def\theenumiv{\arabic{enumiv}}}%
     \def\newblock{\hskip .11em plus.33em minus.07em }%
     \sloppy\clubpenalty4000\widowpenalty4000
-    \sfcode`\.=\@m}
+    \sfcode`\.=\@m
+    \raggedright}
 
 %% 91/08/26 FMI & RmS: introduced warning instead of error
 
