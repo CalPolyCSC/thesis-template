@@ -77,6 +77,23 @@
 \crefname{app}{appendix}{appendices}
 \Crefname{app}{Appendix}{Appendices}
 
+% Add Figures folder to the graphics path
+\graphicspath{{Figures/}{figures/}}
+
+% Options for hyperref
+\hypersetup{
+    bookmarksnumbered=true,
+    bookmarksopen=false,
+    bookmarksopenlevel=0,
+    colorlinks=false,
+    pdfstartview=Fit,
+    pdfborder={0 0 0},
+}
+
+\newcounter{qcounter}
+\providecommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
+
+
 \begin{document}
 
 % Declarations for Front Matter
