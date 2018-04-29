@@ -1044,7 +1044,9 @@ Thesis Committee Chair
   \addcontentsline{toc}{chapter}{\bibname}
   \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
     \leftmargin\labelwidth
+    \advance\leftmargin20pt% change 20 pt according to your needs
     \advance\leftmargin\labelsep
+    \setlength\itemindent{-20pt}% change using the inverse of the length used before
     \usecounter{enumiv}%
     \let\p@enumiv\@empty
     \def\theenumiv{\arabic{enumiv}}}%
