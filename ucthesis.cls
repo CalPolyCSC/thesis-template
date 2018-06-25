@@ -417,7 +417,7 @@ DATE SUBMITTED: \@degreemonth~\@degreeyear
 \par
 \vspace*{0.5in}
 
-\begin{tabular}{lp{3.01in}}
+\begin{tabular}{rp{3.01in}}
 TITLE:  &\@title     \par\\
 AUTHOR: &\@author     \par\\
 DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
