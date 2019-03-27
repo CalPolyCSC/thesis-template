@@ -276,8 +276,11 @@
 \def\othermemberB#1{\gdef\@othermemberB{#1}}
 \def\othermemberC#1{\gdef\@othermemberC{#1}}
 \def\othermemberD#1{\gdef\@othermemberD{#1}}
-\def\othermemberE#1{\gdef\@othermemberD{#1}}
-\def\othermemberF#1{\gdef\@othermemberD{#1}}
+\def\othermemberE#1{\gdef\@othermemberE{#1}}
+\def\othermemberF#1{\gdef\@othermemberF{#1}}
+\def\othermemberG#1{\gdef\@othermemberG{#1}}
+\def\othermemberH#1{\gdef\@othermemberH{#1}}
+\def\othermemberI#1{\gdef\@othermemberI{#1}}
 
 % The names of your other committe members, one per line
 % Commented out because not being used currently, could be investigated as different option at other time - DL 03/2019
@@ -434,6 +437,9 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@chair\end
 \ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \par\\\\ \fi
 \ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \par\\\\ \fi
 \ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \par\\\\ \fi
 
 \end{tabular}
 
