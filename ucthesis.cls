@@ -276,9 +276,15 @@
 \def\othermemberB#1{\gdef\@othermemberB{#1}}
 \def\othermemberC#1{\gdef\@othermemberC{#1}}
 \def\othermemberD#1{\gdef\@othermemberD{#1}}
+\def\othermemberE#1{\gdef\@othermemberE{#1}}
+\def\othermemberF#1{\gdef\@othermemberF{#1}}
+\def\othermemberG#1{\gdef\@othermemberG{#1}}
+\def\othermemberH#1{\gdef\@othermemberH{#1}}
+\def\othermemberI#1{\gdef\@othermemberI{#1}}
 
 % The names of your other committe members, one per line
-\def\othermembers#1{\gdef\@othermembers{#1}}
+% Commented out because not being used currently, could be investigated as different option at other time - DL 03/2019
+% \def\othermembers#1{\gdef\@othermembers{#1}}
 
 % The number of committee members, which affects both the
 % number of lines and the amount of space between lines
@@ -425,8 +431,16 @@ DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
 \par\\
 
 COMMITTEE CHAIR:  &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \par\\\\
-COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \par\\\\
-COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \par\\\\
+\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \par\\\\ \fi
+\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \par\\\\ \fi
+
 \end{tabular}
 
 \end{alwayssingle}
