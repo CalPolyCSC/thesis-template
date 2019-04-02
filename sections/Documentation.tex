@@ -1,17 +1,18 @@
-\chapter{Documentation}
-\section{Scope}
+\section{Documentation}
 In order for SINATRA to be used by other users and developer the code must be well documented. It is important to have systems of documentation in place for all of the different levels of instructions, guidelines, comments, and information. Those can be broken into two sections; for the user and for the developer. These systems must be simple, reliable, clear, and resilient. The goal is for the code to be easy to distribute, simple to learn as much as needed about how it works for that specific new purpose, and for the changes, bugs and suggestions to be centralized.
-\section{GitHub}
+\subsection{GitHub}
 The system chosen to organize and host SINATRA for developers is GitHub. It is a online file storage, syncing, and collaboration work space for developing code bases. It is easy to use, popular and therefore support for using it is strong, and it is very powerful. SINATRA is housed on GitHub by the author and is shared with Dr. Greig and Dr. Marshall. On account of the code's license the repository is private and developers can get access by contacting the Aerospace Department at Cal Poly, SLO. \par
 \indent GitHub has three major features used in SINATRA; the commits system, the branches system, and the ReadME files. The commits system is a method of allowing multiple developers to work on the same code base without breaking the other developers builds. Each developer works on the code on their local machines. Once they have a stable addition to SINATRA, they commit it to GitHub. Whenever other users are working, they can pull those changes on to their local machine and developing moves along smoothly. It does require communication between the developers to ensure they aren't working on the same lines of code and creating different outcomes. This commit structure also allows the code base to be version controlled, which helps with mistakes and following the change logs. \par
 \indent Another feature utilized during the development of SINATRA was the branches feature. This feature allowed a user to create a separate branch of the code base. They would use this to develop a large new section of code where they wanted the features and security of GitHub, but didn't want to clutter the teams main code with testing and validation edits. Once the branch becomes stable and ready to be released into the master branch, they can be merged through a pull request. The new features would then be available in the master branch for more development. This allows developers to command their own section of the code, update and test, and then make it available to the other developers to work with. This ensures a constant work flow where multiple developers can work on different features and not have to worry about whether their testing and tinkering will hinder others work on the master branch. In this way the development continues without bottlenecks and constant communication between the developers. \par
-\indent The final feature used in GitHub was the ReadME files. These files are automatically displayed by GitHub's system when you enter the directory. This allows the developers to convey how that directory fits into the code base, and specifics on the files in the directory, and instructions on how to use the directory. These features were the reason that GitHub was chosen to host SINATRA and they were utilized during development in order to allow efficient and clear code creation.
+\indent The final feature used in GitHub was the ReadME files. These files are automatically displayed by GitHub's system when you enter the directory. This allows the developers to convey how that directory fits into the code base, and specifics on the files in the directory, and instructions on how to use the directory. The author has outfitted all of SINATRA's directories with ReadME files. These features were the reason that GitHub was chosen to host SINATRA and they were utilized during development in order to allow efficient and clear code creation.
+% Future - set up all the readme files
 % TO DO make it clear that it was my job to organize
 % TO DO - add picture of code flow - https://guides.github.com/activities/hello-world/
 % TO DO - add picture of SINATRA's ReadME
-\section{Doxygen}
+\subsection{Doxygen}
 Doxygen is a automatic documentation creator from source code \cite{doxygen}. It was chosen, configured, and used to create the SINATRA Developer Manual. Doxygen is given access to the source code, which it searches through and creates comprehensive documentation of the code base. For SINATRA, it creates descriptions of all of the classes, functions, and files. It shows what each class consists of. For example, it shows that the Mesh class contains structure classes, public types, public member functions and more as seen in figure \ref{fig:Doxygen_Mesh}. It is build in HTML so each attribute is linked to the actual function. It is also possible to see the location of that item in the source code. \par
-\indent The most important part of Doxygen is that it allows the user to customize the documentation. It allows the HTML file to be built in many different ways to make it work best for SINATRA. But more importantly, it takes comments made in the source code about the attributes and displays them in a clear and concise way. This a developer to quickly find an attribute, where it is referenced in the rest of the source code, where it is built, and what the creator commented about it. This allows new developers to quickly learn SINATRA and start developing their own features. It also allows quick debugging of heritage code by new developers, which ensures that SINATRA will not fall victim to an error that can only be reasonably fixed by the original developer. 
+\indent The most important part of Doxygen is that it allows the user to customize the documentation. It allows the HTML file to be built in many different ways to make it work best for SINATRA. But more importantly, it takes comments made in the source code about the attributes and displays them in a clear and concise way. This a developer to quickly find an attribute, where it is referenced in the rest of the source code, where it is built, and what the creator commented about it. This allows new developers to quickly learn SINATRA and start developing their own features. It also allows quick debugging of heritage code by new developers, which ensures that SINATRA will not fall victim to an error that can only be reasonably fixed by the original developer. The author has created a Doxygen manual of SINATRA, as well as a doxygen input file and batch script for easily updating the manual as more developers add to SINATRA. The user manual has fully commented function and parameter descriptions for all the source code.
+% Future - comment all functions
 
 
 \begin{figure}
@@ -21,8 +22,8 @@ Doxygen is a automatic documentation creator from source code \cite{doxygen}. It
   \label{fig:Doxygen_Mesh}
 \end{figure}
 
-% TO DO - add a developers page with everyones job, thesis, and contact info
+% the full program isn't completly documented. Noht every boolean switch and item exctera
 
-% TO DO add picture of the User Manual
-
-
+\subsection{User Distributation}
+% 
+% TO DO Figure out user end documentation

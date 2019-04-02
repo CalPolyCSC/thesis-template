@@ -3,7 +3,7 @@
 \usepackage{etex}
 \usepackage[morefloats=125]{morefloats}
 \usepackage[hyphens]{url}
-\usepackage{subfig}
+\usepackage[caption=false]{subfig}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{amssymb}
@@ -28,12 +28,16 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-% Added by Dominic Lunde (3/2019) to avoid windows and orphans
-\widowpenalty10000
-\clubpenalty10000
+% Avoiding windows and orphans
+\usepackage[all]{nowidow}
+% Fixing spacing between footnote entries
+\usepackage{setspace}
+\newlength{\myfootnotesep}
+\setlength{\myfootnotesep}{\baselineskip}
+\addtolength{\myfootnotesep}{-\footnotesep}
+\setlength{\footnotesep}{\myfootnotesep} % set spacing between footnotes
 
 \makeindex
-\makeglossaries
 
 % Shrink the size of headers
 \titleformat{\chapter}[display]
