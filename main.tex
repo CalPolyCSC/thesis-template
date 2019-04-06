@@ -3,7 +3,7 @@
 \usepackage{etex}
 \usepackage[morefloats=125]{morefloats}
 \usepackage[hyphens]{url}
-\usepackage{subfig}
+\usepackage[caption=false]{subfig}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{amssymb}
@@ -27,6 +27,15 @@
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+
+% Added to avoid windows and orphans
+\usepackage[all]{nowidow}
+% Added to fix spacing between footnote entries
+\usepackage{setspace}
+\newlength{\myfootnotesep}
+\setlength{\myfootnotesep}{\baselineskip}
+\addtolength{\myfootnotesep}{-\footnotesep}
+\setlength{\footnotesep}{\myfootnotesep} % set spacing between footnotes
 
 \makeindex
 \makeglossaries
