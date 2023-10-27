@@ -286,11 +286,9 @@
 % number of lines and the amount of space between lines
 % on the approval page.
 \def\@numberofmembers{2}
-\def\@approvalspace{.75in}
+\def\@approvalstretch{1}
 \def\numberofmembers#1{\gdef\@numberofmembers{#1}
-\ifnum \@numberofmembers > 3
-\gdef\@approvalspace{.5in}
-\fi}
+\gdef\@approvalstretch{\ifcase\@numberofmembers \or 1 \or 1\or 1\or 1\or 0.90\or 0.70\or 0.55\or 0.45\or 0.35\or 0.25\fi}}
 
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
@@ -369,45 +367,6 @@
 \setcounter{footnote}{0}
 }}
 
-% APPROVALPAGE - Cal Poly (Added by Mark Barry 2/07)
-%              - NOTE: No longer used as of 11/08.  Use \committeemembershippage
-
-\def\approvalpage{
-\begin{alwayssingle}
-
-\begin{samepage}
-
-\begin{center}
-        APPROVAL PAGE
-\end{center}
-
-\par
-
-TITLE:  \@title      \par
-AUTHOR: \@author     \par
-DATE SUBMITTED: \@degreemonth~\@degreeyear
-
-\par
-
-\vspace{1in}
-
-\begin{tabular}{lcc}
-
-        \underline{\makebox[2.1in][l]{\@chair}}        & \hspace{0.5in} &  \underline{\makebox[2.1in][l]{}} \\
-        Advisor or Committee Chair \vspace{0.75in}   & & Signature \\
-        \underline{\makebox[2.1in][l]{\@othermemberA}} & &  \underline{\makebox[2.1in][l]{}} \\
-        Committee Member    \vspace{0.75in}          & & Signature \\
-        \underline{\makebox[2.1in][l]{\@othermemberB}} & &  \underline{\makebox[2.1in][l]{}} \\
-        Committee Member    \vspace{0.75in}          & & Signature \\
-
-\end{tabular}
-
-\end{samepage}
-
-\end{alwayssingle}
-}
-
-
 % COMMITTEEMEMBERSHIPPAGE - Cal Poly (Added by Andrew Tsui 6/09)
 
 \def\committeemembershippage{
@@ -419,6 +378,9 @@ DATE SUBMITTED: \@degreemonth~\@degreeyear
 \par
 \vspace*{0.5in}
 
+\begingroup
+
+\renewcommand\arraystretch{\@approvalstretch}
 \begin{tabular}{rp{3.01in}}
 TITLE:  &\@title     \par\\
 AUTHOR: &\@author     \par\\
@@ -438,6 +400,8 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@chair\end
 \ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \par\\\\ \fi
 
 \end{tabular}
+
+\endgroup
 
 \end{alwayssingle}
 }
