@@ -319,6 +319,26 @@
 
 
 % TITLE PAGE - Cal Poly (Added by Mark Barry 2/07)
+% Inverted pyramid title based on https://tex.stackexchange.com/a/19846
+\newcommand\invpyramid[1]{%
+        \vbox{%
+                \hsize=\textwidth
+                \parindent=0pt
+                \leftskip=0pt plus.5fil
+                \rightskip=0pt plus-0.5fil
+                \parfillskip=0pt plus1fil
+                \emergencystretch=1in
+                \parshape6
+                0.00in \textwidth
+                0.1\textwidth 0.8\textwidth
+                0.2\textwidth 0.7\textwidth
+                0.3\textwidth 0.6\textwidth
+                0.35\textwidth 0.55\textwidth
+                0.4\textwidth 0.5\textwidth
+                \strut
+                #1%
+        }%
+}
 
 \def\maketitle{
 {
@@ -331,9 +351,7 @@
     \vfill\null
     \vspace{-0.2in}
   \begin{center}
-        \MakeTextUppercase{\@title}
-    % or another variation would be:
-    % \textsc{\@title}
+        \invpyramid{\MakeTextUppercase{\@title}}
 
         %\vfill\null
         \addvspace{1.4in}
