@@ -226,7 +226,11 @@
 \def\partname{Part}
 %             ~~~~
 % abstract environment:
-\def\abstractname{ABSTRACT}
+\def\abstractname{Abstract}
+%                 ~~~~~~~~
+%
+% keywords:
+\def\keywordsname{Keywords}
 %                 ~~~~~~~~
 %
 % acknowledge environment:
@@ -266,6 +270,9 @@
 
 % All previous degrees: one per line in chronological order
 \def\prevdegrees#1{\gdef\@prevdegrees{#1}}
+
+% The keywords associated with the thesis
+\def\keywords#1{\gdef\@keywords{#1}}
 
 % The name of your committee's chair
 \def\chair#1{\gdef\@chair{#1}}
@@ -436,12 +443,9 @@ ALL RIGHTS RESERVED
 
 \def\abstract{
 \begin{alwayssingle}
-%\pagestyle{plain}
-%\thispagestyle{plain}
-%\setcounter{page}{1}
 \begin{center}
 {\fmfont
-{\abstractname}\par
+{\MakeTextUppercase{\abstractname}}\par
 \@title\par
 \vspace{.1in}
 \@author\par
@@ -453,7 +457,16 @@ ALL RIGHTS RESERVED
 }
 \end{center}}
 
-\def\endabstract{\par\vfil\null\end{alwayssingle}
+\def\endabstract{
+\par
+\ifx\@keywords\undefined
+\vfil\null
+\else
+\vspace*{\fill}
+{\keywordsname}: \@keywords
+\vspace{0.5in}
+\fi
+\end{alwayssingle}
 }
 
 \def\abstractsignature{
