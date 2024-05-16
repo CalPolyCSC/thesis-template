@@ -349,30 +349,29 @@
     \setcounter{page}{1}
 
     \vfill\null
-    \vspace{-0.2in}
   \begin{center}
         \invpyramid{\MakeTextUppercase{\@title}}
 
         %\vfill\null
         \addvspace{1.4in}
 
-    A Thesis \par
-    presented to \par
-    the Faculty of California Polytechnic State University, \par
+    A Thesis \\
+    presented to \\
+    the Faculty of California Polytechnic State University, \\
     \@campus
 
         \addvspace{1.4in}
         %\vfill\null
 
 
-        In Partial Fulfillment \par
-        of the Requirements for the Degree \par
+        In Partial Fulfillment \\
+        of the Requirements for the Degree \\
         \@degree~in~\@field
 
         \addvspace{0.65in}
 
-        by \par
-        \@author \par
+        by \\
+        \@author \\
         \@degreemonth~\@degreeyear
 
 
