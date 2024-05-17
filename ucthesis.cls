@@ -461,20 +461,13 @@ ALL RIGHTS RESERVED
 % of the rest of the dissertation in Arabic.  It requires definition
 % of the \title, \author, \degree, \field, \campus, and \chair macros.
 
-
 \def\abstract{
 \begin{alwayssingle}
 \begin{center}
 {\fmfont
 {\MakeTextUppercase{\abstractname}}\par
 \@title\par
-\vspace{.1in}
 \@author\par
-%{\@degree} in \@field\par
-%\vspace{.1in}
-%University of California at {\@campus}\par
-%\vspace{.1in}
-%{\@chair}, Chair}
 }
 \end{center}}
 
