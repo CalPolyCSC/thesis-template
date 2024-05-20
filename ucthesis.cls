@@ -853,28 +853,35 @@ Thesis Committee Chair
 % redefine chapter command to remove the extra vertical space between
 % chapters in list of figures and list of tables
 % see: https://tex.stackexchange.com/a/69327
+%
+% make toc entry uppercase
+% see: https://tex.stackexchange.com/a/109948
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{plain}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}#1}%
+                                   {\protect\numberline{\thechapter}\uppercase{#1}}%
                        \else
-                         \addcontentsline{toc}{chapter}{#1}%
+                         \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                        \fi
                     \else
-                      \addcontentsline{toc}{chapter}{#1}%
+                      \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
-%                    \addtocontents{lof}{\protect\addvspace{10\p@}}% NEW
-%                    \addtocontents{lot}{\protect\addvspace{10\p@}}% NEW
+%                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+%                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
                     \if@twocolumn
                       \@topnewpage[\@makechapterhead{#2}]%
                     \else
                       \@makechapterhead{#2}%
                       \@afterheading
                     \fi}
-
 
 
 
