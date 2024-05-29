@@ -239,6 +239,9 @@
 % vitae environment:
 \def\vitaename{Curriculum Vit\ae}
 %              ~~~~~~~~~~~~~~~~
+%
+\def\dedicationname{Dedication}
+%
 
 %    ****************************************
 %    *             FRONT MATTER             *
@@ -501,7 +504,11 @@ Thesis Committee Chair
 % The dedication environment just makes sure the dedication gets its
 % own page.
 
-\newenvironment{dedication}{\begin{alwayssingle}}{\end{alwayssingle}}
+\newenvironment{dedication}{\begin{alwayssingle}
+\begin{center}
+{\large \MakeTextUppercase{\dedicationname}}
+\end{center}
+}{\end{alwayssingle}}
 
 % ACKNOWLEDGEMENTS
 %
