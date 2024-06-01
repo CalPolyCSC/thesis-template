@@ -515,7 +515,7 @@ ALL RIGHTS RESERVED
 \addtocontents{toc}{%
    \noindent CHAPTER
 }
-\pagestyle{headings}}
+\pagestyle{plain}}
 
 
 %    ****************************************
@@ -1269,8 +1269,8 @@ ALL RIGHTS RESERVED
    \thesection. \ \fi ##1}}}}
 \else               % If one-sided printing.
 \def\ps@headings{\let\@mkboth\markboth
-\def\@oddfoot{}\def\@evenfoot{}%     No feet.
-\def\@oddhead{{\slshape \rightmark}\hfil \rmfamily\thepage}% Heading.
+\def\@oddfoot{\hfil\rmfamily\thepage\hfil}\def\@evenfoot{\hfil\rmfamily\thepage\hfil}% Footer.
+\def\@oddhead{}% No header
 \def\chaptermark##1{\markright {\uppercase{\ifnum \c@secnumdepth >\m@ne
   \@chapapp\ \thechapter. \ \fi ##1}}}}
 \fi
