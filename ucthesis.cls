@@ -396,25 +396,26 @@
 \vspace*{0.5in}
 
 \begingroup
-
+\newlength{\colwidth}
+\setlength\colwidth{3.7in}
 \renewcommand\arraystretch{\@approvalstretch}
-\begin{tabular}{rp{3.01in}}
+\begin{tabular}{rp{\colwidth}}
 TITLE:  &\@title     \par\\
 AUTHOR: &\@author     \par\\
 DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
 
 \vspace*{0.5in} \\
 
-COMMITTEE CHAIR:  &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\\\
-\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\\\ \fi
+COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\\\
+\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\\\ \fi
 
 \end{tabular}
 
