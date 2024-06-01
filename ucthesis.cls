@@ -1357,10 +1357,10 @@ ALL RIGHTS RESERVED
         {0pt}{\normalsize\uppercase}
 \titlespacing*{\chapter}{0pt}{-20pt}{4.3ex plus .2ex}
 
-\titleformat*{\section}{\normalsize}
-\titleformat*{\subsection}{\normalsize}
-\titleformat*{\subsubsection}{\normalsize}
-\titleformat*{\paragraph}{\normalsize}
-\titleformat*{\subparagraph}{\normalsize}
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\normalsize\bfseries}
+\titleformat*{\subparagraph}{\normalsize\bfseries}
 
 \endinput
