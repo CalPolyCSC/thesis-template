@@ -335,6 +335,8 @@
         }%
 }
 
+\usepackage{hyphenat}
+
 \def\maketitle{
 {
 % turns off page anchors to avoid "destination with the same identifier" warning from hyperref
@@ -347,7 +349,7 @@
 
     \vfill\null
   \begin{center}
-        \invpyramid{\MakeTextUppercase{\@title}}
+        \invpyramid{\MakeTextUppercase{\nohyphens{\@title}}}
 
         %\vfill\null
         \addvspace{1.4in}
