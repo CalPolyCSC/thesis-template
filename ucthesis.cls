@@ -758,21 +758,17 @@ ALL RIGHTS RESERVED
 \def\theparagraph     {\thesubsubsection.\arabic{paragraph}}
 \def\thesubparagraph  {\theparagraph.\arabic{subparagraph}}
 
-% \@chapapp is initially defined to be '\chaptername'.  The \appendix
-% command redefines it to be '\appendixname'.
-%
-\def\@chapapp{\MakeTextUppercase{\chaptername}}
-
-%% Kludge to get multiple appendices lettered rather than numbered %%
-%% Added by John T. Whelan 1996 June 21                            %%
-\newcommand{\appendixon}{
-    \def\thesection{\thechapter.\Alph{section}}
-    \setcounter{section}{0}
+% replace the appendix macro with custom
+\newif\if@appendix
+\@appendixfalse
+\renewcommand\appendix{%
+    \def\@chapapp{\appendixname}
+    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    \renewcommand\thechapter{\Alph{chapter}}
+    \setcounter{chapter}{0}
+    \addtocontents{toc}{\noindent APPENDICES}
+    \@appendixtrue
 }
-\newcommand{\appendixoff}{
-    \def\thesection{\thechapter.\arabic{section}}
-}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       CHAPTER                        %
@@ -793,8 +789,13 @@ ALL RIGHTS RESERVED
                        \if@mainmatter
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
-                         \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}\uppercase{#1}}%
+                         \if@appendix
+                             \addcontentsline{toc}{chapter}%
+                                    {\protect\numberline{\thechapter.}{#1}}
+                         \else
+                             \addcontentsline{toc}{chapter}%
+                                    {\protect\numberline{\thechapter.}\uppercase{#1}}
+                         \fi
                        \else
                          \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                        \fi
@@ -1343,5 +1344,21 @@ ALL RIGHTS RESERVED
 \else
  \onecolumn                 % Single-column.
 \fi
+
+\usepackage{titlesec}
+
+% Shrink the size of headers
+\titleformat{\chapter}[display]
+        {\normalfont\normalsize\centering}
+        {\chaptertitlename\ \thechapter}
+        {0pt}{\normalsize\uppercase}
+\titlespacing*{\chapter}{0pt}{-20pt}{4.3ex plus .2ex}
+
+
+\titleformat*{\section}{\normalsize}
+\titleformat*{\subsection}{\normalsize}
+\titleformat*{\subsubsection}{\normalsize}
+\titleformat*{\paragraph}{\normalsize}
+\titleformat*{\subparagraph}{\normalsize}
 
 \endinput

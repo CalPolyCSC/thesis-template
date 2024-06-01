@@ -23,10 +23,8 @@
 \usepackage{makecell}
 \usepackage{appendix}
 \usepackage[]{algorithm2e}
-\usepackage{titlesec}
 \usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
 \usepackage{cleveref}
-\usepackage{ifthen}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -42,20 +40,6 @@
 
 \makeindex
 \makeglossaries
-
-% Shrink the size of headers
-\titleformat{\chapter}[display]
-        {\normalfont\normalsize\centering}
-        {\ifthenelse{\equal{\thechapter}{A}}{APPENDICES\\[4.3ex]}{}\chaptertitlename\ \thechapter}
-        {0pt}{\normalsize\uppercase}
-\titlespacing*{\chapter}{0pt}{-20pt}{4.3ex plus .2ex}
-
-
-\titleformat*{\section}{\normalsize\bfseries}
-\titleformat*{\subsection}{\small\bfseries}
-\titleformat*{\subsubsection}{\small\bfseries}
-\titleformat*{\paragraph}{\small\bfseries}
-\titleformat*{\subparagraph}{\small\bfseries}
 
 \bibliographystyle{abbrv}
 
@@ -161,12 +145,7 @@
 \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
 \makeatother
 
-% Hack to make Appendices to appear in Table of Contents
-\addtocontents{toc}{%
-   \noindent APPENDICES
-}
-\begin{appendices}
+\appendix
 \input{appendix-outline}
-\end{appendices}
 
 \end{document}
