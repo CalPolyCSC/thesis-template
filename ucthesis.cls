@@ -1346,6 +1346,8 @@ ALL RIGHTS RESERVED
  \onecolumn                 % Single-column.
 \fi
 
+\setlength{\parskip}{1.em}
+
 \usepackage{titlesec}
 
 % Shrink the size of headers
