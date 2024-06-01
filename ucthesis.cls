@@ -511,6 +511,10 @@ ALL RIGHTS RESERVED
     \@twosidetrue
     \fi
 \renewcommand{\thepage}{\arabic{page}}\setcounter{page}{1}
+% Add CHAPTER into table of contents.
+\addtocontents{toc}{%
+   \noindent CHAPTER
+}
 \pagestyle{headings}}
 
 
