@@ -1350,6 +1350,7 @@ ALL RIGHTS RESERVED
 \fi
 
 \setlength{\parskip}{1.em}
+\setlength{\parindent}{0pt}
 
 \usepackage{titlesec}
 
