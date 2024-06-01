@@ -1275,14 +1275,6 @@ ALL RIGHTS RESERVED
   \@chapapp\ \thechapter. \ \fi ##1}}}}
 \fi
 
-% Definition of 'myheadings' page style.
-%
-\def\ps@myheadings{\let\@mkboth\@gobbletwo
- \def\@oddhead{{\slshape\rightmark}\hfil \rmfamily\thepage}%
- \def\@oddfoot{}\def\@evenhead{\rmfamily \thepage\hfil\slshape\leftmark}%
- \def\@evenfoot{}\def\chaptermark##1{}\def\sectionmark##1{}%
- \def\subsectionmark##1{}}
-
 % Definition of 'plain' page style.
 %
 \def\ps@plain{\let\@mkboth\markboth
