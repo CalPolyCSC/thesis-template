@@ -21,7 +21,6 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{makecell}
-\usepackage{appendix}
 \usepackage[]{algorithm2e}
 \usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
 \usepackage{cleveref}
@@ -127,11 +126,6 @@
 
 \nocite{*}
 \bibliography{bibliography}
-
-% Indents Appendix in Table of Contents
-\makeatletter
-\addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
-\makeatother
 
 \appendix
 \input{appendix-outline}

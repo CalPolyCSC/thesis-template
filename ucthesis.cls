@@ -771,6 +771,8 @@ ALL RIGHTS RESERVED
     \renewcommand\thechapter{\Alph{chapter}}
     \setcounter{chapter}{0}
     \addtocontents{toc}{\noindent APPENDICES}
+    % Indents Appendix in Table of Contents
+    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \@appendixtrue
 }
 
