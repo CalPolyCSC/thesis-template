@@ -1368,4 +1368,23 @@ ALL RIGHTS RESERVED
 \titleformat*{\paragraph}{\normalsize\bfseries}
 \titleformat*{\subparagraph}{\normalsize\bfseries}
 
+
+% Different font in captions (single-spaced, bold) ------------
+\newcommand{\captionfonts}{\small\bf\ssp}
+
+\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
+
+\makeatletter  % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\captionfonts #1: #2\par}
+  \else
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+\makeatother   % Cancel the effect of \makeatletter
+% ---------------------------------------
+
 \endinput
