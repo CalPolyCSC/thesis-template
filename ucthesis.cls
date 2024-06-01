@@ -336,6 +336,8 @@
 
 \def\maketitle{
 {
+% turns off page anchors to avoid "destination with the same identifier" warning from hyperref
+\hypersetup{pageanchor=false}
 \begin{alwayssingle}
     \let\footnotesize\small
     \let\footnoterule\relax
@@ -368,6 +370,7 @@
         \@author \\
         \@degreemonth~\@degreeyear
 
+\hypersetup{pageanchor=true}
 
 \end{center}
 
