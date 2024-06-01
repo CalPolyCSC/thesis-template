@@ -188,20 +188,24 @@
 % Other English words that need replacement can be found in the macros
 % supporting the title and approval pages.
 %
+% committee membership:
+\def\committeemembershipname{Committee Membership}
+%                            ~~~~~~~~~~~~~~~~~~~~
+%
 % \tableofcontents:
-\def\contentsname{TABLE OF CONTENTS}
-%                 ~~~~~~~~
+\def\contentsname{Table of Contents}
+%                 ~~~~~~~~~~~~~~~~~
 %
 % \listoffigures:
-\def\listfigurename{LIST OF FIGURES}
+\def\listfigurename{List of Figures}
 %                   ~~~~~~~~~~~~~~~
 %
 % \listoftables:
-\def\listtablename{LIST OF TABLES}
+\def\listtablename{List of Tables}
 %                  ~~~~~~~~~~~~~~
 %
 % \thebibliography:
-\def\bibname{BIBLIOGRAPHY}
+\def\bibname{Bibliography}
 %            ~~~~~~~~~~~~
 %
 % \theindex:
@@ -219,6 +223,7 @@
 % \chapter:
 \def\chaptername{Chapter}
 %                ~~~~~~~
+%
 % \appendix:
 \def\appendixname{Appendix}
 %                 ~~~~~~~~
@@ -232,14 +237,12 @@
 %                 ~~~~~~~~
 %
 % acknowledge environment:
-\def\acknowledgename{ACKNOWLEDGMENTS}
-%                    ~~~~~~~~~~~~~~~~
-% vitae environment:
-\def\vitaename{Curriculum Vit\ae}
-%              ~~~~~~~~~~~~~~~~
+\def\acknowledgename{Acknowledgments}
+%                    ~~~~~~~~~~~~~~~
 %
+% dedication environment:
 \def\dedicationname{Dedication}
-%
+%                   ~~~~~~~~~~
 
 %    ****************************************
 %    *             FRONT MATTER             *
@@ -381,7 +384,7 @@
 \begin{alwayssingle}
 
 \begin{center}
-        COMMITTEE MEMBERSHIP
+\MakeTextUppercase{\committeemembershipname}
 \end{center}
 \par
 \vspace*{0.5in}
@@ -470,7 +473,7 @@ ALL RIGHTS RESERVED
 
 \newenvironment{dedication}{\begin{alwayssingle}
 \begin{center}
-{\large \MakeTextUppercase{\dedicationname}}
+{\MakeTextUppercase{\dedicationname}}
 \end{center}
 }{\end{alwayssingle}}
 
@@ -481,7 +484,7 @@ ALL RIGHTS RESERVED
 
 \newenvironment{acknowledgements}{\begin{alwayssingle}
 \begin{center}
-{\acknowledgename}
+{\MakeTextUppercase{\acknowledgename}}
 \end{center}
 }{\end{alwayssingle}}
 
@@ -758,7 +761,7 @@ ALL RIGHTS RESERVED
 % \@chapapp is initially defined to be '\chaptername'.  The \appendix
 % command redefines it to be '\appendixname'.
 %
-\def\@chapapp{\uppercase{\chaptername}}
+\def\@chapapp{\MakeTextUppercase{\chaptername}}
 
 %% Kludge to get multiple appendices lettered rather than numbered %%
 %% Added by John T. Whelan 1996 June 21                            %%
@@ -864,8 +867,8 @@ ALL RIGHTS RESERVED
 
 \def\tableofcontents{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\contentsname
-        \@mkboth{\uppercase{\contentsname}}{\uppercase{\contentsname}}}%
+  \chapter*{\MakeTextUppercase{\contentsname}
+        \@mkboth{\MakeTextUppercase{\contentsname}}{\MakeTextUppercase{\contentsname}}}%
   {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}\if@restonecol\twocolumn\fi}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
@@ -916,9 +919,9 @@ ALL RIGHTS RESERVED
 % Single-space list of figures, add it to the table of contents.
 \def\listoffigures{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\listfigurename\@mkboth{\uppercase{\listfigurename}}%
-{\uppercase{\listfigurename}}}
-   \addcontentsline{toc}{chapter}{\listfigurename}
+  \chapter*{\MakeTextUppercase{\listfigurename}\@mkboth{\MakeTextUppercase{\listfigurename}}%
+{\MakeTextUppercase{\listfigurename}}}
+   \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
    {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}\if@restonecol
     \twocolumn\fi}
 
@@ -929,9 +932,9 @@ ALL RIGHTS RESERVED
 %
 \def\listoftables{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-{\uppercase{\listtablename}}}
-   \addcontentsline{toc}{chapter}{\listtablename}
+  \chapter*{\MakeTextUppercase{\listtablename}\@mkboth{\MakeTextUppercase{\listtablename}}%
+{\MakeTextUppercase{\listtablename}}}
+   \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
    {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}\if@restonecol
     \twocolumn\fi}
 
@@ -961,9 +964,9 @@ ALL RIGHTS RESERVED
 %%               as it says in the comment in latex.tex
 %% RmS 92/01/14: Set \p@enumiv to {} and \theenumiv to \arabic{enumiv}
 %%               to get correct references
-\def\thebibliography#1{\chapter*{\bibname\@mkboth{%
-\uppercase{\bibname}}{\uppercase{\bibname}}}
-  \addcontentsline{toc}{chapter}{\bibname}
+\def\thebibliography#1{\chapter*{\MakeTextUppercase{\bibname}\@mkboth{%
+\MakeTextUppercase{\bibname}}{\MakeTextUppercase{\bibname}}}
+  \addcontentsline{toc}{chapter}{\uppercase{\bibname}}
   \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
     \leftmargin\labelwidth
     \advance\leftmargin20pt% change 20 pt according to your needs
@@ -1006,8 +1009,8 @@ ALL RIGHTS RESERVED
 
 \def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
 \columnseprule \z@
-\columnsep 35\p@\twocolumn[\@makeschapterhead{\indexname}]%
-    \@mkboth{\uppercase{\indexname}}{\uppercase{\indexname}}%
+\columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeTextUppercase{\indexname}}]%
+    \@mkboth{\MakeTextUppercase{\indexname}}{\MakeTextUppercase{\indexname}}%
     \thispagestyle{plain}\parindent\z@
     \parskip\z@ plus .3\p@\relax\let\item\@idxitem}
 
