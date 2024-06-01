@@ -89,8 +89,8 @@
 %%%            Another problem some people have had is
 %%%            that you can't use \pagestyle{headings}
 %%%            and \markboth if you use \part.  The solution
-%%%            is to get the headerfooter style, which is
-%%%            nice and simple to use."
+%%%            is to not use part since it is not listed as
+%%%            an acceptable section of thesis."
 %%%  }
 %%% ====================================================================
 
@@ -222,9 +222,7 @@
 % \appendix:
 \def\appendixname{Appendix}
 %                 ~~~~~~~~
-% \part
-\def\partname{Part}
-%             ~~~~
+%
 % abstract environment:
 \def\abstractname{Abstract}
 %                 ~~~~~~~~
@@ -259,20 +257,8 @@
 % The year the degree will be officially conferred
 \def\degreeyear#1{\gdef\@degreeyear{#1}}
 
-% The month in which thesis defense took place
-\def\defensemonth#1{\gdef\@defensemonth{#1}}
-
-% The year the defense took place
-\def\defenseyear#1{\gdef\@defenseyear{#1}}
-
-% How many years on the copyright page (added by Mark Barry 2/07)
-\def\copyrightyears#1{\gdef\@copyrightyears{#1}}
-
 % The full (unabbreviated) name of the degree
 \def\degree#1{\gdef\@degree{#1}}
-
-% All previous degrees: one per line in chronological order
-\def\prevdegrees#1{\gdef\@prevdegrees{#1}}
 
 % The keywords associated with the thesis
 \def\keywords#1{\gdef\@keywords{#1}}
@@ -282,7 +268,6 @@
 
 % The names of your other committe members, one per line
 \def\othermemberA#1{\gdef\@othermemberA{#1}}
-
 \def\othermemberB#1{\gdef\@othermemberB{#1}}
 \def\othermemberC#1{\gdef\@othermemberC{#1}}
 \def\othermemberD#1{\gdef\@othermemberD{#1}}
@@ -303,10 +288,7 @@
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
 
-% You have to define the campus name twice because I can't figure out
-% how to get the TeX \uppercase macro to work for me (EVM, 9/21/94)
-
-% The name of your UC Campus CAPITALIZED (e.g. Berkeley, Los Angeles)
+% The name of your campus
 \def\campus#1{\gdef\@campus{#1}}
 
 % \alwayssingle and \endalwayssingle
@@ -320,8 +302,7 @@
 \def\endalwayssingle{\if@restonecol\twocolumn \else \newpage \fi}
 
 % \maketitle outputs the complete titlepage.  It requires all the
-% above macros except \campuscap.  It is probably not correct for
-% joint (e.g. UCSD/SDSU) degrees.
+% above macros.
 
 % Set the font that will be used in the front matter headings
 \def\fmfont{\fontsize\@xiipt{12}\selectfont}
@@ -482,16 +463,6 @@ ALL RIGHTS RESERVED
 \end{alwayssingle}
 }
 
-\def\abstractsignature{
-\hspace*{\fill}
-\begin{minipage}[t]{3.25in}
-\addtolength{\baselineskip}{-.5\baselineskip}
-\vspace{1.7cm}
-\rule{3.2in}{.5pt}\\
-\@chair\\
-Thesis Committee Chair
-\end{minipage}}
-
 % DEDICATION
 %
 % The dedication environment just makes sure the dedication gets its
@@ -514,27 +485,6 @@ Thesis Committee Chair
 \end{center}
 }{\end{alwayssingle}}
 
-% VITAE
-%
-% The vitae environment puts a large, bold, centered
-% "Curriculum Vitae" label at the top of the page.
-
-\newenvironment{vitae}{\begin{alwayssingle}
-\begin{center}
-{\large \bfseries \vitaename} \par
-{\large \@author}
-\end{center}
-\begin{list}{}{\leftmargin 0in \itemsep .2in}
-}{\end{list}
-\end{alwayssingle}}
-
-\newcommand{\vitaelabels}[1]{#1 \hfil}
-
-\newenvironment{vitaesection}[1]{
-\item {\bf #1}
-\begin{list}{}{\leftmargin 1.5in \labelwidth 1.3in \labelsep .2in
-\parsep 0in
-\let\makelabel\vitaelabels}}{\end{list}}
 
 % FRONTMATTER environment
 %
@@ -778,7 +728,6 @@ Thesis Committee Chair
      \@xsect{#5}}
 
 
-\newcounter {part}
 \newcounter {chapter}
 \newcounter {section}[chapter]
 \newcounter {subsection}[section]
@@ -799,9 +748,6 @@ Thesis Committee Chair
 %                           1 = A, 2 = B, etc.
 %
 
-\def\thepart          {\arabic{part}}
-%% A matter of personal taste--JTW %%
-%% \def\thechapter       {\arabic{chapter}}
 \def\thechapter       {\arabic{chapter}}
 \def\thesection       {\thechapter.\arabic{section}}
 \def\thesubsection    {\thesection.\arabic{subsection}}
@@ -823,57 +769,6 @@ Thesis Committee Chair
 \newcommand{\appendixoff}{
     \def\thesection{\thechapter.\arabic{section}}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                        PART                          %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\part{\cleardoublepage   % Starts new page.
-   \thispagestyle{plain}%    % Page style of part page is 'plain'
-  \if@twocolumn              % IF two-column style
-     \onecolumn              %  THEN \onecolumn
-     \@tempswatrue           %       @tempswa := true
-    \else \@tempswafalse     %  ELSE @tempswa := false
-  \fi                        % FI
-  \hbox{}\vfil               % Add fil glue to center title
-%%  \bgroup  \centering      % BEGIN centering %% Removed 19 Jan 88
-  \secdef\@part\@spart}
-
-\def\@part[#1]#2{\ifnum \c@secnumdepth >-2\relax  % IF secnumdepth > -2
-        \refstepcounter{part}%                    %   THEN step
-                                                  %         part counter
-        \addcontentsline{toc}{part}{\thepart      %        add toc line
-        \hspace{1em}#1}\else                      %   ELSE add
-                                                  %         unnumb. line
-        \addcontentsline{toc}{part}{#1}\fi        % FI
-   \markboth{}{}%
-   {\centering                       % %% added 19 Jan 88
-    \interlinepenalty \@M            %% RmS added 11 Nov 91
-    \ifnum \c@secnumdepth >-2\relax  % IF secnumdepth > -2
-      \huge\bfseries \partname~\thepart    %   THEN Print '\partname' and
-    \par                             %         number in \huge bold.
-    \vskip 20\p@\fi                  %        Add space before title.
-    \Huge \bfseries                        % FI
-    #2\par}\@endpart}                % Print Title in \Huge bold.
-                                     % Bug Fix 13 Nov 89: #1 -> #2
-
-
-% \@endpart finishes the part page
-%
-\def\@endpart{\vfil\newpage   % End page with 1fil glue.
-   \if@twoside                % IF twoside printing
-       \hbox{}%               %   THEN Produce totally blank page
-       \thispagestyle{empty}%
-       \newpage
-   \fi                        % FI
-   \if@tempswa                % IF @tempswa = true
-     \twocolumn               %   THEN \twocolumn
-   \fi}                       % FI
-
-\def\@spart#1{{\centering      % %% added 19 Jan 88
-   \interlinepenalty \@M       %% RmS added 11 Nov 91
-   \Huge \bfseries                   % Print title in \Huge boldface
-   #1\par}\@endpart}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1032,19 +927,6 @@ Thesis Committee Chair
 
 % LIST OF TABLES
 %
-% \def\listoftables{\@restonecolfalse
-%   \if@twocolumn\@restonecoltrue\onecolumn\fi
-%   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-% {\uppercase{\listtablename}}}\@starttoc{lot}\if@restonecol
-%   \twocolumn\fi}
-% \def\listoftables{\@restonecolfalse
-%   \if@twocolumn\@restonecoltrue\onecolumn\fi
-%   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-% {\uppercase{\listtablename}}}
-%   \addcontentsline{toc}{chapter}{\listtablename}
-%   {\ssp\@starttoc{lot}}\if@restonecol
-%   \twocolumn\fi}
-
 \def\listoftables{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
