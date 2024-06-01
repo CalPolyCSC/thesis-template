@@ -77,7 +77,9 @@
     pdfstartview=Fit,
     pdfborder={0 0 0},
 }
-
+% remove \uppercase from references to chapters
+% see: https://tex.stackexchange.com/a/417078
+\pdfstringdefDisableCommands{\let\uppercase\@firstofone}
 
 \begin{document}
 
