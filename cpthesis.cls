@@ -493,12 +493,11 @@ ALL RIGHTS RESERVED
 \end{center}
 }{\end{alwayssingle}}
 
-% ACKNOWLEDGEMENTS
+% ACKNOWLEDGMENTS
 %
-% The acknowledgements environment puts a large, bold, centered
-% "Acknowledgements" label at the top of the page.
+% The acknowledgments environment.
 
-\newenvironment{acknowledgements}{\begin{alwayssingle}
+\newenvironment{acknowledgments}{\begin{alwayssingle}
 \begin{center}
 {\MakeTextUppercase{\acknowledgename}}
 \end{center}
