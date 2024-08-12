@@ -2,31 +2,40 @@
 %    for LaTeX version 2e - 11/3/94
 %% Modified by John T. Whelan, June 1996, for UCSB use, following
 %% Chris Martin's changes to ucthesis.sty
+%% Modified by David D. Marshall, August 2024 for Cal Poly SLO use, based
+%% on the (modified) ucthesis.cls file from the original project.
 %%% ====================================================================
 %%%  @LaTeX-class-file{
-%%%     filename        = "ucthesis.cls",
-%%%     version         = "3.0",
-%%%     date            = "31 October 1994",
-%%% portedby    = "Blaise B. Frederick",
-%%% address     = "Center for Functional Imaging
-%%%            Lawrence Berkeley Laboratory
-%%%            MS 55-121
-%%%            1 Cyclotron Rd.
-%%%            Berkeley, CA 94720
+%%%     filename        = "cpthesis.cls",
+%%%     version         = "1.0",
+%%%     date            = "31 August 2024",
+%%% portedby    = "David D. Marshall",
+%%% address     = "Aerospace Engineering Department
+%%%            California Polytechnic State University
+%%%            1 Grand Ave.
+%%%            San Luis Obispo, CA 93407
 %%%            USA",
-%%% telephone   = "(510) 486-4423",
-%%% email       = "frederic@imasun.lbl.gov",
+%%% telephone   = "(805) 756-6849",
+%%% email       = "ddmarsha@calpoly.edu",
 %%%     codetable       = "ISO/ASCII",
-%%%     keywords        = "LaTeX, ucthesis",
-%%%     supported       = "until November 30, 1994",
-%%%     docstring       = "This file is the main file for the ucthesis
+%%%     keywords        = "LaTeX, cpthesis",
+%%%     supported       = "until August 31, 2025",
+%%%     docstring       = "This file is the main file for the cpthesis
 %%%                        class, which is intended to meet the requirements
-%%%                        for University of California Ph.D. dissertations.
-%%%            It is a direct port to LaTeX2e from UCTHESIS
-%%%            v2.7 by Ethan V. Munson, with no changes other
-%%%            than those for compatibility.  The major modifictions
-%%%            are in the font selection commands in the option
-%%%            files uct1x.clo.
+%%%                        for Cal Poly SLO M.S. dissertations.
+%%%            It is a heavily modified version of the ucthesis v3.0 class with
+%%%            modifications tracked at the main repository for this project:
+%%%            https://github.com/CalPolyCSC/thesis-template. This document
+%%%            class removes as much content as possible that is not needed for
+%%%            the Cal Poly thesis guidelines. It is not intended for general
+%%%            use, as many stylistic decisions are made solely to satisfy the
+%%%            format guidelines, currently available here:
+%%%            https://grad.calpoly.edu/files/thesis/Masters-Thesis-Formatting-Guidelines.pdf.
+%%%
+%%%            Below is the modfication history for the ucthesis document class
+%%%            that this class is based on. This is provided for historical and
+%%%            authorship purposes as many/all of the remarks will not apply to
+%%%            the current class file.
 %%%
 %%%            UCTHESIS.STY v2.7 is based on the standard
 %%%            report.sty as modified by Mittelbach and Schopf in
@@ -95,7 +104,7 @@
 %%% ====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ucthesis}[1996/06/26 JTW's modification of 1994/10/31 v3.0 University of California Thesis Class]
+\ProvidesClass{cpthesis}[2024/08/31 DDM's modification of the modified v3.0 University of California Thesis Class]
 
 %    ****************************************
 %    *               OPTIONS                *
