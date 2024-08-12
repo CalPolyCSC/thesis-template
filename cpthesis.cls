@@ -148,12 +148,6 @@
 %
 % Ethan Munson (October 16, 1992)
 
-% FMi 91/03/30: made twocolum.sty a file and twocolumn an option.
-
-% RmS 91/10/15: moved actual reading of twocolumn.sty
-%               to the end of this file.
-\def\ds@twocolumn{\@twocolumntrue}
-
 % The \ProcessOptions command causes the execution of every option command
 % FOO which is declared and for which the user typed the FOO option in his
 % \documentclass.  For every undeclared option BAR there will be a warning
@@ -304,16 +298,6 @@
 % The name of your campus
 \def\campus#1{\gdef\@campus{#1}}
 
-% \alwayssingle and \endalwayssingle
-%
-% These macros define an environment for front matter that is always
-% single column even in a double-column document.
-
-\def\alwayssingle{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
-     \else \newpage \fi}
-
-\def\endalwayssingle{\if@restonecol\twocolumn \else \newpage \fi}
-
 % \maketitle outputs the complete titlepage.  It requires all the
 % above macros.
 
@@ -350,7 +334,6 @@
 {
 % turns off page anchors to avoid "destination with the same identifier" warning from hyperref
 \hypersetup{pageanchor=false}
-\begin{alwayssingle}
     \let\footnotesize\small
     \let\footnoterule\relax
     \thispagestyle{empty}
@@ -387,16 +370,13 @@
 \end{center}
 
 
-%\vfill\null
-\end{alwayssingle}
-
 \setcounter{footnote}{0}
+\newpage
 }}
 
 % COMMITTEEMEMBERSHIPPAGE - Cal Poly (Added by Andrew Tsui 6/09)
 
 \def\committeemembershippage{
-\begin{alwayssingle}
 
 \begin{center}
 \MakeTextUppercase{\committeemembershipname}
@@ -429,8 +409,7 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\s
 \end{tabular}
 
 \endgroup
-
-\end{alwayssingle}
+\newpage
 }
 
 
@@ -440,7 +419,6 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\s
 %
 
 \def\copyrightpage{
-\begin{alwayssingle}
 %\setcounter{page}{2}
 \fmfont
 \vspace*{7in}
@@ -449,7 +427,7 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\s
 \@author\\
 ALL RIGHTS RESERVED
 \end{center}
-\end{alwayssingle}
+\newpage
 }
 
 
@@ -461,7 +439,6 @@ ALL RIGHTS RESERVED
 % of the \title, \author, \degree, \field, \campus, and \chair macros.
 
 \def\abstract{
-\begin{alwayssingle}
 \begin{center}
 {\fmfont
 {\MakeTextUppercase{\abstractname}}\par
@@ -479,7 +456,7 @@ ALL RIGHTS RESERVED
 {\keywordsname}: \@keywords
 \vspace{0.5in}
 \fi
-\end{alwayssingle}
+\newpage
 }
 
 % DEDICATION
@@ -487,21 +464,21 @@ ALL RIGHTS RESERVED
 % The dedication environment just makes sure the dedication gets its
 % own page.
 
-\newenvironment{dedication}{\begin{alwayssingle}
+\newenvironment{dedication}{
 \begin{center}
 {\MakeTextUppercase{\dedicationname}}
 \end{center}
-}{\end{alwayssingle}}
+}{\newpage}
 
 % ACKNOWLEDGMENTS
 %
 % The acknowledgments environment.
 
-\newenvironment{acknowledgments}{\begin{alwayssingle}
+\newenvironment{acknowledgments}{
 \begin{center}
 {\MakeTextUppercase{\acknowledgename}}
 \end{center}
-}{\end{alwayssingle}}
+}{\newpage}
 
 
 % FRONTMATTER environment
@@ -824,14 +801,9 @@ ALL RIGHTS RESERVED
                       \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
-%                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
-%                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
-                    \if@twocolumn
-                      \@topnewpage[\@makechapterhead{#2}]%
-                    \else
                       \@makechapterhead{#2}%
                       \@afterheading
-                    \fi}
+                    }
 
 
 
@@ -884,14 +856,11 @@ ALL RIGHTS RESERVED
 
 
 % TABLEOFCONTENTS
-%  In ucthesis style, \tableofcontents, \listoffigures, etc. are always
-%  set in single-column style.  @restonecol
 
-\def\tableofcontents{\@restonecolfalse
-  \if@twocolumn\@restonecoltrue\onecolumn\fi
+\def\tableofcontents{
   \chapter*{\MakeTextUppercase{\contentsname}
         \@mkboth{\MakeTextUppercase{\contentsname}}{\MakeTextUppercase{\contentsname}}}%
-  {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}\if@restonecol\twocolumn\fi}
+  {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
    \addvspace{2.25em plus\p@}% space above part line
@@ -939,26 +908,22 @@ ALL RIGHTS RESERVED
 % LIST OF FIGURES
 %
 % Single-space list of figures, add it to the table of contents.
-\def\listoffigures{\@restonecolfalse
-  \if@twocolumn\@restonecoltrue\onecolumn\fi
+\def\listoffigures{
   \chapter*{\MakeTextUppercase{\listfigurename}\@mkboth{\MakeTextUppercase{\listfigurename}}%
 {\MakeTextUppercase{\listfigurename}}}
    \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
-   {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}\if@restonecol
-    \twocolumn\fi}
+   {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}}
 
 \def\l@figure{\@dottedtocline{1}{1.5em}{3.2em}}
 
 
 % LIST OF TABLES
 %
-\def\listoftables{\@restonecolfalse
-  \if@twocolumn\@restonecoltrue\onecolumn\fi
+\def\listoftables{
   \chapter*{\MakeTextUppercase{\listtablename}\@mkboth{\MakeTextUppercase{\listtablename}}%
 {\MakeTextUppercase{\listtablename}}}
    \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
-   {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}\if@restonecol
-    \twocolumn\fi}
+   {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}}
 
 
 \let\l@table\l@figure
@@ -1027,9 +992,7 @@ ALL RIGHTS RESERVED
 % that's the right size to put above the first entry with a new letter
 % of the alphabet.
 
-\newif\if@restonecol
-
-\def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
+\def\theindex{
 \columnseprule \z@
 \columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeTextUppercase{\indexname}}]%
     \@mkboth{\MakeTextUppercase{\indexname}}{\MakeTextUppercase{\indexname}}%
@@ -1042,7 +1005,7 @@ ALL RIGHTS RESERVED
 
 \def\subsubitem{\par\hangindent 40\p@ \hspace*{30\p@}}
 
-\def\endtheindex{\if@restonecol\onecolumn\else\clearpage\fi}
+\def\endtheindex{clearpage}
 
 \def\indexspace{\par \vskip 10\p@ plus5\p@ minus3\p@\relax}
 
@@ -1352,11 +1315,6 @@ ALL RIGHTS RESERVED
 \pagenumbering{arabic}      % Arabic page numbers
 \if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside
                                  % option.
-\if@twocolumn
- \@@input twocolum.sty\relax
-\else
- \onecolumn                 % Single-column.
-\fi
 
 \setlength{\parskip}{1.em}
 \setlength{\parindent}{0pt}
