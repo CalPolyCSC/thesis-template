@@ -89,8 +89,8 @@
 %%%            Another problem some people have had is
 %%%            that you can't use \pagestyle{headings}
 %%%            and \markboth if you use \part.  The solution
-%%%            is to get the headerfooter style, which is
-%%%            nice and simple to use."
+%%%            is to not use part since it is not listed as
+%%%            an acceptable section of thesis."
 %%%  }
 %%% ====================================================================
 
@@ -188,20 +188,24 @@
 % Other English words that need replacement can be found in the macros
 % supporting the title and approval pages.
 %
+% committee membership:
+\def\committeemembershipname{Committee Membership}
+%                            ~~~~~~~~~~~~~~~~~~~~
+%
 % \tableofcontents:
-\def\contentsname{TABLE OF CONTENTS}
-%                 ~~~~~~~~
+\def\contentsname{Table of Contents}
+%                 ~~~~~~~~~~~~~~~~~
 %
 % \listoffigures:
-\def\listfigurename{LIST OF FIGURES}
+\def\listfigurename{List of Figures}
 %                   ~~~~~~~~~~~~~~~
 %
 % \listoftables:
-\def\listtablename{LIST OF TABLES}
+\def\listtablename{List of Tables}
 %                  ~~~~~~~~~~~~~~
 %
 % \thebibliography:
-\def\bibname{BIBLIOGRAPHY}
+\def\bibname{Bibliography}
 %            ~~~~~~~~~~~~
 %
 % \theindex:
@@ -219,12 +223,11 @@
 % \chapter:
 \def\chaptername{Chapter}
 %                ~~~~~~~
+%
 % \appendix:
 \def\appendixname{Appendix}
 %                 ~~~~~~~~
-% \part
-\def\partname{Part}
-%             ~~~~
+%
 % abstract environment:
 \def\abstractname{Abstract}
 %                 ~~~~~~~~
@@ -234,14 +237,12 @@
 %                 ~~~~~~~~
 %
 % acknowledge environment:
-\def\acknowledgename{ACKNOWLEDGMENTS}
-%                    ~~~~~~~~~~~~~~~~
-% vitae environment:
-\def\vitaename{Curriculum Vit\ae}
-%              ~~~~~~~~~~~~~~~~
+\def\acknowledgename{Acknowledgments}
+%                    ~~~~~~~~~~~~~~~
 %
+% dedication environment:
 \def\dedicationname{Dedication}
-%
+%                   ~~~~~~~~~~
 
 %    ****************************************
 %    *             FRONT MATTER             *
@@ -259,20 +260,8 @@
 % The year the degree will be officially conferred
 \def\degreeyear#1{\gdef\@degreeyear{#1}}
 
-% The month in which thesis defense took place
-\def\defensemonth#1{\gdef\@defensemonth{#1}}
-
-% The year the defense took place
-\def\defenseyear#1{\gdef\@defenseyear{#1}}
-
-% How many years on the copyright page (added by Mark Barry 2/07)
-\def\copyrightyears#1{\gdef\@copyrightyears{#1}}
-
 % The full (unabbreviated) name of the degree
 \def\degree#1{\gdef\@degree{#1}}
-
-% All previous degrees: one per line in chronological order
-\def\prevdegrees#1{\gdef\@prevdegrees{#1}}
 
 % The keywords associated with the thesis
 \def\keywords#1{\gdef\@keywords{#1}}
@@ -282,7 +271,6 @@
 
 % The names of your other committe members, one per line
 \def\othermemberA#1{\gdef\@othermemberA{#1}}
-
 \def\othermemberB#1{\gdef\@othermemberB{#1}}
 \def\othermemberC#1{\gdef\@othermemberC{#1}}
 \def\othermemberD#1{\gdef\@othermemberD{#1}}
@@ -296,17 +284,15 @@
 % number of lines and the amount of space between lines
 % on the approval page.
 \def\@numberofmembers{2}
-\def\@approvalstretch{1}
+\def\@approvalstretch{1.5}
+\gdef\@approvalspread{1.1}
 \def\numberofmembers#1{\gdef\@numberofmembers{#1}
-\gdef\@approvalstretch{\ifcase\@numberofmembers \or 1 \or 1\or 1\or 1\or 0.90\or 0.70\or 0.55\or 0.45\or 0.35\or 0.25\fi}}
+\gdef\@approvalstretch{\ifcase\@numberofmembers \or 1.5 \or 1.5 \or 1.5 \or 1.3 \or 1.2 \or 1.0 \or 0.85 \or 0.7 \or 0.6 \or 0.5\fi}}
 
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
 
-% You have to define the campus name twice because I can't figure out
-% how to get the TeX \uppercase macro to work for me (EVM, 9/21/94)
-
-% The name of your UC Campus CAPITALIZED (e.g. Berkeley, Los Angeles)
+% The name of your campus
 \def\campus#1{\gdef\@campus{#1}}
 
 % \alwayssingle and \endalwayssingle
@@ -320,8 +306,7 @@
 \def\endalwayssingle{\if@restonecol\twocolumn \else \newpage \fi}
 
 % \maketitle outputs the complete titlepage.  It requires all the
-% above macros except \campuscap.  It is probably not correct for
-% joint (e.g. UCSD/SDSU) degrees.
+% above macros.
 
 % Set the font that will be used in the front matter headings
 \def\fmfont{\fontsize\@xiipt{12}\selectfont}
@@ -350,8 +335,12 @@
         }%
 }
 
+\usepackage{hyphenat}
+
 \def\maketitle{
 {
+% turns off page anchors to avoid "destination with the same identifier" warning from hyperref
+\hypersetup{pageanchor=false}
 \begin{alwayssingle}
     \let\footnotesize\small
     \let\footnoterule\relax
@@ -360,7 +349,7 @@
 
     \vfill\null
   \begin{center}
-        \invpyramid{\MakeTextUppercase{\@title}}
+        \invpyramid{\MakeTextUppercase{\nohyphens{\@title}}}
 
         %\vfill\null
         \addvspace{1.4in}
@@ -384,6 +373,7 @@
         \@author \\
         \@degreemonth~\@degreeyear
 
+\hypersetup{pageanchor=true}
 
 \end{center}
 
@@ -400,32 +390,32 @@
 \begin{alwayssingle}
 
 \begin{center}
-        COMMITTEE MEMBERSHIP
+\MakeTextUppercase{\committeemembershipname}
 \end{center}
 \par
 \vspace*{0.5in}
 
 \begingroup
-
+\newlength{\colwidth}
+\setlength\colwidth{3.7in}
 \renewcommand\arraystretch{\@approvalstretch}
-\begin{tabular}{rp{3.01in}}
+\begin{tabular}{rp{\colwidth}}
 TITLE:  &\@title     \par\\
 AUTHOR: &\@author     \par\\
 DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
 
-\par\\
-\par\\
+\vspace*{0.5in} \\
 
-COMMITTEE CHAIR:  &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \par\\\\
-\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \par\\\\ \fi
-\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\columnwidth}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \par\\\\ \fi
+COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\\\
+\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\\\ \fi
+\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\\\ \fi
 
 \end{tabular}
 
@@ -483,16 +473,6 @@ ALL RIGHTS RESERVED
 \end{alwayssingle}
 }
 
-\def\abstractsignature{
-\hspace*{\fill}
-\begin{minipage}[t]{3.25in}
-\addtolength{\baselineskip}{-.5\baselineskip}
-\vspace{1.7cm}
-\rule{3.2in}{.5pt}\\
-\@chair\\
-Thesis Committee Chair
-\end{minipage}}
-
 % DEDICATION
 %
 % The dedication environment just makes sure the dedication gets its
@@ -500,7 +480,7 @@ Thesis Committee Chair
 
 \newenvironment{dedication}{\begin{alwayssingle}
 \begin{center}
-{\large \MakeTextUppercase{\dedicationname}}
+{\MakeTextUppercase{\dedicationname}}
 \end{center}
 }{\end{alwayssingle}}
 
@@ -511,31 +491,10 @@ Thesis Committee Chair
 
 \newenvironment{acknowledgements}{\begin{alwayssingle}
 \begin{center}
-{\acknowledgename}
+{\MakeTextUppercase{\acknowledgename}}
 \end{center}
 }{\end{alwayssingle}}
 
-% VITAE
-%
-% The vitae environment puts a large, bold, centered
-% "Curriculum Vitae" label at the top of the page.
-
-\newenvironment{vitae}{\begin{alwayssingle}
-\begin{center}
-{\large \bfseries \vitaename} \par
-{\large \@author}
-\end{center}
-\begin{list}{}{\leftmargin 0in \itemsep .2in}
-}{\end{list}
-\end{alwayssingle}}
-
-\newcommand{\vitaelabels}[1]{#1 \hfil}
-
-\newenvironment{vitaesection}[1]{
-\item {\bf #1}
-\begin{list}{}{\leftmargin 1.5in \labelwidth 1.3in \labelsep .2in
-\parsep 0in
-\let\makelabel\vitaelabels}}{\end{list}}
 
 % FRONTMATTER environment
 %
@@ -559,7 +518,11 @@ Thesis Committee Chair
     \@twosidetrue
     \fi
 \renewcommand{\thepage}{\arabic{page}}\setcounter{page}{1}
-\pagestyle{headings}}
+% Add CHAPTER into table of contents.
+\addtocontents{toc}{%
+   \noindent CHAPTER
+}
+\pagestyle{plain}}
 
 
 %    ****************************************
@@ -779,7 +742,6 @@ Thesis Committee Chair
      \@xsect{#5}}
 
 
-\newcounter {part}
 \newcounter {chapter}
 \newcounter {section}[chapter]
 \newcounter {subsection}[section]
@@ -800,9 +762,6 @@ Thesis Committee Chair
 %                           1 = A, 2 = B, etc.
 %
 
-\def\thepart          {\arabic{part}}
-%% A matter of personal taste--JTW %%
-%% \def\thechapter       {\arabic{chapter}}
 \def\thechapter       {\arabic{chapter}}
 \def\thesection       {\thechapter.\arabic{section}}
 \def\thesubsection    {\thesection.\arabic{subsection}}
@@ -810,72 +769,19 @@ Thesis Committee Chair
 \def\theparagraph     {\thesubsubsection.\arabic{paragraph}}
 \def\thesubparagraph  {\theparagraph.\arabic{subparagraph}}
 
-% \@chapapp is initially defined to be '\chaptername'.  The \appendix
-% command redefines it to be '\appendixname'.
-%
-\def\@chapapp{\uppercase{\chaptername}}
-
-%% Kludge to get multiple appendices lettered rather than numbered %%
-%% Added by John T. Whelan 1996 June 21                            %%
-\newcommand{\appendixon}{
-    \def\thesection{\thechapter.\Alph{section}}
-    \setcounter{section}{0}
+% replace the appendix macro with custom
+\newif\if@appendix
+\@appendixfalse
+\renewcommand\appendix{%
+    \def\@chapapp{\appendixname}
+    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    \renewcommand\thechapter{\Alph{chapter}}
+    \setcounter{chapter}{0}
+    \addtocontents{toc}{\noindent APPENDICES}
+    % Indents Appendix in Table of Contents
+    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    \@appendixtrue
 }
-\newcommand{\appendixoff}{
-    \def\thesection{\thechapter.\arabic{section}}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                        PART                          %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\part{\cleardoublepage   % Starts new page.
-   \thispagestyle{plain}%    % Page style of part page is 'plain'
-  \if@twocolumn              % IF two-column style
-     \onecolumn              %  THEN \onecolumn
-     \@tempswatrue           %       @tempswa := true
-    \else \@tempswafalse     %  ELSE @tempswa := false
-  \fi                        % FI
-  \hbox{}\vfil               % Add fil glue to center title
-%%  \bgroup  \centering      % BEGIN centering %% Removed 19 Jan 88
-  \secdef\@part\@spart}
-
-\def\@part[#1]#2{\ifnum \c@secnumdepth >-2\relax  % IF secnumdepth > -2
-        \refstepcounter{part}%                    %   THEN step
-                                                  %         part counter
-        \addcontentsline{toc}{part}{\thepart      %        add toc line
-        \hspace{1em}#1}\else                      %   ELSE add
-                                                  %         unnumb. line
-        \addcontentsline{toc}{part}{#1}\fi        % FI
-   \markboth{}{}%
-   {\centering                       % %% added 19 Jan 88
-    \interlinepenalty \@M            %% RmS added 11 Nov 91
-    \ifnum \c@secnumdepth >-2\relax  % IF secnumdepth > -2
-      \huge\bfseries \partname~\thepart    %   THEN Print '\partname' and
-    \par                             %         number in \huge bold.
-    \vskip 20\p@\fi                  %        Add space before title.
-    \Huge \bfseries                        % FI
-    #2\par}\@endpart}                % Print Title in \Huge bold.
-                                     % Bug Fix 13 Nov 89: #1 -> #2
-
-
-% \@endpart finishes the part page
-%
-\def\@endpart{\vfil\newpage   % End page with 1fil glue.
-   \if@twoside                % IF twoside printing
-       \hbox{}%               %   THEN Produce totally blank page
-       \thispagestyle{empty}%
-       \newpage
-   \fi                        % FI
-   \if@tempswa                % IF @tempswa = true
-     \twocolumn               %   THEN \twocolumn
-   \fi}                       % FI
-
-\def\@spart#1{{\centering      % %% added 19 Jan 88
-   \interlinepenalty \@M       %% RmS added 11 Nov 91
-   \Huge \bfseries                   % Print title in \Huge boldface
-   #1\par}\@endpart}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       CHAPTER                        %
@@ -896,8 +802,13 @@ Thesis Committee Chair
                        \if@mainmatter
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
-                         \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}\uppercase{#1}}%
+                         \if@appendix
+                             \addcontentsline{toc}{chapter}%
+                                    {\protect\numberline{\thechapter.}{#1}}
+                         \else
+                             \addcontentsline{toc}{chapter}%
+                                    {\protect\numberline{\thechapter.}\uppercase{#1}}
+                         \fi
                        \else
                          \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                        \fi
@@ -970,8 +881,8 @@ Thesis Committee Chair
 
 \def\tableofcontents{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\contentsname
-        \@mkboth{\uppercase{\contentsname}}{\uppercase{\contentsname}}}%
+  \chapter*{\MakeTextUppercase{\contentsname}
+        \@mkboth{\MakeTextUppercase{\contentsname}}{\MakeTextUppercase{\contentsname}}}%
   {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}\if@restonecol\twocolumn\fi}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
@@ -1022,9 +933,9 @@ Thesis Committee Chair
 % Single-space list of figures, add it to the table of contents.
 \def\listoffigures{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\listfigurename\@mkboth{\uppercase{\listfigurename}}%
-{\uppercase{\listfigurename}}}
-   \addcontentsline{toc}{chapter}{\listfigurename}
+  \chapter*{\MakeTextUppercase{\listfigurename}\@mkboth{\MakeTextUppercase{\listfigurename}}%
+{\MakeTextUppercase{\listfigurename}}}
+   \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
    {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}\if@restonecol
     \twocolumn\fi}
 
@@ -1033,24 +944,11 @@ Thesis Committee Chair
 
 % LIST OF TABLES
 %
-% \def\listoftables{\@restonecolfalse
-%   \if@twocolumn\@restonecoltrue\onecolumn\fi
-%   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-% {\uppercase{\listtablename}}}\@starttoc{lot}\if@restonecol
-%   \twocolumn\fi}
-% \def\listoftables{\@restonecolfalse
-%   \if@twocolumn\@restonecoltrue\onecolumn\fi
-%   \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-% {\uppercase{\listtablename}}}
-%   \addcontentsline{toc}{chapter}{\listtablename}
-%   {\ssp\@starttoc{lot}}\if@restonecol
-%   \twocolumn\fi}
-
 \def\listoftables{\@restonecolfalse
   \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\listtablename\@mkboth{\uppercase{\listtablename}}%
-{\uppercase{\listtablename}}}
-   \addcontentsline{toc}{chapter}{\listtablename}
+  \chapter*{\MakeTextUppercase{\listtablename}\@mkboth{\MakeTextUppercase{\listtablename}}%
+{\MakeTextUppercase{\listtablename}}}
+   \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
    {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}\if@restonecol
     \twocolumn\fi}
 
@@ -1080,9 +978,9 @@ Thesis Committee Chair
 %%               as it says in the comment in latex.tex
 %% RmS 92/01/14: Set \p@enumiv to {} and \theenumiv to \arabic{enumiv}
 %%               to get correct references
-\def\thebibliography#1{\chapter*{\bibname\@mkboth{%
-\uppercase{\bibname}}{\uppercase{\bibname}}}
-  \addcontentsline{toc}{chapter}{\bibname}
+\def\thebibliography#1{\chapter*{\MakeTextUppercase{\bibname}\@mkboth{%
+\MakeTextUppercase{\bibname}}{\MakeTextUppercase{\bibname}}}
+  \addcontentsline{toc}{chapter}{\uppercase{\bibname}}
   \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
     \leftmargin\labelwidth
     \advance\leftmargin20pt% change 20 pt according to your needs
@@ -1125,8 +1023,8 @@ Thesis Committee Chair
 
 \def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
 \columnseprule \z@
-\columnsep 35\p@\twocolumn[\@makeschapterhead{\indexname}]%
-    \@mkboth{\uppercase{\indexname}}{\uppercase{\indexname}}%
+\columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeTextUppercase{\indexname}}]%
+    \@mkboth{\MakeTextUppercase{\indexname}}{\MakeTextUppercase{\indexname}}%
     \thispagestyle{plain}\parindent\z@
     \parskip\z@ plus .3\p@\relax\let\item\@idxitem}
 
@@ -1380,19 +1278,11 @@ Thesis Committee Chair
    \thesection. \ \fi ##1}}}}
 \else               % If one-sided printing.
 \def\ps@headings{\let\@mkboth\markboth
-\def\@oddfoot{}\def\@evenfoot{}%     No feet.
-\def\@oddhead{{\slshape \rightmark}\hfil \rmfamily\thepage}% Heading.
+\def\@oddfoot{\hfil\rmfamily\thepage\hfil}\def\@evenfoot{\hfil\rmfamily\thepage\hfil}% Footer.
+\def\@oddhead{}% No header
 \def\chaptermark##1{\markright {\uppercase{\ifnum \c@secnumdepth >\m@ne
   \@chapapp\ \thechapter. \ \fi ##1}}}}
 \fi
-
-% Definition of 'myheadings' page style.
-%
-\def\ps@myheadings{\let\@mkboth\@gobbletwo
- \def\@oddhead{{\slshape\rightmark}\hfil \rmfamily\thepage}%
- \def\@oddfoot{}\def\@evenhead{\rmfamily \thepage\hfil\slshape\leftmark}%
- \def\@evenfoot{}\def\chaptermark##1{}\def\sectionmark##1{}%
- \def\subsectionmark##1{}}
 
 % Definition of 'plain' page style.
 %
@@ -1459,5 +1349,42 @@ Thesis Committee Chair
 \else
  \onecolumn                 % Single-column.
 \fi
+
+\setlength{\parskip}{1.em}
+\setlength{\parindent}{0pt}
+
+\usepackage{titlesec}
+
+% Shrink the size of headers
+\titleformat{\chapter}[display]
+        {\normalfont\normalsize\centering}
+        {\chaptertitlename\ \thechapter}
+        {0pt}{\normalsize\uppercase}
+\titlespacing*{\chapter}{0pt}{-20pt}{4.3ex plus .2ex}
+
+\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+\titleformat*{\paragraph}{\normalsize\bfseries}
+\titleformat*{\subparagraph}{\normalsize\bfseries}
+
+
+% Different font in captions (single-spaced, bold) ------------
+\newcommand{\captionfonts}{\small\bf\ssp}
+
+\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
+
+\makeatletter  % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\captionfonts #1: #2\par}
+  \else
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+\makeatother   % Cancel the effect of \makeatletter
+% ---------------------------------------
 
 \endinput

@@ -3,7 +3,6 @@
 \usepackage{floatrow}
 % from https://tex.stackexchange.com/a/43097
 \floatsetup[table]{capposition=top}
-\usepackage{etex}
 \usepackage[morefloats=125]{morefloats}
 \usepackage[hyphens]{url}
 \usepackage[caption=false]{subfig}
@@ -21,12 +20,10 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{makecell}
-\usepackage{appendix}
 \usepackage[]{algorithm2e}
-\usepackage{titlesec}
 \usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
 \usepackage{cleveref}
-\usepackage{ifthen}
+\usepackage{lipsum}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -43,49 +40,9 @@
 \makeindex
 \makeglossaries
 
-% Shrink the size of headers
-\titleformat{\chapter}[display]
-        {\normalfont\normalsize\centering}
-        {\ifthenelse{\equal{\thechapter}{A}}{APPENDICES\\[4.3ex]}{}\chaptertitlename\ \thechapter}
-        {0pt}{\normalsize\uppercase}
-\titlespacing*{\chapter}{0pt}{-20pt}{4.3ex plus .2ex}
-
-
-\titleformat*{\section}{\normalsize\bfseries}
-\titleformat*{\subsection}{\small\bfseries}
-\titleformat*{\subsubsection}{\small\bfseries}
-\titleformat*{\paragraph}{\small\bfseries}
-\titleformat*{\subparagraph}{\small\bfseries}
-
 \bibliographystyle{abbrv}
 
-% Make \tindent indent pages if you have no paragraph indent
-\newlength\tindent
-\setlength{\tindent}{\parindent}
-\setlength{\parindent}{0.in} \setlength{\parskip}{1.em}
-\renewcommand{\indent}{\hspace*{\tindent}}
-% Otherwise, comment out the above and uncomment this for default indentation on each paragraph
-%\setlength{\parindent}{0.25in} \setlength{\parskip}{6pt}
-
 \geometry{verbose,nohead,tmargin=1in,bmargin=1in,lmargin=1.5in,rmargin=1in}
-
-% Different font in captions (single-spaced, bold) ------------
-\newcommand{\captionfonts}{\small\bf\ssp}
-
-\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
-
-\makeatletter  % Allow the use of @ in command names
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{{\captionfonts #1: #2}}%
-  \ifdim \wd\@tempboxa >\hsize
-    {\captionfonts #1: #2\par}
-  \else
-    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
-\makeatother   % Cancel the effect of \makeatletter
-% ---------------------------------------
 
 % Define Appendix refs
 \crefname{app}{appendix}{appendices}
@@ -103,10 +60,9 @@
     pdfstartview=Fit,
     pdfborder={0 0 0},
 }
-
-\newcounter{qcounter}
-\providecommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
-
+% remove \uppercase from references to chapters
+% see: https://tex.stackexchange.com/a/417078
+\pdfstringdefDisableCommands{\let\uppercase\@firstofone}
 
 \begin{document}
 
@@ -140,33 +96,14 @@
 
 \listoffigures
 
-% Add CHAPTER into table of contents.
-\addtocontents{toc}{%
-   \noindent CHAPTER
-}
-
 \end{frontmatter}
-
-\pagestyle{plain}
-
-\renewcommand{\baselinestretch}{1.66}
 
 \input{chapter-outline}
 
 \nocite{*}
 \bibliography{bibliography}
 
-% Indents Appendix in Table of Contents
-\makeatletter
-\addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
-\makeatother
-
-% Hack to make Appendices to appear in Table of Contents
-\addtocontents{toc}{%
-   \noindent APPENDICES
-}
-\begin{appendices}
+\appendix
 \input{appendix-outline}
-\end{appendices}
 
 \end{document}
