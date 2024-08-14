@@ -236,7 +236,11 @@
 % dedication environment:
 \def\dedicationname{Dedication}
 %                   ~~~~~~~~~~
-
+%
+% campus
+\def\campus{San Luis Obispo}
+%           ~~~~~~~~~~~~~~~
+%
 %    ****************************************
 %    *             FRONT MATTER             *
 %    ****************************************
@@ -284,9 +288,6 @@
 
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
-
-% The name of your campus
-\def\campus#1{\gdef\@campus{#1}}
 
 % \maketitle outputs the complete titlepage.  It requires all the
 % above macros.
@@ -339,7 +340,7 @@
     A Thesis \\
     presented to \\
     the Faculty of California Polytechnic State University, \\
-    \@campus
+    \campus
 
         \addvspace{1.4in}
         %\vfill\null
