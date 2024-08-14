@@ -53,29 +53,32 @@
     \begin{frontmatter}
         \maketitle
 
-% Custom made for Cal Poly (by Andrew Tsui).
-\committeemembershippage
+        % Custom made for Cal Poly (by Mark Barry, modified by Andrew Tsui).
         \copyrightpage
 
-\begin{abstract}
-\input{abstract}
-\end{abstract}
+        % Custom made for Cal Poly (by Andrew Tsui).
+        \committeemembershippage
 
-\begin{acknowledgments}
-\input{acknowledgments}
-\end{acknowledgments}
+        % Abstract page
+        \begin{abstract}
+            \input{frontmatter/abstract}
+        \end{abstract}
 
-\begin{dedication}
-\input{dedication}
-\end{dedication}
-\tableofcontents
+        % Acknowledgments page
+        % Note: environment is included in the tex-file so can change
+        % page title if needed.
+        \input{frontmatter/acknowledgments}
 
-\listoftables
+        \begin{dedication}
+            \input{dedication}
+        \end{dedication}
 
-\listoffigures
+        \tableofcontents
 
-\end{frontmatter}
+        \listoftables
 
+        \listoffigures
+    \end{frontmatter}
 
     %% Input the chapters as configured from the file
     \input{chapter-outline}
