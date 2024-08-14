@@ -178,7 +178,6 @@
 \overfullrule 5pt         % causes overfull hboxes to be marked.
 \fi
 
-
 %% Macros for labels that might need to be modified
 %
 % committee membership:
@@ -332,7 +331,7 @@
 
     \vfill\null
   \begin{center}
-        \invpyramid{\MakeTextUppercase{\nohyphens{\@title}}}
+        \invpyramid{\MakeUppercase{\nohyphens{\@title}}}
 
         %\vfill\null
         \addvspace{1.4in}
@@ -370,7 +369,7 @@
 \def\committeemembershippage{
 
 \begin{center}
-\MakeTextUppercase{\committeemembershipname}
+\MakeUppercase{\committeemembershipname}
 \end{center}
 \par
 \vspace*{0.5in}
@@ -432,7 +431,7 @@ ALL RIGHTS RESERVED
 \def\abstract{
 \begin{center}
 {\fmfont
-{\MakeTextUppercase{\abstractname}}\par
+{\MakeUppercase{\abstractname}}\par
 \@title\par
 \@author\par
 }
@@ -457,7 +456,7 @@ ALL RIGHTS RESERVED
 
 \newenvironment{dedication}{
 \begin{center}
-{\MakeTextUppercase{\dedicationname}}
+{\MakeUppercase{\dedicationname}}
 \end{center}
 }{\newpage}
 
@@ -467,7 +466,7 @@ ALL RIGHTS RESERVED
 
 \newenvironment{acknowledgments}{
 \begin{center}
-{\MakeTextUppercase{\acknowledgename}}
+{\MakeUppercase{\acknowledgename}}
 \end{center}
 }{\newpage}
 
@@ -849,8 +848,8 @@ ALL RIGHTS RESERVED
 % TABLEOFCONTENTS
 
 \def\tableofcontents{
-  \chapter*{\MakeTextUppercase{\contentsname}
-        \@mkboth{\MakeTextUppercase{\contentsname}}{\MakeTextUppercase{\contentsname}}}%
+  \chapter*{\MakeUppercase{\contentsname}
+        \@mkboth{\MakeUppercase{\contentsname}}{\MakeUppercase{\contentsname}}}%
   {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
@@ -900,8 +899,8 @@ ALL RIGHTS RESERVED
 %
 % Single-space list of figures, add it to the table of contents.
 \def\listoffigures{
-  \chapter*{\MakeTextUppercase{\listfigurename}\@mkboth{\MakeTextUppercase{\listfigurename}}%
-{\MakeTextUppercase{\listfigurename}}}
+  \chapter*{\MakeUppercase{\listfigurename}\@mkboth{\MakeUppercase{\listfigurename}}%
+{\MakeUppercase{\listfigurename}}}
    \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
    {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}}
 
@@ -911,8 +910,8 @@ ALL RIGHTS RESERVED
 % LIST OF TABLES
 %
 \def\listoftables{
-  \chapter*{\MakeTextUppercase{\listtablename}\@mkboth{\MakeTextUppercase{\listtablename}}%
-{\MakeTextUppercase{\listtablename}}}
+  \chapter*{\MakeUppercase{\listtablename}\@mkboth{\MakeUppercase{\listtablename}}%
+{\MakeUppercase{\listtablename}}}
    \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
    {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}}
 
@@ -942,8 +941,8 @@ ALL RIGHTS RESERVED
 %%               as it says in the comment in latex.tex
 %% RmS 92/01/14: Set \p@enumiv to {} and \theenumiv to \arabic{enumiv}
 %%               to get correct references
-\def\thebibliography#1{\chapter*{\MakeTextUppercase{\bibname}\@mkboth{%
-\MakeTextUppercase{\bibname}}{\MakeTextUppercase{\bibname}}}
+\def\thebibliography#1{\chapter*{\MakeUppercase{\bibname}\@mkboth{%
+\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}
   \addcontentsline{toc}{chapter}{\uppercase{\bibname}}
   \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
     \leftmargin\labelwidth
@@ -985,8 +984,8 @@ ALL RIGHTS RESERVED
 
 \def\theindex{
 \columnseprule \z@
-\columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeTextUppercase{\indexname}}]%
-    \@mkboth{\MakeTextUppercase{\indexname}}{\MakeTextUppercase{\indexname}}%
+\columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeUppercase{\indexname}}]%
+    \@mkboth{\MakeUppercase{\indexname}}{\MakeUppercase{\indexname}}%
     \thispagestyle{plain}\parindent\z@
     \parskip\z@ plus .3\p@\relax\let\item\@idxitem}
 
