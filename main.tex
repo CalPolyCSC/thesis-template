@@ -1,42 +1,27 @@
 \documentclass[12pt]{cpthesis}
 
-\usepackage{floatrow}
-% from https://tex.stackexchange.com/a/43097
-\floatsetup[table]{capposition=top}
-\usepackage[morefloats=125]{morefloats}
-\usepackage[hyphens]{url}
-\usepackage[caption=false]{subfig}
-\usepackage{graphicx}
-\usepackage{tabularx}
+%% Math packages
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{color}
-\usepackage[nonumberlist,toc]{glossaries}
-\usepackage{wrapfig}
-\usepackage{longtable}
-\usepackage{morefloats}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{makecell}
-\usepackage[]{algorithm2e}
-\usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
-\usepackage{cleveref}
-\usepackage{lipsum}
 
+%% Figures and tables packages
+\usepackage{tabularx}
+\usepackage{graphicx}
+% Add figures folder to the graphics path
+\graphicspath{{figures/}}
+% Ensures table floats have caption above table.
+% from https://tex.stackexchange.com/a/43097
+% Note: Still have to manually do this for non-floating tables.
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
 
-
-\makeindex
-\makeglossaries
-
+%% Bibliography packages
 \bibliographystyle{abbrv}
 
-% Define Appendix refs
-\crefname{app}{appendix}{appendices}
-\Crefname{app}{Appendix}{Appendices}
-
-% Add Figures folder to the graphics path
-\graphicspath{{Figures/}{figures/}}
-
+%% hyperlinks and URL handling
+%% Note: must be one of the last packages added
+\usepackage[hyphens]{url}
+\usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
 % Options for hyperref
 \hypersetup{
     bookmarksnumbered=true,
@@ -49,6 +34,16 @@
 % remove \uppercase from references to chapters
 % see: https://tex.stackexchange.com/a/417078
 \pdfstringdefDisableCommands{\let\uppercase\@firstofone}
+
+%% Automatic determination of kind of reference
+%% Note: must be included after hyperref
+\RequirePackage{cleveref}
+% Define Appendix refs
+\crefname{app}{appendix}{appendices}
+\Crefname{app}{Appendix}{Appendices}
+
+%% Only needed to create placeholder text
+\usepackage{lipsum}
 
 \begin{document}
 
