@@ -179,17 +179,7 @@
 \fi
 
 
-% PREPARING A FOREIGN LANGUAGE VERSION:
-%
-% This document style is for documents prepared in the English language.
-% To prepare a version for another language, various English words must
-% be replaced.  Many of the English words that required replacement are
-% indicated below, where we give the name of the command in which the
-% words appear, and which must be redefined, with the actual words
-% underlined.
-%
-% Other English words that need replacement can be found in the macros
-% supporting the title and approval pages.
+%% Macros for labels that might need to be modified
 %
 % committee membership:
 \def\committeemembershipname{Committee Membership}
