@@ -1362,6 +1362,7 @@ rmargin=1in
 \addtolength{\myfootnotesep}{-\footnotesep}
 \setlength{\footnotesep}{\myfootnotesep} % set spacing between footnotes
 
+% Set the counter depths
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
