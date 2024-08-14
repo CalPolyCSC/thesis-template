@@ -45,20 +45,17 @@
 %% Only needed to create placeholder text
 \usepackage{lipsum}
 
-\begin{document}
-
-% Declarations for Front Matter
+%% Setting for the front matter
 \input{frontmatter}
 
-\maketitle
 
-\begin{frontmatter}
-
-% Custom made for Cal Poly (by Mark Barry, modified by Andrew Tsui).
-\copyrightpage
+\begin{document}
+    \begin{frontmatter}
+        \maketitle
 
 % Custom made for Cal Poly (by Andrew Tsui).
 \committeemembershippage
+        \copyrightpage
 
 \begin{abstract}
 \input{abstract}
