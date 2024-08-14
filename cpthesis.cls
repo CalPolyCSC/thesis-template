@@ -1354,6 +1354,15 @@ rmargin=1in
 % Added to avoid windows and orphans
 \RequirePackage[all]{nowidow}
 
+% Added to fix spacing between footnote entries
+% Also makes table rows single spaced
+\RequirePackage{setspace}
+\newlength{\myfootnotesep}
+\setlength{\myfootnotesep}{\baselineskip}
+\addtolength{\myfootnotesep}{-\footnotesep}
+\setlength{\footnotesep}{\myfootnotesep} % set spacing between footnotes
+
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+
 \endinput
