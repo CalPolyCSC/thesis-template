@@ -1351,4 +1351,6 @@ rmargin=1in
 \makeatother   % Cancel the effect of \makeatletter
 % ---------------------------------------
 
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 \endinput
