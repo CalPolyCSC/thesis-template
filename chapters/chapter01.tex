@@ -2,3 +2,153 @@
     This chapter is an introduction to the various elements of a thesis that might need to be created.
     Any additional packages beyond what is already included in the main \LaTeX\ file should be put into the \textbf{preamble.tex} file located in the \textbf{frontmatter} project directory.
 
+\section{Math}
+    Displaying math relations is one of the areas that \LaTeX\ shines.
+    While this is not a complete presentation of the capabilities, there are a few uses that are worth presenting as a starting point.
+
+\subsection{General Equations}
+    This section shows how to create a variety of equations and cite them.
+    \Cref{eq:quadratic_formula} is an example of a simple equation.
+    \begin{equation} \label{eq:quadratic_formula}
+        x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+    \end{equation}
+    For equations that are not to be numbered, then can use the * version of the math commands, such as
+    \begin{equation*}
+        y=mx+b
+    \end{equation*}
+    Note that since this equation is not numbered, it cannot be referenced in the text because it has no label.
+
+    If you have multiple equations that are related then can use the following
+    \begin{subequations}
+        \begin{align}
+            \begin{split}
+                q\left(x\right)&\coloneq\frac{6x^2}{2x} \\
+                &=3x
+            \end{split} \\
+            q\left(1\right)
+                &=3\cdot 1=3 \\
+            q\left(0\right)
+                &=\lim_{x\to 0} q=0
+        \end{align}
+    \end{subequations}
+    In the case that some of the equations should not be numbered, then can use \textbf{notag} on the equations that should not be numbered
+    \begin{subequations}
+        \begin{align}
+            \begin{split}
+                q\left(x\right)
+                    &\coloneq\frac{6x^2}{2x} \\
+                    &=3x
+            \end{split} \\
+            q\left(1\right)
+                &=3\cdot 1=3 \notag \\
+            q\left(0\right)
+                &=\lim_{x\to 0} q=0
+        \end{align}
+    \end{subequations}
+
+    For one equation that splits over multiple lines, \cref{eq:multi_line} can be used as a reference
+    \begin{equation} \label{eq:multi_line}
+    \begin{split}
+        x&=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+          =\frac{-b\pm\sqrt{b^2-4ac}}{2a}\left(\frac{-b\mp\sqrt{b^2-4ac}}{-b\mp\sqrt{b^2-4ac}}\right) \\
+         &=\frac{b^2-\left(b^2-4ac\right)}{2a\left(-b\mp\sqrt{b^2-4ac}\right)}
+          =\frac{4ac}{2a\left(-b\mp\sqrt{b^2-4ac}\right)} \\
+         &=-\frac{2c}{b \pm \sqrt{b^2-4ac}}
+        \end{split}
+    \end{equation}
+
+\subsection{Functions and Their Names}
+    It is important to remember that math functions, such as sine and cosine, have their own definitions, and are typeset differently compared to variables.
+    \begin{equation}
+        \sin\left(2\alpha\right)=2\sin\left(\alpha\right)\cos\left(\alpha\right)
+    \end{equation}
+    Any math function that is represented by multiple characters should follow the same formatting.
+    To create custom math functions, use the \textbf{DeclareMathOperator} command.
+
+\subsection{Representing Vectors}
+    Vectors are represented a variety of ways in different fields of study.
+    A few of the most common methods are presented here.
+
+\subsubsection{Vectors as Bold Symbols}
+    A three-dimensional vector has the form
+    \begin{equation}
+        \bm{x}
+            =\begin{bmatrix}
+                x_0 \\ x_1 \\ x_2
+             \end{bmatrix}
+    \end{equation}
+    while a row vector looks like
+    \begin{equation}
+        \bm{\alpha}
+            =\begin{bmatrix}
+                \alpha_0 & \alpha_1 & \alpha_2
+             \end{bmatrix}
+    \end{equation}
+    The same process can be used to represent a matrix
+    \begin{equation}
+        \bm{\mu}
+            =\begin{bmatrix}
+                \bm{\mu}_0 & \bm{\mu}_1 & \bm{\mu}_{2}
+             \end{bmatrix}
+            =\begin{bmatrix}
+                \mu_{0,0} & \mu_{0,1} & \mu_{0,2} \\
+                \mu_{1,0} & \mu_{1,1} & \mu_{1,2} \\
+                \mu_{2,0} & \mu_{2,1} & \mu_{2,2} \\
+             \end{bmatrix}
+    \end{equation}
+
+\subsubsection{Vectors with Arrows Above}
+    A three-dimensional vector has the form
+    \begin{equation}
+        \vec{x}
+            =\begin{bmatrix}
+                x_0 \\ x_1 \\ x_2
+             \end{bmatrix}
+    \end{equation}
+    while a row vector looks like
+    \begin{equation}
+        \vec{\alpha}
+            =\begin{bmatrix}
+                \alpha_0 & \alpha_1 & \alpha_2
+             \end{bmatrix}
+    \end{equation}
+    The same process can be used to represent a matrix
+    \begin{equation}
+        \vec{\mu}_i
+            =\begin{bmatrix}
+                \vec{\mu}_0 & \vec{\mu}_1 & \vec{\mu}_{2}
+             \end{bmatrix}
+            =\begin{bmatrix}
+                \mu_{0,0} & \mu_{0,1} & \mu_{0,2} \\
+                \mu_{1,0} & \mu_{1,1} & \mu_{1,2} \\
+                \mu_{2,0} & \mu_{2,1} & \mu_{2,2} \\
+             \end{bmatrix}
+    \end{equation}
+
+\subsubsection{Vectors with Lines Below}
+    A three-dimensional vector has the form
+    \begin{equation}
+        \underline{x}
+            =\begin{bmatrix}
+                x_0 \\ x_1 \\ x_2
+             \end{bmatrix}
+    \end{equation}
+    while a row vector looks like
+    \begin{equation}
+        \underline{\alpha}
+            =\begin{bmatrix}
+                \alpha_0 & \alpha_1 & \alpha_2
+             \end{bmatrix}
+    \end{equation}
+    The same process can be used to represent a matrix
+    \begin{equation}
+        \underline{\underline{\mu}}
+            =\begin{bmatrix}
+                \underline{\mu_0} & \underline{\mu_1} & \underline{\mu_2}
+             \end{bmatrix}
+            =\begin{bmatrix}
+                \mu_{0,0} & \mu_{0,1} & \mu_{0,2} \\
+                \mu_{1,0} & \mu_{1,1} & \mu_{1,2} \\
+                \mu_{2,0} & \mu_{2,1} & \mu_{2,2} \\
+             \end{bmatrix}
+    \end{equation}
