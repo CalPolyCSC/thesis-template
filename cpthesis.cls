@@ -1294,6 +1294,14 @@ ALL RIGHTS RESERVED
 % \def\@eqnnum{(\theequation)}
 %
 
+\usepackage[
+letterpaper,
+nohead,
+tmargin=1in,
+bmargin=1in,
+lmargin=1.5in,
+rmargin=1in
+]{geometry}
 
 %    ****************************************
 %    *           INITIALIZATION             *
