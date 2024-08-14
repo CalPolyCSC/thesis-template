@@ -1,10 +1,17 @@
 \documentclass[12pt]{cpthesis}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Math packages
-\usepackage{amssymb}
-\usepackage{amsmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}     % for lots math extensions
+\usepackage{mathtools}   % for DeclareMathOperator
+\usepackage{bm}          % for bold math symbols
+\usepackage{letltxmacro} % used for alternate sqrt
+\usepackage{nicefrac}    % for nicer looking inline fractions
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Figures and tables packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tabularx}
 \usepackage{graphicx}
 % Add figures folder to the graphics path
@@ -15,11 +22,20 @@
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{abbrv}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Additional packages needed for specific thesis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{frontmatter/preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% hyperlinks and URL handling
 %% Note: must be one of the last packages added
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[hyphens]{url}
 \usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
 % Options for hyperref
@@ -35,19 +51,21 @@
 % see: https://tex.stackexchange.com/a/417078
 \pdfstringdefDisableCommands{\let\uppercase\@firstofone}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Automatic determination of kind of reference
 %% Note: must be included after hyperref
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{cleveref}
 % Define Appendix refs
 \crefname{app}{appendix}{appendices}
 \Crefname{app}{Appendix}{Appendices}
 
-%% Only needed to create placeholder text
-\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of document preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Setting for the front matter
+% Setting for the front matter
 \input{frontmatter}
-
 
 \begin{document}
     \begin{frontmatter}
