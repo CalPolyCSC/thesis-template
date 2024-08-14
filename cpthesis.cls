@@ -318,7 +318,7 @@
         }%
 }
 
-\usepackage{hyphenat}
+\RequirePackage{hyphenat}
 
 \def\maketitle{
 {
