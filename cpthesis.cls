@@ -180,27 +180,27 @@
 
 %% Macros for labels that might need to be modified
 %
-% committee membership:
+% committee membership page title:
 \def\committeemembershipname{Committee Membership}
 %                            ~~~~~~~~~~~~~~~~~~~~
 %
-% \tableofcontents:
+% table of contents name:
 \def\contentsname{Table of Contents}
 %                 ~~~~~~~~~~~~~~~~~
 %
-% \listoffigures:
+% list of figures name:
 \def\listfigurename{List of Figures}
 %                   ~~~~~~~~~~~~~~~
 %
-% \listoftables:
+% list of tables name:
 \def\listtablename{List of Tables}
 %                  ~~~~~~~~~~~~~~
 %
-% \thebibliography:
+% bibliography name:
 \def\bibname{Bibliography}
 %            ~~~~~~~~~~~~
 %
-% \theindex:
+% index name:
 \def\indexname{Index}
 %              ~~~~~
 %
@@ -212,11 +212,11 @@
 \def\tablename{Table}
 %              ~~~~~
 %
-% \chapter:
+% chapter name:
 \def\chaptername{Chapter}
 %                ~~~~~~~
 %
-% \appendix:
+% appendix name:
 \def\appendixname{Appendix}
 %                 ~~~~~~~~
 %
