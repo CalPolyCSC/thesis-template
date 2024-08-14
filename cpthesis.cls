@@ -1351,6 +1351,9 @@ rmargin=1in
 \makeatother   % Cancel the effect of \makeatletter
 % ---------------------------------------
 
+% Added to avoid windows and orphans
+\RequirePackage[all]{nowidow}
+
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 \endinput
