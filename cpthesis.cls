@@ -220,6 +220,14 @@
 \def\appendixname{Appendix}
 %                 ~~~~~~~~
 %
+% appendix toc entry name:
+\def\appendixtocname{Appendix}
+%                 ~~~~~~~~
+%
+% appendix toc entry name:
+\def\appendicestocname{Appendices}
+%                 ~~~~~~~~
+%
 % abstract environment:
 \def\abstractname{Abstract}
 %                 ~~~~~~~~
@@ -747,12 +755,16 @@ ALL RIGHTS RESERVED
 % replace the appendix macro with custom
 \newif\if@appendix
 \@appendixfalse
-\renewcommand\appendix{%
+\renewcommand\appendix[1][2]{%
     \def\@chapapp{\appendixname}
     \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \renewcommand\thechapter{\Alph{chapter}}
     \setcounter{chapter}{0}
-    \addtocontents{toc}{\noindent APPENDICES}
+    \ifnum#1>1
+        {\addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}}
+    \else
+        {\addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}}
+    \fi
     % Indents Appendix in Table of Contents
     \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \@appendixtrue
