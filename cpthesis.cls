@@ -1345,22 +1345,27 @@ rmargin=1in
 \titleformat*{\subparagraph}{\normalsize\bfseries}
 
 
-% Different font in captions (single-spaced, bold) ------------
-\newcommand{\captionfonts}{\small\bf\ssp}
+%% the document class does not define this standard item
+% see https://tex.stackexchange.com/a/612744
+\let\smallsize\relax
+\let\@currsize\smallsize
 
-\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
-
-\makeatletter  % Allow the use of @ in command names
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{{\captionfonts #1: #2}}%
-  \ifdim \wd\@tempboxa >\hsize
-    {\captionfonts #1: #2\par}
-  \else
-    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
-\makeatother   % Cancel the effect of \makeatletter
+%% Different font in captions (single-spaced, bold) ------------
+%\newcommand{\captionfonts}{\small\bf\ssp}
+%
+%\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
+%
+%\makeatletter  % Allow the use of @ in command names
+%\long\def\@makecaption#1#2{%
+%  \vskip\abovecaptionskip
+%  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+%  \ifdim \wd\@tempboxa >\hsize
+%    {\captionfonts #1: #2\par}
+%  \else
+%    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+%  \fi
+%  \vskip\belowcaptionskip}
+%\makeatother   % Cancel the effect of \makeatletter
 % ---------------------------------------
 
 % Added to avoid windows and orphans
