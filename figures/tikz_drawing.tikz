@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=1.25]
+    \def\c {4cm}
+    \def\t {2cm}
+    \def\shockheight {3cm}
+    \coordinate (leading edge) at (0, 0);
+    \coordinate (upper end) at (\c, \t);
+    \coordinate (lower end) at (\c, -\t);
+
+    % draw the surfaces
+    \draw[opacity=0.5, fill=gray, gray] (leading edge) -- (upper end) to[out=-10,in=145] (lower end) -- cycle;
+    \draw[thick] (lower end) -- (leading edge) -- (upper end);
+    \node[xshift=-2cm] at ($(upper end)!0.5!(lower end)$) {Generic Cone};
+
+    % draw shocks
+    \draw[very thick] (leading edge) -- ++(-50:\shockheight) node[sloped, midway, below] {$y=mx+b$};
+    \draw[very thick] (leading edge) -- ++(50:\shockheight);
+\end{tikzpicture}

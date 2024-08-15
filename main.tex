@@ -12,15 +12,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Figures and tables packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{tabularx}
-\usepackage{graphicx}
-% Add figures folder to the graphics path
-\graphicspath{{figures/}}
+%% figure related packages
+\usepackage{caption}
+\usepackage{subcaption}
+
+\captionsetup{
+    format=hang,
+    font=it,
+    labelfont=bf,
+%    textformat=period,
+    labelsep=colon
+}
+\captionsetup[table]{position=above}
+\captionsetup[subfigure]{labelformat=parens,font=normalsize}
+\captionsetup[subtable]{labelformat=parens,font=normalsize,position=top}
+
 % Ensures table floats have caption above table.
 % from https://tex.stackexchange.com/a/43097
 % Note: Still have to manually do this for non-floating tables.
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
+
+%% table related packages
+\usepackage{tabularx}
+
+%% figure related packages
+\usepackage{graphicx}
+
+% Add figures folder to the graphics path
+\graphicspath{{figures/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography packages
