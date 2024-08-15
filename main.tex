@@ -13,6 +13,10 @@
 %% Figures and tables packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% figure related packages
+\usepackage{silence}
+% This document class is not known to the caption class, but
+% there is nothing to be done and the default values are ok.
+\WarningFilter{caption}{Unknown document class (or package)}
 \usepackage{caption}
 \usepackage{subcaption}
 
