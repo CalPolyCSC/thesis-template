@@ -196,6 +196,10 @@
 \def\listtablename{List of Tables}
 %                  ~~~~~~~~~~~~~~
 %
+% list of symbols name:
+\def\listsymbolsname{List of Symbols}
+%                    ~~~~~~~~~~~~~~~
+%
 % bibliography name:
 \def\bibname{Bibliography}
 %            ~~~~~~~~~~~~
