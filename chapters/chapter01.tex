@@ -326,7 +326,17 @@
     If in the future the chapter number, section title, section number, and/or page number change these will be updated automatically.
     There should be no reason to ever manually cross-reference an item in this document.
 
-\section{Nomenclature} \label{sec:Nomenclature}
+\section{Nomenclature Usage} \label{sec:NomenclatureUsage}
+    The \nameref{sec:Nomenclature} in the preamble on \cpageref{sec:Nomenclature} shows the nomenclature for this document.
+    This uses the nomenclatur package, and you should consult the documentation for that package to see how it can be customized.
+    The simplest way to implement the nomenclature/list of symbols information is how this document has created the nomenclature.
+    All of the nomenclature information is contained within the \textbf{nomenclature.tex} file in the \textbf{frontmatter} folder.
+    If no nomenclature is desired, then simply remove all of the content in this file.
+
+    There are ways to sort/organize the nomenclature.
+    A simple grouping is done with the code in \textbf{preamble.tex}.
+    If a different sorting/grouping is desired, then this code needs to be changed.
+    If no grouping or sorting is desired, then this code can be removed.
 
 \section{Citations} \label{sec:Citations}
 
