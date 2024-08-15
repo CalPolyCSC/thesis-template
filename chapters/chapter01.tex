@@ -153,3 +153,178 @@
                 \mu_{2,0} & \mu_{2,1} & \mu_{2,2} \\
              \end{bmatrix}
     \end{equation}
+
+\section{Figures} \label{sec:Figures}
+    Figures are typically included as either images or drawings.
+    There are a number of image and drawing formats that can be used, however this will only present one type of each.
+
+\subsection{Figures from Images} \label{sec:FiguresFromImages}
+    Image files can be inserted using \textbf{includegraphics}.
+    \Cref{fig:CalPolySeal1} shows the import of a JPG file at its original size.
+    The default size of this image is quite large, and the scale does not add much value.
+    There are a number of ways to scale an image, with \cref{fig:CalPolySeal_small} showing one way to do so.
+    This figure scaled the image to a width of 2 inches.
+    \makeatletter
+    \@currsize
+    \makeatother
+    \begin{figure}
+        \centering
+        \includegraphics{CalPoly_Seal}
+        \caption{The Cal Poly seal.}
+        \label{fig:CalPolySeal1}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=2in]{CalPoly_Seal}
+        \caption{The Cal Poly seal from \cref{fig:CalPolySeal1} scaled to a 2 inch width.}
+        \label{fig:CalPolySeal_small}
+    \end{figure}
+
+    Beware that scaling images can result in the image looking quite poor.
+    \Cref{fig:CalPolySeal_scaled} shows a small version of the Cal poly seal that was then scaled to a width of 2 inches.
+    Note how pixelated the resulting image is, and it is difficult to determine what the actual image should be.\footnote{Too many technical documents suffer from the problem of pixelated images in their figures, including textbooks, unfortunately.}
+    It is best practice to save the image at the resolution that you plan to use in your document.
+    This takes some iterations to get the sizes correct, but it will create much better looking images.
+    \begin{figure}
+        \centering
+        \includegraphics[width=2in]{CalPoly_Seal_small}
+        \caption{A small version of the Cal Poly seal scaled to a 2 inch width.}
+        \label{fig:CalPolySeal_scaled}
+    \end{figure}
+
+\subsection{Figures from TikZ} \label{sec:FiguresFromTikZ}
+    Another way to present figures is to use one of the drawing packages compatible with \LaTeX.
+    One such solution is TikZ.\footnote{TikZ is a drawing package that has many extensions and uses. A good website to start with is \url{https://tikz.dev/}.}
+    \Cref{fig:tikz_drawing} shows a simple drawing made using TikZ.
+    The code for drawing can either be placed in the \TeX--file, or it can be included from another file, as this example.
+    One benefit of using TikZ (and other \LaTeX--based drawing packages) is that the same fonts are used in the drawing as are used in the rest of the document.
+    So there are no issues with the distraction of each figure having its own fonts (and sizes).
+    \begin{figure}
+        \centering
+        \input{figures/tikz_drawing.tikz}
+        \caption{A simple TikZ drawing demonstrating its use.}
+        \label{fig:tikz_drawing}
+    \end{figure}
+
+    Another example of TikZ usage is \cref{fig:tikz_venn} from \cite{kottwitz2015}.
+    This demonstrates the versatility of TIkZ to produce a wide variety of figures.
+    There are a number of other ways that TikZ can be used to create figures for plots (using pgfplots), circuits (using circuitikz), and structural analysis (using stanli).
+    \begin{figure}
+        \centering
+        \input{figures/venn.tikz}
+        \caption{A Venn diagram describing \LaTeX created by Stefan Kottwitz\cite{kottwitz2015}.}
+        \label{fig:tikz_venn}
+    \end{figure}
+
+\subsection{Sub-Figures}
+    Sometimes there is a need to present the contents of two images/drawing together in one figure.
+    \Cref{fig:subfig-example} shows a figure composed of two sub-figures.
+    Each sub-figure can be referred to separately, such as \cref{fig:sub-image-a} is on the left and \cref{fig:sub-image-b} is on the right.
+    Also, the sub-figures can be cited collectively, such as \cref{fig:sub-image-a,fig:sub-image-b}.
+    \begin{figure}
+        \centering
+        \begin{subfigure}[t]{2in}
+            \includegraphics[width=\textwidth]{example-image-a}
+            \caption{First example image that does have a long description}
+            \label{fig:sub-image-a}
+        \end{subfigure}
+        \hspace{0.1in}
+        \begin{subfigure}[t]{2in}
+            \includegraphics[width=\textwidth]{example-image-b}
+            \caption{Next example image with an even longer description that continues on for a while}
+            \label{fig:sub-image-b}
+        \end{subfigure}
+        \caption{Two figures that together tell a complete story of how sub-figures can be used together to create one coherent figure.}
+        \label{fig:subfig-example}
+    \end{figure}
+
+\section{Tables} \label{sec:Tables}
+    Tables are handled similarly to figures within \LaTeX.
+    One exception is that the caption for a table should be above the table, while the caption for figures should be below the figure.
+    Table~\ref{tab:fancy-table-example} shows a floating table with a variety of column types.
+    The formatting for these columns (such as aligning floating point numbers on the decimal, scientific notation, and unit labels) can be accomplished using the siunitx package, however that is beyond the scope of this introduction.
+    \begin{table}
+        \centering
+        \begin{tabular}{c l l l l}
+                      & \multicolumn{1}{c}{Ref.}& \multicolumn{1}{c}{Calc.}& \multicolumn{1}{c}{Absolute}& \multicolumn{1}{c}{Percent} \\
+            Parameter & \multicolumn{1}{c}{Value}& \multicolumn{1}{c}{Value}& \multicolumn{1}{c}{Difference}& \multicolumn{1}{c}{Difference (\%)} \\
+            \hline
+            Radius & 150.0 & 150.0 & $\phantom{-}0.000\times 10^{0}$ & \quad\quad 0.0 \\
+            Chord & \phantom{1}60.00 & \phantom{1}60.00 & $\phantom{-}0.000\times 10^{0}$ & \quad\quad 0.0 \\
+            Thickness & \phantom{15}6.000 & \phantom{15}6.061 & $\phantom{-}6.123\times 10^{-2}$ & \quad\quad 1.021 \\
+            $\theta_\text{l.e.}\ \left(^\circ\right)$ & \phantom{1}11.33 & \phantom{1}11.54 & $\phantom{-}2.036\times 10^{-1}$ & \quad\quad 1.797 \\
+            $\theta_\text{t.e.}\ \left(^\circ\right)$ & \,-11.33 & \,-11.54 & $-2.036\times 10^{-1}$ & \quad\quad 1.797 \\
+            \hline
+        \end{tabular}
+        \caption{The formatting of this table is hackish. There are better ways to align numbers.}
+        \label{tab:fancy-table-example}
+    \end{table}
+
+    While there are a number of formatting options for tables, be careful that the resulting formatting still adheres to the thesis formatting guidelines.
+    In addition, a general rule for horizontal and vertical lines is the fewer the better.
+    In particular, vertical lines should be used on the rarest of occasions.
+    Horizontal lines should be used sparingly as well, but should be used to delineate the column headings.
+    Adding horizontal lines at the top and bottom of the table are up to your discretion.
+    Whatever formatting you adopt, be sure to be consistent throughout the entire thesis.
+
+\subsection{Sub-Tables}
+    Just as the case with figures in \cref{sec:Figures}, there are some occasions that might necessitate the need for two tables to be presented in one table.
+    Note that this is a rarer need than with sub-figures, so be judicious with the usage of sub-tables.
+    \Cref{tab:temps} is a table composed of two sub-tables.
+    Each sub-table can be referred to separately, such as \cref{tab:week1} is for the first week and \cref{tab:week2} is for the second week.
+    These sub-tables can be cited collectively as well, such as \cref{tab:week1,tab:week2}.
+    \begin{table}
+        \begin{subtable}[h]{0.325\textwidth}
+            \centering
+            \caption{First week}
+            \label{tab:week1}
+            \begin{tabular}{r r r}
+                      & Min.  & Max. \\
+                Day   & $\left(^\circ\text{C}\right)$
+                              & $\left(^\circ\text{C}\right)$ \\
+                \hline
+                Mon   & 13 & 20 \\
+                Tue   & 14 & 22 \\
+                Wed   & 12 & 23 \\
+                Thurs & 13 & 25 \\
+                Fri   & 7  & 18 \\
+                Sat   & 13 & 15 \\
+                Sun   & 13 & 20 \\
+                \hline
+            \end{tabular}
+        \end{subtable}
+        \hspace{0.2in}
+        \begin{subtable}[h]{0.325\textwidth}
+            \caption{Second week}
+            \label{tab:week2}
+            \centering
+            \begin{tabular}{r r r}
+                      & Min.  & Max. \\
+                Day   & $\left(^\circ\text{C}\right)$
+                              & $\left(^\circ\text{C}\right)$ \\
+                \hline
+                Mon   & 11 & 17 \\
+                Tue   & 10 & 16 \\
+                Wed   & 8  & 14 \\
+                Thurs & 5  & 12 \\
+                Fri   & 7  & 15 \\
+                Sat   & 12 & 16 \\
+                Sun   & 9  & 15 \\
+                \hline
+            \end{tabular}
+        \end{subtable}
+        \caption{Temperature ranges recorded in the first two weeks of July at the first station in study}
+        \label{tab:temps}
+    \end{table}
+
+\section{Cross-References} \label{sec:Cross_References}
+\lipsum[1-2]
+
+\section{Citations} \label{sec:Citations}
+\lipsum[1-2]
+
+\section{Code and Code Listings} \label{sec:Code_and_Code_Listings}
+\lipsum[1-2]
+
+\section{Algorithms} \label{sec:Algorithms}
+\lipsum[1-2]
