@@ -1,4 +1,4 @@
-\chapter{Example Usage}
+\chapter{Example Usage} \label{sec:ExampleUsage}
     This chapter is an introduction to the various elements of a thesis that might need to be created.
     Any additional packages beyond what is already included in the main \LaTeX\ file should be put into the \textbf{preamble.tex} file located in the \textbf{frontmatter} project directory.
 
@@ -317,14 +317,19 @@
         \label{tab:temps}
     \end{table}
 
-\section{Cross-References} \label{sec:Cross_References}
-\lipsum[1-2]
+\section{Cross-References} \label{sec:CrossReferences}
+    There are many ways that cross-references can be created in the document.
+    The package that this document uses is cleveref.
+    The \textbf{cref}, cross-reference in a sentence, and \textbf{Cref}, cross-reference to start a sentence, commands have already been used throughout this chapter.
+    As an example, \cref{sec:ExampleUsage} has a section titled \emph{\nameref{sec:FiguresFromImages}}, located inside \cref{sec:Figures} on \cpageref{sec:FiguresFromImages}.
+    The chapter and number, the section title, the section and number, and the page number were all created using cleveref cross-references.
+    If in the future the chapter number, section title, section number, and/or page number change these will be updated automatically.
+    There should be no reason to ever manually cross-reference an item in this document.
+
+\section{Nomenclature} \label{sec:Nomenclature}
 
 \section{Citations} \label{sec:Citations}
-\lipsum[1-2]
 
-\section{Code and Code Listings} \label{sec:Code_and_Code_Listings}
-\lipsum[1-2]
+\section{Code and Code Listings} \label{sec:CodeAndCodeListings}
 
 \section{Algorithms} \label{sec:Algorithms}
-\lipsum[1-2]
