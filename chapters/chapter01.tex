@@ -362,6 +362,40 @@
     To refer to the author(s) and cite the \textbf{textcite} command can be used as in     \textcite{dirac1981}.
     Finally, other parts of the citation can also be referenced: \citeauthor{einstein1905} wrote \citetitle{einstein1905} in \citeyear{einstein1905} with the citation found in \cite{einstein1905}.
 
-\section{Code and Code Listings} \label{sec:CodeAndCodeListings}
-
 \section{Algorithms} \label{sec:Algorithms}
+    When there is a need to demonstrate an algorithm the algorithmic package can be used.
+    \Cref{alg:SecondAlgorithm} shows a simple example of an algorithm.
+    This one does not contain comments and is a more stripped-down example of the features of the algorithmic package.
+    \begin{algorithm}
+        \begin{algorithmic}
+            \Require $x \in \{0,1\}$
+            \Ensure $y \in \{1,2\}$
+            \State $y \gets x+1$
+            \State \Return $y$
+        \end{algorithmic}
+        \caption{Another algorithm.}
+        \label{alg:SecondAlgorithm}
+    \end{algorithm}
+
+    Another algorithm is shown as a simple implementation of Heun's Method in \cref{alg:HeunMethod}.
+    This computes solutions to $y'=f\left(x,y\right)$ at $N$ locations with step-size $h$, and initial value of $x_0, y_0$.
+    References can be made to specific lines in the algorithm.
+    In this case, \cref{alg:HeunMethodPredictor} shows the predictor step.
+    \begin{algorithm}
+        \begin{algorithmic}
+            \Procedure{HeunMethod}{$f, x_0, y_0, h, N$}
+                \For{$n\gets 0, N-1$}\Comment{looping through $N$ evaluations}
+                    \State $x_{n+1}\gets x_n+h$\Comment{Setting the next $x$}
+                    \State $K_1\gets hf\left(x_n, y_n\right)$\Comment{Store the evaluation of $f$}
+                    \State $y^*\gets y_n+K_1$\Comment{Predictor Calculation} \label{alg:HeunMethodPredictor}
+                    \State $K_2\gets hf\left(x_{n+1}, y^*\right)$\Comment{Store second evaluation of $f$}
+                    \State $y_{n+1}\gets y_n+\frac{1}{2}\left[K_1+K_2\right]$\Comment {Corrector Calculation}
+                \EndFor
+                \State \textbf{return} $x,y$ \Comment{return the $x$ and $y$ vectors}
+            \EndProcedure
+        \end{algorithmic}
+        \caption{Heun's Method for given step-size.}
+        \label{alg:HeunMethod}
+    \end{algorithm}
+
+\section{Code and Code Listings} \label{sec:CodeAndCodeListings}

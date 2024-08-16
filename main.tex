@@ -84,6 +84,20 @@
 \addbibresource{bibliography/references.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Algorithm and code listing packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xpatch}
+\usepackage{algorithm}
+\usepackage[noEnd=true, indLines=true]{algpseudocodex}
+% remove some of the indent in the algorithmic package
+% https://tex.stackexchange.com/a/550740
+\xpatchcmd\algorithmic
+    {\labelwidth 1.2em}
+    {\labelwidth .5em}
+    {}{\fail}
+\renewcommand{\thealgorithm}{\arabic{chapter}.\arabic{algorithm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional packages needed for specific thesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{frontmatter/preamble}
