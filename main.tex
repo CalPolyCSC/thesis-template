@@ -64,7 +64,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{abbrv}
+\usepackage[
+    backend=biber,
+    style=numeric,
+    url=true,
+    giveninits=true,
+    maxnames=4,
+    minnames=3,
+]{biblatex} % bibliography
+%\AtEveryBibitem{\clearlist{language}}
+%\AtEveryBibitem{\clearfield{note}}
+\addbibresource{references.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional packages needed for specific thesis
@@ -75,7 +85,7 @@
 %% hyperlinks and URL handling
 %% Note: must be one of the last packages added
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[hyphens]{url}
+\usepackage{url}
 \usepackage[breaklinks=true,hidelinks,pdfusetitle]{hyperref}
 % Options for hyperref
 \hypersetup{
@@ -89,6 +99,8 @@
 % remove \uppercase from references to chapters
 % see: https://tex.stackexchange.com/a/417078
 \pdfstringdefDisableCommands{\let\uppercase\@firstofone}
+% Make URLs use same typeface as rest of document
+\urlstyle{same}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Automatic determination of kind of reference
@@ -157,7 +169,10 @@
     % For a bibliography, put all references you want in your bibliography
     % into your bib-file, then use the following lines:
     \nocite{*}
-    \bibliography{bibliography}
+    \printbibliography[
+        heading=bibintoc,
+        title={\MakeUppercase{Bibliography}}
+    ]
 
     %% Input the appendices (if any) as configured from the file
     % If not needed, then this line can be removed.
