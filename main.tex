@@ -121,6 +121,7 @@
 \input{frontmatter/information}
 
 \begin{document}
+    %% The content before first chapter
     \begin{frontmatter}
         \maketitle
 
@@ -135,20 +136,22 @@
             \input{frontmatter/abstract}
         \end{abstract}
 
-        % Acknowledgments page
-        % Note: environment is included in the tex-file so can change
-        % page title if needed.
+        % Acknowledgments page (if wanted)
         \input{frontmatter/acknowledgments}
 
-        % Dedication page
+        % Dedication page (if wanted)
         \input{frontmatter/dedication}
 
+        % Insert table of contents
         \tableofcontents
 
+        % Insert list of tables
         \listoftables
 
+        % Insert lift of figures
         \listoffigures
 
+        % Insert list of symbols (if wanted)
         \input{frontmatter/nomenclature.tex}
     \end{frontmatter}
 
@@ -175,6 +178,5 @@
     ]
 
     %% Input the appendices (if any) as configured from the file
-    % If not needed, then this line can be removed.
     \input{appendices/outline}
 \end{document}
