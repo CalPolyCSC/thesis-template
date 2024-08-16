@@ -339,6 +339,28 @@
     If no grouping or sorting is desired, then this code can be removed.
 
 \section{Citations} \label{sec:Citations}
+    This document uses biblatex and the biber bibliography parser to generate the bibliography/references section.
+    The bibliography data is located in the bib-file, \textbf{references.bib}, located in the \textbf{bibliography} directory.
+    This file provides a small selection of sample source types.
+    There are a large number of source types that can be found in the documentation for biblatex.
+    \emph{Note that since not every item in the bib-file was cited, this document has a Bibliography after the last chapter (instead of a References section if all items had been cited).}
+
+    There are also a number of other resources that can help create source entries.
+    Many publishers offer the ability to export a citation in bibtex format, and this can easily be included into the \textbf{references.bib} file (sometimes without any modifications).
+    There are also more sophistical reference management systems, such as \href{https://www.zotero.org/}{Zotero} and \href{https://www.mendeley.com}{Mandeley}, that can export citations.
+    No matter where the citation source was generated, it will probably take some fine tuning to make the cited work correctly formatted.
+
+    The other file in the \textbf{bibliography} directory is the \textbf{bib\_info.tex} file.
+    This file needs to be edited depending on whether your thesis will have a bibliography or reference section.
+    A reference section contains just the items that the thesis cites.
+    A bibliography includes both the cited items as well as any other valuable resources related to topics within your thesis.
+
+    To cite an entry can be done using the \textbf{cite} command, such as \cite{cpthesis_github}.
+    Multiple entries can be cited as well \cite{drela1986a,dryden1943a,einstein1905,lopez2007a}.
+    Sometimes it is necessary to append some text to the citation as in \cite[135]{dryden1943a} and \cite[section 2]{head1958a}.
+    You can also prepend text \cite[such as][120]{Koutsovasilis2008}.
+    To refer to the author(s) and cite the \textbf{textcite} command can be used as in     \textcite{dirac1981}.
+    Finally, other parts of the citation can also be referenced: \citeauthor{einstein1905} wrote \citetitle{einstein1905} in \citeyear{einstein1905} with the citation found in \cite{einstein1905}.
 
 \section{Code and Code Listings} \label{sec:CodeAndCodeListings}
 
