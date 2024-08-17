@@ -200,6 +200,14 @@
 \def\listsymbolsname{List of Symbols}
 %                    ~~~~~~~~~~~~~~~
 %
+% list of algorithms name:
+\def\listalgorithmsname{List of Algorithms}
+%
+%
+% list of code listings name:
+\def\listcodelistingsname{List of Code Listings}
+%
+%
 % bibliography name:
 \def\bibname{Bibliography}
 %            ~~~~~~~~~~~~

@@ -383,6 +383,7 @@
     In this case, \cref{alg:HeunMethodPredictor} shows the predictor step.
     \begin{algorithm}
         \begin{algorithmic}
+            \Require $f\left(x,y\right)$, $N\in\mathbb{N}$
             \Procedure{HeunMethod}{$f, x_0, y_0, h, N$}
                 \For{$n\gets 0, N-1$}\Comment{looping through $N$ evaluations}
                     \State $x_{n+1}\gets x_n+h$\Comment{Setting the next $x$}
@@ -399,3 +400,41 @@
     \end{algorithm}
 
 \section{Code and Code Listings} \label{sec:CodeAndCodeListings}
+    When code needs to be included in the document, it is important to use a mono-spaced font because many programming languages use spaces to indicate subordinate code.
+    The listing package automatically selects the appropriate font so that the mono-spaced font is not jarringly different from the rest of the text font, similarly to how the math font is chosen to work well with the text font.
+    Ideally, it would be nice to differentiate inline code so that it is clear that \verb|incmatrix| is a function defined in code.
+    The following listing, \cref{lst:OverleafCode}, shows an example python code originally from Overleaf.\footnote{Complete example can be found at \url{https://www.overleaf.com/learn/latex/Code_listing}}
+    This code is in a floating environment (note the usage of \textbf{float} option).
+    Without that option the code listing will appear exactly in the text where the code listing is.
+
+    \begin{lstlisting}[float, caption=Example from Overleaf demonstrating python code., label=lst:OverleafCode]
+import numpy as np
+
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1)
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+
+                VT = np.zeros((n*m,1), int)
+
+    return M
+    \end{lstlisting}
