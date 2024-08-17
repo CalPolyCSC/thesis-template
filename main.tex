@@ -87,15 +87,27 @@
 %% Algorithm and code listing packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{xpatch}
-\usepackage{algorithm}
+\usepackage[chapter]{algorithm}
 \usepackage[noEnd=true, indLines=true]{algpseudocodex}
-% remove some of the indent in the algorithmic package
-% https://tex.stackexchange.com/a/550740
-\xpatchcmd\algorithmic
-    {\labelwidth 1.2em}
-    {\labelwidth .5em}
-    {}{\fail}
-\renewcommand{\thealgorithm}{\arabic{chapter}.\arabic{algorithm}}
+\captionsetup[algorithm]{labelsep=colon, font=it}
+% remove top rule for algorithm environment
+% https://tex.stackexchange.com/a/180337
+\DeclareFloatStyle{rulednotop}{midcode=rule,postcode=lowrule,capposition=top,heightadjust=all}
+\floatsetup[algorithm]{style=rulednotop}
+\renewcommand{\listalgorithmname}{\MakeUppercase{\listalgorithmsname}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Code and code listing packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\lstset{
+    basicstyle=\ssp,
+%    numbers=left,
+    breaklines=true,
+    xleftmargin=5ex,
+    frame=lines,
+}
+\renewcommand{\lstlistlistingname}{\MakeUppercase{\listcodelistingsname}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional packages needed for specific thesis
@@ -171,6 +183,13 @@
 
         % Insert lift of figures
         \listoffigures
+
+        % Should these be here
+        \listofalgorithms
+        \addtocontents{loa}{\hbox to \linewidth{\hspace{1.5em}Algorithm\hfill Page}}
+
+        \lstlistoflistings
+        \addtocontents{lol}{\hbox to \linewidth{\hspace{1.5em}Code Listing\hfill Page}}
 
         % Insert list of symbols (if wanted)
         \input{frontmatter/nomenclature.tex}
