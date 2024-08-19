@@ -1,6 +1,6 @@
 \chapter{Example Usage} \label{sec:ExampleUsage}
     This chapter is an introduction to the various elements of a thesis that might need to be created.
-    Any additional packages beyond what is already included in the main \LaTeX\ file should be put into the \textbf{preamble.tex} file located in the \textbf{frontmatter} project directory.
+    Any additional packages beyond what is already included in the main \LaTeX\ file should be put into the preamble.tex file located in the frontmatter directory.
 
 \section{Math} \label{sec:Math}
     Displaying math relations is one of the areas that \LaTeX\ shines.
@@ -43,7 +43,7 @@
         \end{align}
     \end{subequations}
     where each sub-equation can referred to individually, such as \cref{eq:subeq2}, as a collection, such as \cref{eq:subeq1,eq:subeq2,eq:subeq3}, or as the entire set of equations, such as \cref{eq:subeq_example}.
-    In the case that some of the equations should not be numbered, then can use \textbf{notag} on the equations that should not be numbered
+    In the case that some of the equations should not be numbered, then can use \lstinline|\notag| on the equations that should not be numbered
     \begin{subequations}
         \begin{align}
             \begin{split}
@@ -64,7 +64,7 @@
         \sin\left(2\alpha\right)=2\sin\left(\alpha\right)\cos\left(\alpha\right)
     \end{equation}
     Any math function that is represented by multiple characters should follow the same formatting.
-    To create custom math functions, use the \textbf{DeclareMathOperator} command.
+    To create custom math functions, use the \lstinline|\DeclareMathOperator| command.
 
 \subsection{Representing Vectors}
     Vectors are represented a variety of ways in different fields of study.
@@ -159,7 +159,7 @@
     There are a number of image and drawing formats that can be used, however this will only present one type of each.
 
 \subsection{Figures from Images} \label{sec:FiguresFromImages}
-    Image files can be inserted using \textbf{includegraphics}.
+    Image files can be inserted using the \lstinline|\includegraphics| command.
     \Cref{fig:CalPolySeal1} shows the import of a JPG file at its original size.
     The default size of this image is quite large, and the scale does not add much value.
     There are a number of ways to scale an image, with \cref{fig:CalPolySeal_small} showing one way to do so.
@@ -256,7 +256,7 @@
             $\theta_\text{t.e.}\ \left(^\circ\right)$ & \,-11.33 & \,-11.54 & $-2.036\times 10^{-1}$ & \quad\quad 1.797 \\
             \hline
         \end{tabular}
-        \caption{The formatting of this table is hackish. There are better ways to align numbers.}
+        \caption{The formatting of this table is hackish. There are better ways to align numbers. The siunitx package provides this feature.}
         \label{tab:fancy-table-example}
     \end{table}
 
@@ -320,8 +320,8 @@
 \section{Cross-References} \label{sec:CrossReferences}
     There are many ways that cross-references can be created in the document.
     The package that this document uses is cleveref.
-    The \textbf{cref}, cross-reference in a sentence, and \textbf{Cref}, cross-reference to start a sentence, commands have already been used throughout this chapter.
-    As an example, \cref{sec:ExampleUsage} has a section titled \emph{\nameref{sec:FiguresFromImages}}, located inside \cref{sec:Figures} on \cpageref{sec:FiguresFromImages}.
+    The \lstinline|\cref|, cross-reference in a sentence, and \lstinline|\Cref|, cross-reference to start a sentence, commands have already been used throughout this chapter.
+    As an example, \cref{sec:ExampleUsage} has a section titled \nameref{sec:FiguresFromImages}, located inside \cref{sec:Figures} on \cpageref{sec:FiguresFromImages}.
     The chapter and number, the section title, the section and number, and the page number were all created using cleveref cross-references.
     If in the future the chapter number, section title, section number, and/or page number change these will be updated automatically.
     There should be no reason to ever manually cross-reference an item in this document.
@@ -330,36 +330,36 @@
     The \nameref{sec:Nomenclature} in the preamble on \cpageref{sec:Nomenclature} shows the nomenclature for this document.
     This uses the nomenclatur package, and you should consult the documentation for that package to see how it can be customized.
     The simplest way to implement the nomenclature/list of symbols information is how this document has created the nomenclature.
-    All of the nomenclature information is contained within the \textbf{nomenclature.tex} file in the \textbf{frontmatter} directory.
+    All of the nomenclature information is contained within the nomenclature.tex file in the frontmatter directory.
     If no nomenclature is desired, then simply remove all of the content in this file.
 
     There are ways to sort/organize the nomenclature.
-    A simple grouping is done with the code in \textbf{preamble.tex}.
+    A simple grouping is done with the code in the preamble.tex file.
     If a different sorting/grouping is desired, then this code needs to be changed.
     If no grouping or sorting is desired, then this code can be removed.
 
 \section{Citations} \label{sec:Citations}
     This document uses biblatex and the biber bibliography parser to generate the bibliography/references section.
-    The bibliography data is located in the bib-file, \textbf{references.bib}, located in the \textbf{bibliography} directory.
+    The bibliography data is located in the bib-file, references.bib, located in the bibliography directory.
     This file provides a small selection of sample source types.
     There are a large number of source types that can be found in the documentation for biblatex.
     \emph{Note that since not every item in the bib-file was cited, this document has a Bibliography after the last chapter (instead of a References section if all items had been cited).}
 
     There are also a number of other resources that can help create source entries.
-    Many publishers offer the ability to export a citation in bibtex format, and this can easily be included into the \textbf{references.bib} file (sometimes without any modifications).
-    There are also more sophistical reference management systems, such as \href{https://www.zotero.org/}{Zotero} and \href{https://www.mendeley.com}{Mandeley}, that can export citations.
-    No matter where the citation source was generated, it will probably take some fine tuning to make the cited work correctly formatted.
+    Many publishers offer the ability to export a citation in bibtex format, and this can easily be included into the references.bib file (sometimes without any modifications).
+    There are also more sophistical reference management systems, such as Zotero\footnote{ \url{https://www.zotero.org}} and Mandeley\footnote{\url{https://www.mendeley.com}}, that can export citations.
+    No matter where the citation source was generated, it will probably take some fine tuning of the bib-file contents to make the cited work correctly formatted.
 
-    The other file in the \textbf{bibliography} directory is the \textbf{bib\_info.tex} file.
+    The other file in the bibliography directory is the bib\_info.tex file.
     This file needs to be edited depending on whether your thesis will have a bibliography or reference section.
     A reference section contains just the items that the thesis cites.
     A bibliography includes both the cited items as well as any other valuable resources related to topics within your thesis.
 
-    To cite an entry can be done using the \textbf{cite} command, such as \cite{cpthesis_github}.
+    To cite an entry can be done using the \lstinline|\cite| command, such as \cite{cpthesis_github}.
     Multiple entries can be cited as well \cite{drela1986a,dryden1943a,einstein1905,lopez2007a}.
     Sometimes it is necessary to append some text to the citation as in \cite[135]{dryden1943a} and \cite[section 2]{head1958a}.
     You can also prepend text \cite[such as][120]{Koutsovasilis2008}.
-    To refer to the author(s) and cite the \textbf{textcite} command can be used as in     \textcite{dirac1981}.
+    To refer to the author(s) and cite the \lstinline|\textcite| command can be used as in     \textcite{dirac1981}.
     Finally, other parts of the citation can also be referenced: \citeauthor{einstein1905} wrote \citetitle{einstein1905} in \citeyear{einstein1905} with the citation found in \cite{einstein1905}.
 
 \section{Algorithms} \label{sec:Algorithms}
@@ -403,11 +403,11 @@
     When code needs to be included in the document, it is important to use a mono-spaced font because many programming languages use spaces to indicate subordinate code.
     The listing package automatically selects the appropriate font so that the mono-spaced font is not jarringly different from the rest of the text font, similarly to how the math font is chosen to work well with the text font.
     Ideally, it would be nice to differentiate inline code so that it is clear that \lstinline|incmatrix| is a function defined in code.
-    The following listing, \cref{lst:OverleafCode}, shows an example python code originally from Overleaf.\footnote{Complete example can be found at \url{https://www.overleaf.com/learn/latex/Code_listing}}
-    This code is in a floating environment (note the usage of \textbf{float} option).
+    \Cref{lst:OverleafCode}, shows an example python code originally from Overleaf.\footnote{Complete example can be found at \url{https://www.overleaf.com/learn/latex/Code_listing}}
+    This code is in a floating environment (note the usage of \lstinline|float| option).
     Without that option the code listing will appear exactly in the text where the code listing is.
 
-    \begin{lstlisting}[float, caption=Example from Overleaf demonstrating python code., label=lst:OverleafCode]
+    \begin{lstlisting}[float, caption=Example from Overleaf demonstrating python code. A monospaced font is important to see what statement the return lines up with., label=lst:OverleafCode]
 import numpy as np
 
 def incmatrix(genl1,genl2):
