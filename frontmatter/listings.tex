@@ -1,0 +1,19 @@
+%% For any listing that is empty, then comment out/remove that code.
+
+% Insert list of tables
+\listoftables
+\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}
+\addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
+
+% Insert list of figures
+\listoffigures
+\addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}
+\addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
+
+% Insert list of algorithms
+\listofalgorithms
+\addtocontents{loa}{\hbox to \linewidth{\hspace{1.5em}Algorithm\hfill Page}}
+
+% Insert list of code listings
+\lstlistoflistings
+\addtocontents{lol}{\hbox to \linewidth{\hspace{1.5em}Code Listing\hfill Page}}

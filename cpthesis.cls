@@ -925,8 +925,7 @@ ALL RIGHTS RESERVED
 \def\listoffigures{
   \chapter*{\MakeUppercase{\listfigurename}\@mkboth{\MakeUppercase{\listfigurename}}%
 {\MakeUppercase{\listfigurename}}}
-   \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
-   {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}}
+   {\ssp\@starttoc{lof}}}
 
 \def\l@figure{\@dottedtocline{1}{1.5em}{3.2em}}
 
@@ -936,8 +935,7 @@ ALL RIGHTS RESERVED
 \def\listoftables{
   \chapter*{\MakeUppercase{\listtablename}\@mkboth{\MakeUppercase{\listtablename}}%
 {\MakeUppercase{\listtablename}}}
-   \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
-   {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}}
+   {\ssp\@starttoc{lot}}}
 
 
 \let\l@table\l@figure
@@ -967,7 +965,6 @@ ALL RIGHTS RESERVED
 %%               to get correct references
 \def\thebibliography#1{\chapter*{\MakeUppercase{\bibname}\@mkboth{%
 \MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}
-  \addcontentsline{toc}{chapter}{\uppercase{\bibname}}
   \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
     \leftmargin\labelwidth
     \advance\leftmargin20pt% change 20 pt according to your needs

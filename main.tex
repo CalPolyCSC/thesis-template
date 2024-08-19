@@ -179,20 +179,11 @@
         % Insert table of contents
         \tableofcontents
 
-        % Insert list of tables
-        \listoftables
+        % Insert all of the potentially optional listings
+        \input{frontmatter/listings}
 
-        % Insert lift of figures
-        \listoffigures
-
-        % Should these be here
-        \listofalgorithms
-        \addtocontents{loa}{\hbox to \linewidth{\hspace{1.5em}Algorithm\hfill Page}}
-
-        \lstlistoflistings
-        \addtocontents{lol}{\hbox to \linewidth{\hspace{1.5em}Code Listing\hfill Page}}
-
-        % Insert list of symbols (if wanted)
+        % Insert list of symbols
+        % Note: package handles inserting into table of contents
         \input{frontmatter/nomenclature.tex}
     \end{frontmatter}
 
