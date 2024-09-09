@@ -28,14 +28,14 @@
 
 \captionsetup{
     format=hang,
-    font=it,
+    font={it, singlespacing},
     labelfont=bf,
 %    textformat=period,
     labelsep=colon
 }
 \captionsetup[table]{position=above}
-\captionsetup[subfigure]{labelformat=parens,font=it}
-\captionsetup[subtable]{labelformat=parens,font=it,position=top}
+\captionsetup[subfigure]{labelformat=parens}
+\captionsetup[subtable]{labelformat=parens, position=top}
 
 % Ensures table floats have caption above table.
 % from https://tex.stackexchange.com/a/43097
@@ -89,7 +89,7 @@
 \usepackage{xpatch}
 \usepackage[chapter]{algorithm}
 \usepackage[noEnd=true, indLines=true]{algpseudocodex}
-\captionsetup[algorithm]{labelsep=colon, font=it}
+\captionsetup[algorithm]{labelsep=colon}
 % remove top rule for algorithm environment
 % https://tex.stackexchange.com/a/180337
 \DeclareFloatStyle{rulednotop}{midcode=rule,postcode=lowrule,capposition=top,heightadjust=all}
@@ -101,7 +101,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{listings}
 \lstset{
-    basicstyle=\ssp\ttfamily,
+    basicstyle=\linespread{1.0}\ttfamily,
 %    numbers=left,
     breaklines=true,
     xleftmargin=5ex,
