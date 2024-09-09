@@ -156,7 +156,9 @@
 
 \section{Figures} \label{sec:Figures}
     Figures are typically included as either images or drawings.
-    There are a number of image and drawing formats that can be used, however this will only present one type of each.
+    There are a number of image and drawing formats that can be used, however this will only present a few figure format types.
+    If your thesis has no figures, then the list of figures should be removed from the thesis.
+    This is accomplished by removing the code in listings.tex associated with the list of figures.
 
 \subsection{Figures from Images} \label{sec:FiguresFromImages}
     Image files can be inserted using the \textbackslash includegraphics command.
@@ -240,6 +242,9 @@
 
 \section{Tables} \label{sec:Tables}
     Tables are handled similarly to figures within \LaTeX.
+    If your thesis has no tables, then the list of tables should be removed from the thesis.
+    This is accomplished by removing the code in listings.tex associated with the list of tables.
+
     One exception is that the caption for a table should be above the table, while the caption for figures should be below the figure.
     Table~\ref{tab:fancy-table-example} shows a floating table with a variety of column types.
     The formatting for these columns (such as aligning floating point numbers on the decimal, scientific notation, and unit labels) can be accomplished using the siunitx package, however that is beyond the scope of this introduction.
@@ -331,7 +336,7 @@
     This uses the nomencl package, and you should consult the documentation for that package to see how it can be customized.
     The simplest way to implement the nomenclature/list of symbols information is how this document has created the nomenclature.
     All of the nomenclature information is contained within the nomenclature.tex file in the frontmatter directory.
-    If no nomenclature is desired, then simply remove all of the content in this file.
+    If no nomenclature is desired, then simply remove all of the content in this file and remove the list of symbols code in the listings.tex file.
 
     There are ways to sort/organize the nomenclature.
     A simple grouping is done with the code in the preamble.tex file.
@@ -404,7 +409,7 @@
     The listing package automatically selects the appropriate font so that the mono-spaced font is not jarringly different from the rest of the text font, similarly to how the math font is chosen to work well with the text font.
     Ideally, it would be nice to differentiate inline code so that it is clear that \textbackslash incmatrix is a function defined in code, however the thesis format requires the same font for all text.
     \Cref{lst:OverleafCode}, shows an example python code originally from Overleaf.\footnote{Complete example can be found at \url{https://www.overleaf.com/learn/latex/Code_listing}}
-    This code is in a floating environment (note the usage of the float option).\footnote{To enforce the placement of the listing in this example, the ``h'' parameter is used. In general no placement parameters are needed.}
+    This code is in a floating environment (note the usage of the float option).\footnote{To enforce the placement of the listing in this example, the ``h'' parameter is used. In general no placement parameters are needed, and the ``float'' option is all that is needed to be used.}
     Without that option the code listing will appear exactly in the text where the code listing is.
 
     \begin{lstlisting}[float=h, caption=Example from Overleaf demonstrating python code. A monospaced font is important to see what statement the return lines up with., label=lst:OverleafCode]

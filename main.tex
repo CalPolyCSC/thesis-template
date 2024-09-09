@@ -52,6 +52,18 @@
 % Add figures folder to the graphics path
 \graphicspath{{figures/}}
 
+\newcommand{\printlistoftables}{
+    \listoftables
+    \addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}
+    \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
+}
+
+\newcommand{\printlistoffigures}{
+    \listoffigures
+    \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}
+    \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Nomenclature packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
