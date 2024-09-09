@@ -43,7 +43,7 @@
         \end{align}
     \end{subequations}
     where each sub-equation can referred to individually, such as \cref{eq:subeq2}, as a collection, such as \cref{eq:subeq1,eq:subeq2,eq:subeq3}, or as the entire set of equations, such as \cref{eq:subeq_example}.
-    In the case that some of the equations should not be numbered, then can use \lstinline|\notag| on the equations that should not be numbered
+    In the case that some of the equations should not be numbered, then can use the \textbackslash notag command on the equations that should not be numbered
     \begin{subequations}
         \begin{align}
             \begin{split}
@@ -64,7 +64,7 @@
         \sin\left(2\alpha\right)=2\sin\left(\alpha\right)\cos\left(\alpha\right)
     \end{equation}
     Any math function that is represented by multiple characters should follow the same formatting.
-    To create custom math functions, use the \lstinline|\DeclareMathOperator| command.
+    To create custom math functions, use the \textbackslash DeclareMathOperator command.
 
 \subsection{Representing Vectors}
     Vectors are represented a variety of ways in different fields of study.
@@ -159,7 +159,7 @@
     There are a number of image and drawing formats that can be used, however this will only present one type of each.
 
 \subsection{Figures from Images} \label{sec:FiguresFromImages}
-    Image files can be inserted using the \lstinline|\includegraphics| command.
+    Image files can be inserted using the \textbackslash includegraphics command.
     \Cref{fig:CalPolySeal1} shows the import of a JPG file at its original size.
     The default size of this image is quite large, and the scale does not add much value.
     There are a number of ways to scale an image, with \cref{fig:CalPolySeal_small} showing one way to do so.
@@ -320,7 +320,7 @@
 \section{Cross-References} \label{sec:CrossReferences}
     There are many ways that cross-references can be created in the document.
     The package that this document uses is cleveref.
-    The \lstinline|\cref|, cross-reference in a sentence, and \lstinline|\Cref|, cross-reference to start a sentence, commands have already been used throughout this chapter.
+    The \textbackslash cref, cross-reference in a sentence, and \textbackslash Cref, cross-reference to start a sentence, commands have already been used throughout this chapter.
     As an example, \cref{sec:ExampleUsage} has a section titled \nameref{sec:FiguresFromImages}, located inside \cref{sec:Figures} on \cpageref{sec:FiguresFromImages}.
     The chapter and number, the section title, the section and number, and the page number were all created using cleveref cross-references.
     If in the future the chapter number, section title, section number, and/or page number change these will be updated automatically.
@@ -355,11 +355,11 @@
     A reference section contains just the items that the thesis cites.
     A bibliography includes both the cited items as well as any other valuable resources related to topics within your thesis.
 
-    To cite an entry can be done using the \lstinline|\cite| command, such as \cite{cpthesis_github}.
+    To cite an entry can be done using the \textbackslash cite command, such as \cite{cpthesis_github}.
     Multiple entries can be cited as well \cite{drela1986a,dryden1943a,einstein1905,lopez2007a}.
     Sometimes it is necessary to append some text to the citation as in \cite[135]{dryden1943a} and \cite[section 2]{head1958a}.
     You can also prepend text \cite[such as][120]{Koutsovasilis2008}.
-    To refer to the author(s) and cite the \lstinline|\textcite| command can be used as in     \textcite{dirac1981}.
+    To refer to the author(s) and cite the \textbackslash textcite command can be used as in \textcite{dirac1981}.
     Finally, other parts of the citation can also be referenced: \citeauthor{einstein1905} wrote \citetitle{einstein1905} in \citeyear{einstein1905} with the citation found in \cite{einstein1905}.
 
 \section{Algorithms} \label{sec:Algorithms}
@@ -402,9 +402,9 @@
 \section{Code and Code Listings} \label{sec:CodeAndCodeListings}
     When code needs to be included in the document, it is important to use a mono-spaced font because many programming languages use spaces to indicate subordinate code.
     The listing package automatically selects the appropriate font so that the mono-spaced font is not jarringly different from the rest of the text font, similarly to how the math font is chosen to work well with the text font.
-    Ideally, it would be nice to differentiate inline code so that it is clear that \lstinline|incmatrix| is a function defined in code.
+    Ideally, it would be nice to differentiate inline code so that it is clear that \textbackslash incmatrix is a function defined in code.
     \Cref{lst:OverleafCode}, shows an example python code originally from Overleaf.\footnote{Complete example can be found at \url{https://www.overleaf.com/learn/latex/Code_listing}}
-    This code is in a floating environment (note the usage of \lstinline|float| option).
+    This code is in a floating environment (note the usage of the float option).
     Without that option the code listing will appear exactly in the text where the code listing is.
 
     \begin{lstlisting}[float, caption=Example from Overleaf demonstrating python code. A monospaced font is important to see what statement the return lines up with., label=lst:OverleafCode]
