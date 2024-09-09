@@ -107,6 +107,7 @@
 \DeclareFloatStyle{rulednotop}{midcode=rule,postcode=lowrule,capposition=top,heightadjust=all}
 \floatsetup[algorithm]{style=rulednotop}
 \renewcommand{\listalgorithmname}{\MakeUppercase{\listalgorithmsname}}
+\addtocontents{loa}{\hbox to \linewidth{\hspace{1.5em}Algorithm\hfill Page}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Code and code listing packages
@@ -121,6 +122,7 @@
 }
 \renewcommand{\lstlistlistingname}{\MakeUppercase{\listcodelistingsname}}
 \renewcommand{\lstlistingname}{Code Listing}
+\addtocontents{lol}{\hbox to \linewidth{\hspace{1.5em}Code Listing\hfill Page}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional packages needed for specific thesis
