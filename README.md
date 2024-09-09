@@ -1,6 +1,6 @@
 # Cal Poly Thesis Template
 A LaTeX template for Cal Poly Master's theses which conforms to the guidelines given by the Graduate Education department.
-This file was last reviewed by Graduate Education on XX/XX/2024.
+This file was last reviewed by Graduate Education in September 2024.
 
 This version is a major departure from previous versions of the LaTeX template.
 Following the LaTeX concept of separating the format from the content, this new template is intended to make the process of writing a correctly formatted thesis easier by allowing you to focus on the content.
@@ -49,14 +49,15 @@ If you do not have a dedication, then this file can be blank.
 
 The ```nomenclature.tex``` file provides a convenient location for all of your symbols and terms to be declared with the ```\nomenclature``` command.
 These will appear in the List of Symbols section of your thesis.
-If you are not going to have a List of Symbols in your thesis, then this file can be blank.
-If you have a preferred way of assembling your nomenclature, then the only line that needs to remain is the ```\printnomenclature``` since this is the command that actually puts the defined terms into the List of Symbols in your thesis.
+If you have a preferred way of assembling your nomenclature, then you do not have to have your nomenclature in this file.
+The nomenclature command in ```listings.tex``` is what puts the list of symbols into the thesis in the correct place.
+If you are not going to have a List of Symbols in your thesis, then the ```nomenclature.tex``` file can be blank.
 
 If you plan on creating a List of Symbols, then you should look at the documentation of the ```nomencl``` package as well as examples that are on the internet.
 As quick summary, the ```\nomenclature[arg1]{arg2}{arg3}``` command will create a new entry for ```arg2``` in the List of Symbols with the description of ```arg3```.
-The optional ```arg1``` is used in the sorting and grouping of entries, where there was code in ```preamble.tex``` that defined the grouping in this example.
+The optional ```arg1``` is used in the sorting and grouping of entries, where code in ```preamble.tex``` defines the grouping in this example.
 
-The ```listings.tex``` file contains all of the other content lists that might appear in your thesis.
+The ```listings.tex``` file contains the commands needed to get the approved lists that might need to be in your thesis.
 If any of these lists are empty in your thesis, then you need to remove the associated commands from this file.
 Otherwise, there should be no need to modify this file.
 
@@ -77,7 +78,7 @@ That is why each input starts with ```chapters/``` directory.
 ### Appendices Content
 Just like the ```chapters``` directory, the most important file in the ```appendices``` directory is ```outline.tex```.
 This file contains everything needed to properly handle appendices in your thesis.
-If your thesis will have no appendices, then the ```outline.tex``` file can be blank.
+If your thesis will have no appendices, then the ```outline.tex``` file should be blank.
 There are some formatting changes that have to happen in your thesis associated with appendices, so the ```\appendix``` command is used to make those changes.
 Because some of these formatting changes depend on the number of appendices, this command takes an optional argument indicating the number of appendices, for example with 3 appendices you could use ```\appendix[3]``` or ```\appendix```.
 If you only have one appendix, then you **must** use the optional optional like this: ```\appendix[1]```.
@@ -90,7 +91,7 @@ That is the intent of the ```figures``` directory.
 ### Bibliography/References Content
 All works that you want to include in your thesis should be in the the ```references.bib``` file located in the ```bibliography``` directory.
 The thesis template uses [biblatex](https://biblatex-biber.sourceforge.net/), with the biber backend, to handle the citation and bibliography/reference creation.
-Examples entries for a variety of works is provided in the example, but there might be other entry types that you will need to use.
+Example entries for a variety of works are provided in the example, but there might be other entry types that you will need to use.
 Many publishers provide the ability to export a citation in bibtex or biblatex format.
 [Cal Poly's library website](https://lib.calpoly.edu) also provides the capability of exporting citations in a compatible format.
 You can also use reference management tools like [Zotero](https://www.zotero.org) and [Mandeley](https://www.mendeley.com) that can export citations.
@@ -100,8 +101,7 @@ You need to decide if your cited works will be in a References section (a collec
 The file ```bib_info.tex``` allows you to switch between the two.
 If you plan on providing a Bibliography, then you should keep the ```\nocite{*}``` command and put all works that you want to be included in your bibliography into the ```references.bib```.
 If you plan on providing a References section, then you should remove the ```\nocite{*}``` command and uncomment the line redefining the ```\bibname``` macro.
-Biblatex will only use the cited entries from the ```references.bib``` file.
-So you can keep unused entries in this file without them appearing in your References section.
+In this case, biblatex will only use the cited entries from the ```references.bib``` file, and you can keep unused entries in this file without them appearing in your References section.
 
 ## Think Twice About Modifying These Files
 The root file for this project is ```main.tex```.
@@ -135,7 +135,7 @@ Most files have examples on how they should be used inside of them. Here is a ha
 - [ ] Got some appendices? You're covered, same idea as with chapters, but using ```appendices/outline.tex``` and the ```appendices``` folder instead.
 - [ ] Write your abstract in ```abstract.tex```. That's it. The template takes care of all the formatting for you.
 - [ ] Don't forget to thank your family! Fill in ```acknowledgments.tex```.
-- [ ] Make sure your family knows what you are talking about. Create a List of Symbols using the ```nomenclature.tex``` file.
+- [ ] Make sure your family knows what you are talking about. Create a List of Symbols using the ```nomenclature.tex``` file. Or don't have one and let them figure it out on their own. In that case be sure to remove the nomenclature code in ```listings.tex```.
 - [ ] Be sure to cite your sources in ```bibliography.bib```. If you use Google Scholar to find your sources, it will provide you with ```bibtex``` output under the "cite" option.
 - [ ] Final cleanup; you're almost there. Remove unnecessary content, such as empty listings, dedication, etc., and any placeholder text.
 
