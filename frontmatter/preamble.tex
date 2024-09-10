@@ -1,0 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% These packages/settings should be the ones that are
+%% specifically needed for your thesis.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% This is to create placeholder text and shouldn't be in your thesis
+\usepackage{lipsum}
+
+%% TikZ packages
+\usepackage{tikz}      % Base package needed for drawing TikZ figures
+\usetikzlibrary{calc}  % Needed to do coordinate calculations such as ($(a)!0.5!(b)$)
+
+%% This code creates groups in the nomenclature
+% based on Overleaf documentation
+% https://www.overleaf.com/learn/latex/Nomenclatures
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+    \item[\bfseries
+        \ifstrequal{#1}{P}{Physics constants}{%
+        \ifstrequal{#1}{N}{Number sets}{%
+        \ifstrequal{#1}{O}{Other symbols}{}}}%
+    ]
+}

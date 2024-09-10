@@ -2,31 +2,40 @@
 %    for LaTeX version 2e - 11/3/94
 %% Modified by John T. Whelan, June 1996, for UCSB use, following
 %% Chris Martin's changes to ucthesis.sty
+%% Modified by David D. Marshall, August 2024 for Cal Poly SLO use, based
+%% on the (modified) ucthesis.cls file from the original project.
 %%% ====================================================================
 %%%  @LaTeX-class-file{
-%%%     filename        = "ucthesis.cls",
-%%%     version         = "3.0",
-%%%     date            = "31 October 1994",
-%%% portedby    = "Blaise B. Frederick",
-%%% address     = "Center for Functional Imaging
-%%%            Lawrence Berkeley Laboratory
-%%%            MS 55-121
-%%%            1 Cyclotron Rd.
-%%%            Berkeley, CA 94720
+%%%     filename        = "cpthesis.cls",
+%%%     version         = "1.0",
+%%%     date            = "31 August 2024",
+%%% portedby    = "David D. Marshall",
+%%% address     = "Aerospace Engineering Department
+%%%            California Polytechnic State University
+%%%            1 Grand Ave.
+%%%            San Luis Obispo, CA 93407
 %%%            USA",
-%%% telephone   = "(510) 486-4423",
-%%% email       = "frederic@imasun.lbl.gov",
+%%% telephone   = "(805) 756-6849",
+%%% email       = "ddmarsha@calpoly.edu",
 %%%     codetable       = "ISO/ASCII",
-%%%     keywords        = "LaTeX, ucthesis",
-%%%     supported       = "until November 30, 1994",
-%%%     docstring       = "This file is the main file for the ucthesis
+%%%     keywords        = "LaTeX, cpthesis",
+%%%     supported       = "until August 31, 2025",
+%%%     docstring       = "This file is the main file for the cpthesis
 %%%                        class, which is intended to meet the requirements
-%%%                        for University of California Ph.D. dissertations.
-%%%            It is a direct port to LaTeX2e from UCTHESIS
-%%%            v2.7 by Ethan V. Munson, with no changes other
-%%%            than those for compatibility.  The major modifictions
-%%%            are in the font selection commands in the option
-%%%            files uct1x.clo.
+%%%                        for Cal Poly SLO M.S. dissertations.
+%%%            It is a heavily modified version of the ucthesis v3.0 class with
+%%%            modifications tracked at the main repository for this project:
+%%%            https://github.com/CalPolyCSC/thesis-template. This document
+%%%            class removes as much content as possible that is not needed for
+%%%            the Cal Poly thesis guidelines. It is not intended for general
+%%%            use, as many stylistic decisions are made solely to satisfy the
+%%%            format guidelines, currently available here:
+%%%            https://grad.calpoly.edu/files/thesis/Masters-Thesis-Formatting-Guidelines.pdf.
+%%%
+%%%            Below is the modfication history for the ucthesis document class
+%%%            that this class is based on. This is provided for historical and
+%%%            authorship purposes as many/all of the remarks will not apply to
+%%%            the current class file.
 %%%
 %%%            UCTHESIS.STY v2.7 is based on the standard
 %%%            report.sty as modified by Mittelbach and Schopf in
@@ -95,7 +104,7 @@
 %%% ====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ucthesis}[1996/06/26 JTW's modification of 1994/10/31 v3.0 University of California Thesis Class]
+\ProvidesClass{cpthesis}[2024/08/31 DDM's modification of the modified v3.0 University of California Thesis Class]
 
 %    ****************************************
 %    *               OPTIONS                *
@@ -139,12 +148,6 @@
 %
 % Ethan Munson (October 16, 1992)
 
-% FMi 91/03/30: made twocolum.sty a file and twocolumn an option.
-
-% RmS 91/10/15: moved actual reading of twocolumn.sty
-%               to the end of this file.
-\def\ds@twocolumn{\@twocolumntrue}
-
 % The \ProcessOptions command causes the execution of every option command
 % FOO which is declared and for which the user typed the FOO option in his
 % \documentclass.  For every undeclared option BAR there will be a warning
@@ -175,40 +178,41 @@
 \overfullrule 5pt         % causes overfull hboxes to be marked.
 \fi
 
-
-% PREPARING A FOREIGN LANGUAGE VERSION:
+%% Macros for labels that might need to be modified
 %
-% This document style is for documents prepared in the English language.
-% To prepare a version for another language, various English words must
-% be replaced.  Many of the English words that required replacement are
-% indicated below, where we give the name of the command in which the
-% words appear, and which must be redefined, with the actual words
-% underlined.
-%
-% Other English words that need replacement can be found in the macros
-% supporting the title and approval pages.
-%
-% committee membership:
+% committee membership page title:
 \def\committeemembershipname{Committee Membership}
 %                            ~~~~~~~~~~~~~~~~~~~~
 %
-% \tableofcontents:
+% table of contents name:
 \def\contentsname{Table of Contents}
 %                 ~~~~~~~~~~~~~~~~~
 %
-% \listoffigures:
+% list of figures name:
 \def\listfigurename{List of Figures}
 %                   ~~~~~~~~~~~~~~~
 %
-% \listoftables:
+% list of tables name:
 \def\listtablename{List of Tables}
 %                  ~~~~~~~~~~~~~~
 %
-% \thebibliography:
+% list of symbols name:
+\def\listsymbolsname{List of Symbols}
+%                    ~~~~~~~~~~~~~~~
+%
+% list of algorithms name:
+\def\listalgorithmsname{List of Algorithms}
+%
+%
+% list of code listings name:
+\def\listcodelistingsname{List of Code Listings}
+%
+%
+% bibliography name:
 \def\bibname{Bibliography}
 %            ~~~~~~~~~~~~
 %
-% \theindex:
+% index name:
 \def\indexname{Index}
 %              ~~~~~
 %
@@ -220,12 +224,20 @@
 \def\tablename{Table}
 %              ~~~~~
 %
-% \chapter:
+% chapter name:
 \def\chaptername{Chapter}
 %                ~~~~~~~
 %
-% \appendix:
+% appendix name:
 \def\appendixname{Appendix}
+%                 ~~~~~~~~
+%
+% appendix toc entry name:
+\def\appendixtocname{Appendix}
+%                 ~~~~~~~~
+%
+% appendix toc entry name:
+\def\appendicestocname{Appendices}
 %                 ~~~~~~~~
 %
 % abstract environment:
@@ -243,7 +255,11 @@
 % dedication environment:
 \def\dedicationname{Dedication}
 %                   ~~~~~~~~~~
-
+%
+% campus
+\def\campus{San Luis Obispo}
+%           ~~~~~~~~~~~~~~~
+%
 %    ****************************************
 %    *             FRONT MATTER             *
 %    ****************************************
@@ -292,19 +308,6 @@
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
 
-% The name of your campus
-\def\campus#1{\gdef\@campus{#1}}
-
-% \alwayssingle and \endalwayssingle
-%
-% These macros define an environment for front matter that is always
-% single column even in a double-column document.
-
-\def\alwayssingle{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
-     \else \newpage \fi}
-
-\def\endalwayssingle{\if@restonecol\twocolumn \else \newpage \fi}
-
 % \maketitle outputs the complete titlepage.  It requires all the
 % above macros.
 
@@ -335,13 +338,12 @@
         }%
 }
 
-\usepackage{hyphenat}
+\RequirePackage{hyphenat}
 
 \def\maketitle{
 {
 % turns off page anchors to avoid "destination with the same identifier" warning from hyperref
 \hypersetup{pageanchor=false}
-\begin{alwayssingle}
     \let\footnotesize\small
     \let\footnoterule\relax
     \thispagestyle{empty}
@@ -349,7 +351,7 @@
 
     \vfill\null
   \begin{center}
-        \invpyramid{\MakeTextUppercase{\nohyphens{\@title}}}
+        \invpyramid{\MakeUppercase{\nohyphens{\@title}}}
 
         %\vfill\null
         \addvspace{1.4in}
@@ -357,7 +359,7 @@
     A Thesis \\
     presented to \\
     the Faculty of California Polytechnic State University, \\
-    \@campus
+    \campus
 
         \addvspace{1.4in}
         %\vfill\null
@@ -378,19 +380,16 @@
 \end{center}
 
 
-%\vfill\null
-\end{alwayssingle}
-
 \setcounter{footnote}{0}
+\newpage
 }}
 
 % COMMITTEEMEMBERSHIPPAGE - Cal Poly (Added by Andrew Tsui 6/09)
 
 \def\committeemembershippage{
-\begin{alwayssingle}
 
 \begin{center}
-\MakeTextUppercase{\committeemembershipname}
+\MakeUppercase{\committeemembershipname}
 \end{center}
 \par
 \vspace*{0.5in}
@@ -420,8 +419,7 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\s
 \end{tabular}
 
 \endgroup
-
-\end{alwayssingle}
+\newpage
 }
 
 
@@ -431,7 +429,6 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\s
 %
 
 \def\copyrightpage{
-\begin{alwayssingle}
 %\setcounter{page}{2}
 \fmfont
 \vspace*{7in}
@@ -440,7 +437,7 @@ COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\s
 \@author\\
 ALL RIGHTS RESERVED
 \end{center}
-\end{alwayssingle}
+\newpage
 }
 
 
@@ -452,10 +449,9 @@ ALL RIGHTS RESERVED
 % of the \title, \author, \degree, \field, \campus, and \chair macros.
 
 \def\abstract{
-\begin{alwayssingle}
 \begin{center}
 {\fmfont
-{\MakeTextUppercase{\abstractname}}\par
+{\MakeUppercase{\abstractname}}\par
 \@title\par
 \@author\par
 }
@@ -470,7 +466,7 @@ ALL RIGHTS RESERVED
 {\keywordsname}: \@keywords
 \vspace{0.5in}
 \fi
-\end{alwayssingle}
+\newpage
 }
 
 % DEDICATION
@@ -478,22 +474,21 @@ ALL RIGHTS RESERVED
 % The dedication environment just makes sure the dedication gets its
 % own page.
 
-\newenvironment{dedication}{\begin{alwayssingle}
+\newenvironment{dedication}{
 \begin{center}
-{\MakeTextUppercase{\dedicationname}}
+{\MakeUppercase{\dedicationname}}
 \end{center}
-}{\end{alwayssingle}}
+}{\newpage}
 
-% ACKNOWLEDGEMENTS
+% ACKNOWLEDGMENTS
 %
-% The acknowledgements environment puts a large, bold, centered
-% "Acknowledgements" label at the top of the page.
+% The acknowledgments environment.
 
-\newenvironment{acknowledgements}{\begin{alwayssingle}
+\newenvironment{acknowledgments}{
 \begin{center}
-{\MakeTextUppercase{\acknowledgename}}
+{\MakeUppercase{\acknowledgename}}
 \end{center}
-}{\end{alwayssingle}}
+}{\newpage}
 
 
 % FRONTMATTER environment
@@ -772,12 +767,16 @@ ALL RIGHTS RESERVED
 % replace the appendix macro with custom
 \newif\if@appendix
 \@appendixfalse
-\renewcommand\appendix{%
+\renewcommand\appendix[1][2]{%
     \def\@chapapp{\appendixname}
     \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \renewcommand\thechapter{\Alph{chapter}}
     \setcounter{chapter}{0}
-    \addtocontents{toc}{\noindent APPENDICES}
+    \ifnum#1>1
+        {\addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}}
+    \else
+        {\addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}}
+    \fi
     % Indents Appendix in Table of Contents
     \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \@appendixtrue
@@ -816,14 +815,9 @@ ALL RIGHTS RESERVED
                       \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
-%                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
-%                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
-                    \if@twocolumn
-                      \@topnewpage[\@makechapterhead{#2}]%
-                    \else
                       \@makechapterhead{#2}%
                       \@afterheading
-                    \fi}
+                    }
 
 
 
@@ -876,14 +870,11 @@ ALL RIGHTS RESERVED
 
 
 % TABLEOFCONTENTS
-%  In ucthesis style, \tableofcontents, \listoffigures, etc. are always
-%  set in single-column style.  @restonecol
 
-\def\tableofcontents{\@restonecolfalse
-  \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\MakeTextUppercase{\contentsname}
-        \@mkboth{\MakeTextUppercase{\contentsname}}{\MakeTextUppercase{\contentsname}}}%
-  {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}\if@restonecol\twocolumn\fi}
+\def\tableofcontents{
+  \chapter*{\MakeUppercase{\contentsname}
+        \@mkboth{\MakeUppercase{\contentsname}}{\MakeUppercase{\contentsname}}}%
+  {\ssp\@starttoc{toc} \addtocontents{toc}{\hbox to \linewidth{\hfill Page}}}}
 
 \def\l@part#1#2{\addpenalty{-\@highpenalty}%
    \addvspace{2.25em plus\p@}% space above part line
@@ -931,26 +922,20 @@ ALL RIGHTS RESERVED
 % LIST OF FIGURES
 %
 % Single-space list of figures, add it to the table of contents.
-\def\listoffigures{\@restonecolfalse
-  \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\MakeTextUppercase{\listfigurename}\@mkboth{\MakeTextUppercase{\listfigurename}}%
-{\MakeTextUppercase{\listfigurename}}}
-   \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
-   {\ssp\@starttoc{lof} \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}}\if@restonecol
-    \twocolumn\fi}
+\def\listoffigures{
+  \chapter*{\MakeUppercase{\listfigurename}\@mkboth{\MakeUppercase{\listfigurename}}%
+{\MakeUppercase{\listfigurename}}}
+   {\ssp\@starttoc{lof}}}
 
 \def\l@figure{\@dottedtocline{1}{1.5em}{3.2em}}
 
 
 % LIST OF TABLES
 %
-\def\listoftables{\@restonecolfalse
-  \if@twocolumn\@restonecoltrue\onecolumn\fi
-  \chapter*{\MakeTextUppercase{\listtablename}\@mkboth{\MakeTextUppercase{\listtablename}}%
-{\MakeTextUppercase{\listtablename}}}
-   \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
-   {\ssp\@starttoc{lot}\addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}}\if@restonecol
-    \twocolumn\fi}
+\def\listoftables{
+  \chapter*{\MakeUppercase{\listtablename}\@mkboth{\MakeUppercase{\listtablename}}%
+{\MakeUppercase{\listtablename}}}
+   {\ssp\@starttoc{lot}}}
 
 
 \let\l@table\l@figure
@@ -978,9 +963,8 @@ ALL RIGHTS RESERVED
 %%               as it says in the comment in latex.tex
 %% RmS 92/01/14: Set \p@enumiv to {} and \theenumiv to \arabic{enumiv}
 %%               to get correct references
-\def\thebibliography#1{\chapter*{\MakeTextUppercase{\bibname}\@mkboth{%
-\MakeTextUppercase{\bibname}}{\MakeTextUppercase{\bibname}}}
-  \addcontentsline{toc}{chapter}{\uppercase{\bibname}}
+\def\thebibliography#1{\chapter*{\MakeUppercase{\bibname}\@mkboth{%
+\MakeUppercase{\bibname}}{\MakeUppercase{\bibname}}}
   \list{\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
     \leftmargin\labelwidth
     \advance\leftmargin20pt% change 20 pt according to your needs
@@ -1019,12 +1003,10 @@ ALL RIGHTS RESERVED
 % that's the right size to put above the first entry with a new letter
 % of the alphabet.
 
-\newif\if@restonecol
-
-\def\theindex{\@restonecoltrue\if@twocolumn\@restonecolfalse\fi
+\def\theindex{
 \columnseprule \z@
-\columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeTextUppercase{\indexname}}]%
-    \@mkboth{\MakeTextUppercase{\indexname}}{\MakeTextUppercase{\indexname}}%
+\columnsep 35\p@\twocolumn[\@makeschapterhead{\MakeUppercase{\indexname}}]%
+    \@mkboth{\MakeUppercase{\indexname}}{\MakeUppercase{\indexname}}%
     \thispagestyle{plain}\parindent\z@
     \parskip\z@ plus .3\p@\relax\let\item\@idxitem}
 
@@ -1034,7 +1016,7 @@ ALL RIGHTS RESERVED
 
 \def\subsubitem{\par\hangindent 40\p@ \hspace*{30\p@}}
 
-\def\endtheindex{\if@restonecol\onecolumn\else\clearpage\fi}
+\def\endtheindex{clearpage}
 
 \def\indexspace{\par \vskip 10\p@ plus5\p@ minus3\p@\relax}
 
@@ -1333,6 +1315,14 @@ ALL RIGHTS RESERVED
 % \def\@eqnnum{(\theequation)}
 %
 
+\usepackage[
+letterpaper,
+nohead,
+tmargin=1in,
+bmargin=1in,
+lmargin=1.5in,
+rmargin=1in
+]{geometry}
 
 %    ****************************************
 %    *           INITIALIZATION             *
@@ -1344,11 +1334,6 @@ ALL RIGHTS RESERVED
 \pagenumbering{arabic}      % Arabic page numbers
 \if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside
                                  % option.
-\if@twocolumn
- \@@input twocolum.sty\relax
-\else
- \onecolumn                 % Single-column.
-\fi
 
 \setlength{\parskip}{1.em}
 \setlength{\parindent}{0pt}
@@ -1369,22 +1354,42 @@ ALL RIGHTS RESERVED
 \titleformat*{\subparagraph}{\normalsize\bfseries}
 
 
-% Different font in captions (single-spaced, bold) ------------
-\newcommand{\captionfonts}{\small\bf\ssp}
+%% the document class does not define this standard item
+% see https://tex.stackexchange.com/a/612744
+\let\smallsize\relax
+\let\@currsize\smallsize
 
-\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
-
-\makeatletter  % Allow the use of @ in command names
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{{\captionfonts #1: #2}}%
-  \ifdim \wd\@tempboxa >\hsize
-    {\captionfonts #1: #2\par}
-  \else
-    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
-\makeatother   % Cancel the effect of \makeatletter
+%% Different font in captions (single-spaced, bold) ------------
+%\newcommand{\captionfonts}{\small\bf\ssp}
+%
+%\newcommand{\mycaption}[2]{\caption[#1 --- #2]{#1 --- #2}}
+%
+%\makeatletter  % Allow the use of @ in command names
+%\long\def\@makecaption#1#2{%
+%  \vskip\abovecaptionskip
+%  \sbox\@tempboxa{{\captionfonts #1: #2}}%
+%  \ifdim \wd\@tempboxa >\hsize
+%    {\captionfonts #1: #2\par}
+%  \else
+%    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+%  \fi
+%  \vskip\belowcaptionskip}
+%\makeatother   % Cancel the effect of \makeatletter
 % ---------------------------------------
+
+% Added to avoid windows and orphans
+\RequirePackage[all]{nowidow}
+
+% Added to fix spacing between footnote entries
+% Also makes table rows single spaced
+\RequirePackage{setspace}
+\newlength{\myfootnotesep}
+\setlength{\myfootnotesep}{\baselineskip}
+\addtolength{\myfootnotesep}{-\footnotesep}
+\setlength{\footnotesep}{\myfootnotesep} % set spacing between footnotes
+
+% Set the counter depths
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 \endinput
