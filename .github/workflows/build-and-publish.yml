@@ -20,16 +20,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "name=date::$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       # Runs a set of commands using the runners shell
       - name: Install LaTex Dependencies
         run: |
-          sudo apt-get install -y texlive-base texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-font-utils texlive-fonts-extra texlive-fonts-recommended texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-pictures texlive-pstricks texlive-publishers texlive-science
+          sudo apt-get install -y texlive-full
           sudo apt-get install -y latexmk
           
       - name: Build
