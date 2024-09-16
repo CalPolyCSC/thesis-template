@@ -140,7 +140,7 @@ Most files have examples on how they should be used inside of them. Here is a ha
 - [ ] Final cleanup; you're almost there. Remove unnecessary content, such as empty listings, dedication, etc., and any placeholder text.
 
 # Overleaf
-Want to take your thesis writing ***to the cloud?!?!*** Or, you know, don't want to install the ~3GB girthy monstrosity that is LaTeX on your pristine machine? Use [Overleaf](https://www.overleaf.com/).
+Want to take your thesis writing ***to the cloud?!?!*** Or, you know, don't want to install the ~3GB girthy monstrosity that is LaTeX on your pristine machine? Use [Overleaf](https://www.overleaf.com/). Even better, use [this template](https://www.overleaf.com/latex/templates/cal-poly-thesis-template/vvqzkxgchkvc) on Overleaf.
 
 # Questions or Bugs?
 If you have a general question about LaTeX, there are a lot of resources on the internet that can help.
