@@ -107,7 +107,7 @@ In this case, biblatex will only use the cited entries from the ```references.bi
 The root file for this project is ```main.tex```.
 This template was setup with the goal of you not needing to edit this file.
 This file contains formatting and content related settings that (hopefully) makes it easier for you to start using the template.
-It also containts additional packages, formatting, and package settings that have been set to make the resulting thesis format comply with the Graduate Education guidelines.
+It also contains additional packages, formatting, and package settings that have been set to make the resulting thesis format comply with the Graduate Education guidelines.
 Not all changes to this file will result in problems, but care should be taken if you decide you need to edit this file.
 
 The lower-level formatting of the thesis is in ```cpthesis.cls```.
