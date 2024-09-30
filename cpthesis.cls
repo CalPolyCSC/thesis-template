@@ -7,8 +7,8 @@
 %%% ====================================================================
 %%%  @LaTeX-class-file{
 %%%     filename        = "cpthesis.cls",
-%%%     version         = "1.0",
-%%%     date            = "31 August 2024",
+%%%     version         = "1.0.1",
+%%%     date            = "27 September 2024",
 %%% portedby    = "David D. Marshall",
 %%% address     = "Aerospace Engineering Department
 %%%            California Polytechnic State University
@@ -923,9 +923,13 @@ ALL RIGHTS RESERVED
 %
 % Single-space list of figures, add it to the table of contents.
 \def\listoffigures{
-  \chapter*{\MakeUppercase{\listfigurename}\@mkboth{\MakeUppercase{\listfigurename}}%
-{\MakeUppercase{\listfigurename}}}
-   {\ssp\@starttoc{lof}}}
+  \chapter*{
+    \MakeUppercase{\listfigurename}
+    \@mkboth{\MakeUppercase{\listfigurename}}{\MakeUppercase{\listfigurename}}
+  }
+  \addcontentsline{toc}{chapter}{\uppercase{\listfigurename}}
+  \ssp\@starttoc{lof}
+}
 
 \def\l@figure{\@dottedtocline{1}{1.5em}{3.2em}}
 
@@ -933,9 +937,13 @@ ALL RIGHTS RESERVED
 % LIST OF TABLES
 %
 \def\listoftables{
-  \chapter*{\MakeUppercase{\listtablename}\@mkboth{\MakeUppercase{\listtablename}}%
-{\MakeUppercase{\listtablename}}}
-   {\ssp\@starttoc{lot}}}
+  \chapter*{
+      \MakeUppercase{\listtablename}
+      \@mkboth{\MakeUppercase{\listtablename}}{\MakeUppercase{\listtablename}}
+  }
+  \addcontentsline{toc}{chapter}{\uppercase{\listtablename}}
+  \ssp\@starttoc{lot}
+}
 
 
 \let\l@table\l@figure
