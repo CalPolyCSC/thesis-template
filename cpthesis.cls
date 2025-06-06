@@ -252,10 +252,6 @@
 \def\acknowledgename{Acknowledgments}
 %                    ~~~~~~~~~~~~~~~
 %
-% dedication environment:
-\def\dedicationname{Dedication}
-%                   ~~~~~~~~~~
-%
 % campus
 \def\campus{San Luis Obispo}
 %           ~~~~~~~~~~~~~~~
@@ -468,17 +464,6 @@ ALL RIGHTS RESERVED
 \fi
 \newpage
 }
-
-% DEDICATION
-%
-% The dedication environment just makes sure the dedication gets its
-% own page.
-
-\newenvironment{dedication}{
-\begin{center}
-{\MakeUppercase{\dedicationname}}
-\end{center}
-}{\newpage}
 
 % ACKNOWLEDGMENTS
 %
