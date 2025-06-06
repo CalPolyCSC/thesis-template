@@ -56,12 +56,12 @@
 
 \newcommand{\printlistoftables}{
     \listoftables
-    \addtocontents{lot}{\hbox to \linewidth{\hspace{1.5em}Table\hfill Page}}
+    \addtocontents{lot}{\hbox to \linewidth{\hspace{0em}Table\hfill Page}}
 }
 
 \newcommand{\printlistoffigures}{
     \listoffigures
-    \addtocontents{lof}{\hbox to \linewidth{\hspace{1.5em}Figure\hfill Page}}
+    \addtocontents{lof}{\hbox to \linewidth{\hspace{0em}Figure\hfill Page}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,7 +107,7 @@
 \DeclareFloatStyle{rulednotop}{midcode=rule,postcode=lowrule,capposition=top,heightadjust=all}
 \floatsetup[algorithm]{style=rulednotop}
 \renewcommand{\listalgorithmname}{\MakeUppercase{\listalgorithmsname}}
-\addtocontents{loa}{\hbox to \linewidth{\hspace{1.5em}Algorithm\hfill Page}}
+\addtocontents{loa}{\hbox to \linewidth{\hspace{0em}Algorithm\hfill Page}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Code and code listing packages
@@ -122,7 +122,7 @@
 }
 \renewcommand{\lstlistlistingname}{\MakeUppercase{\listcodelistingsname}}
 \renewcommand{\lstlistingname}{Code Listing}
-\addtocontents{lol}{\hbox to \linewidth{\hspace{1.5em}Code Listing\hfill Page}}
+\addtocontents{lol}{\hbox to \linewidth{\hspace{0em}Code Listing\hfill Page}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional packages needed for specific thesis
