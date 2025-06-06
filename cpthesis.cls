@@ -815,6 +815,10 @@ ALL RIGHTS RESERVED
                       \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
+                      % This adds APPENDICES to header of first appendix only
+                      \ifnum\value{chapter}<2
+                          {\centering\MakeUppercase{\appendicestocname} \\} \vspace{\baselineskip}
+                      \fi
                       \@makechapterhead{#2}%
                       \@afterheading
                     }
