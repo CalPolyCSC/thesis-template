@@ -920,7 +920,7 @@ ALL RIGHTS RESERVED
   \ssp\@starttoc{lof}
 }
 
-\def\l@figure{\@dottedtocline{1}{1.5em}{3.2em}}
+\def\l@figure{\@dottedtocline{0}{0em}{3.2em}}
 
 
 % LIST OF TABLES
