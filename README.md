@@ -44,9 +44,6 @@ Note that if you only have one acknowledgment then this page must be titled is t
 In that case uncomment the line redefining the ```\acknowledgename``` macro on line 2.
 If you have no acknowledgments, then this file can be blank.
 
-The ```dedication.tex``` file should contain a dedication.
-If you do not have a dedication, then this file can be blank.
-
 The ```nomenclature.tex``` file provides a convenient location for all of your symbols and terms to be declared with the ```\nomenclature``` command.
 These will appear in the List of Symbols section of your thesis.
 If you have a preferred way of assembling your nomenclature, then you do not have to have your nomenclature in this file.
@@ -137,7 +134,7 @@ Most files have examples on how they should be used inside of them. Here is a ha
 - [ ] Don't forget to thank your family! Fill in ```acknowledgments.tex```.
 - [ ] Make sure your family knows what you are talking about. Create a List of Symbols using the ```nomenclature.tex``` file. Or don't have one and let them figure it out on their own. In that case be sure to remove the nomenclature code in ```listings.tex```.
 - [ ] Be sure to cite your sources in ```bibliography.bib```. If you use Google Scholar to find your sources, it will provide you with ```bibtex``` output under the "cite" option.
-- [ ] Final cleanup; you're almost there. Remove unnecessary content, such as empty listings, dedication, etc., and any placeholder text.
+- [ ] Final cleanup; you're almost there. Remove unnecessary content, such as empty listings, etc., and any placeholder text.
 
 # Overleaf
 Want to take your thesis writing ***to the cloud?!?!*** Or, you know, don't want to install the ~3GB girthy monstrosity that is LaTeX on your pristine machine? Use [Overleaf](https://www.overleaf.com/). Even better, use [this template](https://www.overleaf.com/latex/templates/cal-poly-thesis-template/vvqzkxgchkvc) on Overleaf.
