@@ -329,16 +329,19 @@
     There should be no reason to ever manually cross-reference an item in this document.
 
 \section{Nomenclature Usage} \label{sec:NomenclatureUsage}
-    The \nameref{sec:Nomenclature} in the preamble on \cpageref{sec:Nomenclature} shows the nomenclature for this document.
+% TODO: Rewrite this to refer to new nomenclature content
+    The \nameref{sec:Nomenclature} in the appendices on \cpageref{sec:Nomenclature} shows the nomenclature for this document.
+    A nomenclature (or list of symbols) has to be in an appendix if there is one.
     This uses the nomencl package, and you should consult the documentation for that package to see how it can be customized.
     The simplest way to implement the nomenclature/list of symbols information is how this document has created the nomenclature.
-    All of the nomenclature information is contained within the nomenclature.tex file in the frontmatter directory.
-    If no nomenclature is desired, then simply remove all of the content in this file and remove the list of symbols code in the listings.tex file.
+    All of the nomenclature information is contained within the nomenclature.tex file in the appendices directory.
 
     There are ways to sort/organize the nomenclature.
     A simple grouping is done with the code in the preamble.tex file.
     If a different sorting/grouping is desired, then this code needs to be changed.
     If no grouping or sorting is desired, then this code can be removed.
+
+    If no nomenclature is desired, then simply remove all of the content in the nomenclature.tex file and the associated nomenclature content in the preamble.tex file.
 
 \section{Citations} \label{sec:Citations}
     This document uses biblatex and the biber bibliography parser to generate the bibliography/references section.

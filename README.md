@@ -31,7 +31,7 @@ The ```preamble.tex``` file should be used to put all of the LaTeX configuration
 The current file includes the ```lipsum``` package for the placeholder text used in the example thesis.
 This package should be removed in your thesis.
 This file also contains an example of the package and libraries that might be needed for using [TikZ](https://tikz.dev/).
-Finally, this file also contains an example of how to perform grouping in your nomenclature (List of Symbols) using the ```nomencl``` package.
+Finally, this file also contains an example of how to perform grouping in your nomenclature (list of symbols) using the ```nomencl``` package.
 Your thesis advisor might have a preferred way of organizing your nomenclature, so this code will need to be changed to suit your needs.
 
 The ```abstract.tex``` file should contain the text associated with your abstract.
@@ -43,16 +43,6 @@ Work with your advisor on whether this applies to your work.
 Note that if you only have one acknowledgment then this page must be titled is the singular.
 In that case uncomment the line redefining the ```\acknowledgename``` macro on line 2.
 If you have no acknowledgments, then this file can be blank.
-
-The ```nomenclature.tex``` file provides a convenient location for all of your symbols and terms to be declared with the ```\nomenclature``` command.
-These will appear in the List of Symbols section of your thesis.
-If you have a preferred way of assembling your nomenclature, then you do not have to have your nomenclature in this file.
-The nomenclature command in ```listings.tex``` is what puts the list of symbols into the thesis in the correct place.
-If you are not going to have a List of Symbols in your thesis, then the ```nomenclature.tex``` file can be blank.
-
-If you plan on creating a List of Symbols, then you should look at the documentation of the ```nomencl``` package as well as examples that are on the internet.
-As quick summary, the ```\nomenclature[arg1]{arg2}{arg3}``` command will create a new entry for ```arg2``` in the List of Symbols with the description of ```arg3```.
-The optional ```arg1``` is used in the sorting and grouping of entries, where code in ```preamble.tex``` defines the grouping in this example.
 
 The ```listings.tex``` file contains the commands needed to get the approved lists that might need to be in your thesis.
 If any of these lists are empty in your thesis, then you need to remove the associated commands from this file.
@@ -80,6 +70,18 @@ There are some formatting changes that have to happen in your thesis associated 
 Because some of these formatting changes depend on the number of appendices, this command takes an optional argument indicating the number of appendices, for example with 3 appendices you could use ```\appendix[3]``` or ```\appendix```.
 If you only have one appendix, then you **must** use the optional optional like this: ```\appendix[1]```.
 The rest of this directory follows the same logic as the ```chapters``` directory discussed above.
+
+#### Nomenclature as an Appendix
+If your thesis is going to have a nomenclature (or list of symbols), then it has to be in the appendix of your thesis.
+The ```nomenclature.tex``` file provides a convenient location for all of your symbols and terms to be declared with the ```\nomenclature``` command.
+These will appear as an appendix in your thesis.
+If you (or your thesis advisor) have a preferred way of assembling your nomenclature, then you do not have to have your nomenclature in this file.
+If you are not going to have a nomenclature in your thesis, then the ```nomenclature.tex``` file can be blank.
+
+If you plan on creating a nomenclature, then you should look at the documentation of the ```nomencl``` package as well as examples that are on the internet.
+As quick summary, the ```\nomenclature[arg1]{arg2}{arg3}``` command will create a new entry for ```arg2``` in the nomenclature with the description of ```arg3```.
+The optional ```arg1``` is used in the sorting and grouping of entries, where code in ```preamble.tex``` defines the grouping in this example.
+
 
 ### Figures Content
 Most theses contain a large number of figures, so it is convenient to collect all of those figures into a common directory.
@@ -132,7 +134,7 @@ Most files have examples on how they should be used inside of them. Here is a ha
 - [ ] Got some appendices? You're covered, same idea as with chapters, but using ```appendices/outline.tex``` and the ```appendices``` folder instead.
 - [ ] Write your abstract in ```abstract.tex```. That's it. The template takes care of all the formatting for you.
 - [ ] Don't forget to thank your family! Fill in ```acknowledgments.tex```.
-- [ ] Make sure your family knows what you are talking about. Create a List of Symbols using the ```nomenclature.tex``` file. Or don't have one and let them figure it out on their own. In that case be sure to remove the nomenclature code in ```listings.tex```.
+- [ ] Make sure your family knows what you are talking about. Create a nomenclature using the ```nomenclature.tex``` file. Or don't have one and let them figure it out on their own. In that case be sure to remove the nomenclature content ```appendices/nomenclature.tex``` and ```frontmatter/preamble.tex```.
 - [ ] Be sure to cite your sources in ```bibliography.bib```. If you use Google Scholar to find your sources, it will provide you with ```bibtex``` output under the "cite" option.
 - [ ] Final cleanup; you're almost there. Remove unnecessary content, such as empty listings, etc., and any placeholder text.
 
