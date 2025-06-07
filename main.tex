@@ -75,6 +75,9 @@
     maxnames=4,
     minnames=3,
 ]{biblatex} % bibliography
+% Ensures no page break within one entry
+% https://tex.stackexchange.com/a/43275
+\patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
 %\AtEveryBibitem{\clearlist{language}}
 %\AtEveryBibitem{\clearfield{note}}
 \addbibresource{bibliography/references.bib}
