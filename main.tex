@@ -65,22 +65,6 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Nomenclature packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[intoc,notocbasic]{nomencl}
-% changes to formatting of the list of symbols to be upper case
-\renewcommand{\nomname}{\MakeUppercase{\listsymbolsname}}
-% allow cross-references to the nomenclature
-% see: https://tex.stackexchange.com/a/158934
-\usepackage{etoolbox}
-\patchcmd{\thenomenclature}
-  {\chapter*{\nomname}}
-  {\phantomsection\chapter*{\nomname}\label{sec:Nomenclature}}
-  {}
-  {}
-\makenomenclature
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[
@@ -192,10 +176,6 @@
 
         % Insert all of the potentially optional listings
         \input{frontmatter/listings}
-
-        % Insert list of symbols
-        % Note: package handles inserting into table of contents
-        \input{frontmatter/nomenclature.tex}
     \end{frontmatter}
 
     %% Input the chapters as configured from the file
