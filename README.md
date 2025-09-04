@@ -124,6 +124,14 @@ The other informational files are located in the ```guidelines``` directory.
 These files are copies of guidelines published on the [Graduate Education website](https://grad.calpoly.edu/masters-thesis/masters-thesis.html).
 We try to keep these files up-to-date, but the canonical versions of these files reside on the Graduate Education website.
 
+## Overfull Hbox and Margins
+Sometimes LaTeX has a difficult time ending a line within the page margins.
+This results in warnings about overfull hbox in its output along with the amount that went past the end of the line.
+Some of these lengths are small, while others may be large.
+Since your thesis needs to adhere to the page layout specified by the thesis guidelines, you need to be sure to correct all of these.
+There is a way to display the page layout lines (margins, text area, and footer in particular) that may make it easier to view these overflows.
+In the ```preamble.tex``` file, there is a line including the ```showframe``` package that is commented out.
+Uncomment this line, and your thesis will be created with a box surrounding the area that the main text needs to be contained as well as a line showing where the footer must be.
 
 ## TL;DR
 Most files have examples on how they should be used inside of them. Here is a handy checklist which outlines what you need to do to start writing (besides overcoming the overwhelming mountain of things you'd rather be doing).
