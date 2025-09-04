@@ -783,35 +783,29 @@ ALL RIGHTS RESERVED
 % make toc entry uppercase
 % see: https://tex.stackexchange.com/a/109948
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{plain}%
-                    \global\@topnum\z@
-                    \@afterindentfalse
-                    \secdef\@chapter\@schapter}
+                      \thispagestyle{plain}%
+                      \global\@topnum\z@
+                      \@afterindentfalse
+                      \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-                       \if@mainmatter
-                         \refstepcounter{chapter}%
-                         \typeout{\@chapapp\space\thechapter.}%
-                         \if@appendix
-                             \addcontentsline{toc}{chapter}%
-                                    {\protect\numberline{\thechapter.}{#1}}
-                         \else
-                             \addcontentsline{toc}{chapter}%
-                                    {\protect\numberline{\thechapter.}\uppercase{#1}}
-                         \fi
-                       \else
-                         \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
-                       \fi
+                      \if@mainmatter
+                        \refstepcounter{chapter}%
+                        \typeout{\@chapapp\space\thechapter.}%
+                        \if@appendix
+                          \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}{#1}}
+                        \else
+                          \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}\uppercase{#1}}
+                        \fi
+                      \else
+                        \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
+                      \fi
                     \else
                       \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
-                      % This adds APPENDICES to header of first appendix only
-                      \ifnum\value{chapter}<2
-                          {\centering\MakeUppercase{\appendicestocname} \\} \vspace{\baselineskip}
-                      \fi
-                      \@makechapterhead{#2}%
-                      \@afterheading
-                    }
+                    \@makechapterhead{#2}%
+                    \@afterheading
+                   }
 
 
 
