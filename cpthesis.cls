@@ -1414,22 +1414,33 @@ rmargin=1in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Nomenclature packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{nomencl}
-\def\thenomenclature{%
-  \providecommand*{\listofnlsname}{\nomname}%
-  \nompreamble
-  \if@nomentbl
-    \let\itemOrig=\item
-    \def\item{\gdef\item{\\}}%
-    \expandafter\longtable\expandafter{\@nomtableformat}
-  \else
-    \list{}{%
-      \labelwidth\nom@tempdim
-      \leftmargin\labelwidth
-      \advance\leftmargin\labelsep
-      \itemsep\nomitemsep
-      \let\makelabel\nomlabel}%
-  \fi
-}
+\usepackage[intoc,notocbasic]{nomencl}
+% changes to formatting of the list of symbols to be upper case
+\renewcommand{\nomname}{\MakeUppercase{\listsymbolsname}}
+% allow cross-references to the nomenclature
+% see: https://tex.stackexchange.com/a/158934
+\usepackage{etoolbox}
+\patchcmd{\thenomenclature}
+  {\chapter*{\nomname}}
+  {\phantomsection\chapter*{\nomname}\label{sec:Nomenclature}}
+  {}
+  {}
+
+%\def\thenomenclature{%
+%  \providecommand*{\listofnlsname}{\nomname}%
+%  \nompreamble
+%  \if@nomentbl
+%    \let\itemOrig=\item
+%    \def\item{\gdef\item{\\}}%
+%    \expandafter\longtable\expandafter{\@nomtableformat}
+%  \else
+%    \list{}{%
+%      \labelwidth\nom@tempdim
+%      \leftmargin\labelwidth
+%      \advance\leftmargin\labelsep
+%      \itemsep\nomitemsep
+%      \let\makelabel\nomlabel}%
+%  \fi
+%}
 
 \endinput

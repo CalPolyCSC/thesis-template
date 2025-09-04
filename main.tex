@@ -111,6 +111,14 @@
 \renewcommand{\lstlistingname}{Code Listing}
 \addtocontents{lol}{\hbox to \linewidth{\hspace{0em}Code Listing\hfill Page}}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is for the acronym in the appendix, if one is included
+%% Warning messages on hyperlinks are suppressed until newer version can be used.
+%% See: https://tex.stackexchange.com/q/681527
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[nohyperlinks]{acronym}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional packages needed for specific thesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -179,6 +187,10 @@
 
         % Insert all of the potentially optional listings
         \input{frontmatter/listings}
+
+        % Insert list of symbols
+        % Note: package handles inserting into table of contents
+        \input{frontmatter/nomenclature.tex}
     \end{frontmatter}
 
     %% Input the chapters as configured from the file
