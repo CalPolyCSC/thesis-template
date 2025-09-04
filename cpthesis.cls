@@ -757,17 +757,17 @@ ALL RIGHTS RESERVED
     \renewcommand\thechapter{\Alph{chapter}}
     \setcounter{chapter}{0}
     \ifnum#1>1
-        {\addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}}
+        \addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}
+        % Indent all entries in appendix and still show sub-subsections
+        \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}%
+        \setcounter{tocdepth}{4}
+        \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+        \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
+        \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
+        \addtocontents{toc}{\let\protect\l@subsubsection\protect\l@paragraph}
     \else
-        {\addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}}
+        \addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}
     \fi
-    % Indent all entries in appendix and still show sub-subsections
-    \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}%
-    \setcounter{tocdepth}{4}
-    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
-    \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
-    \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
-    \addtocontents{toc}{\let\protect\l@subsubsection\protect\l@paragraph}
     % Set flag to true
     \@appendixtrue
 }
@@ -806,7 +806,6 @@ ALL RIGHTS RESERVED
                     \@makechapterhead{#2}%
                     \@afterheading
                    }
-
 
 
 %    ****************************************
