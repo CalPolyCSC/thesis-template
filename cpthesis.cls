@@ -754,7 +754,6 @@ ALL RIGHTS RESERVED
 \@appendixfalse
 \renewcommand\appendix[1][2]{%
     \def\@chapapp{\appendixname}
-    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \renewcommand\thechapter{\Alph{chapter}}
     \setcounter{chapter}{0}
     \ifnum#1>1
@@ -762,8 +761,14 @@ ALL RIGHTS RESERVED
     \else
         {\addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}}
     \fi
-    % Indents Appendix in Table of Contents
+    % Indent all entries in appendix and still show sub-subsections
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}%
+    \setcounter{tocdepth}{4}
     \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
+    \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
+    \addtocontents{toc}{\let\protect\l@subsubsection\protect\l@paragraph}
+    % Set flag to true
     \@appendixtrue
 }
 
