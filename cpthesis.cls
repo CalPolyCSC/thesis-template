@@ -752,6 +752,8 @@ ALL RIGHTS RESERVED
 % replace the appendix macro with custom
 \newif\if@appendix
 \@appendixfalse
+\newif\if@oneappendix
+\@oneappendixfalse
 \renewcommand\appendix[1][2]{%
     \def\@chapapp{\appendixname}
     \renewcommand\thechapter{\Alph{chapter}}
@@ -766,7 +768,14 @@ ALL RIGHTS RESERVED
         \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
         \addtocontents{toc}{\let\protect\l@subsubsection\protect\l@paragraph}
     \else
-        \addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}
+        \@oneappendixtrue
+        % Custom format for the one appendix
+        % See: https://tex.stackexchange.com/a/110854
+        \titleformat{\chapter}
+          {\centering} % format
+          {}                % label
+          {0pt}             % sep
+          {}           % before-code
     \fi
     % Set flag to true
     \@appendixtrue
@@ -792,7 +801,11 @@ ALL RIGHTS RESERVED
                         \refstepcounter{chapter}%
                         \typeout{\@chapapp\space\thechapter.}%
                         \if@appendix
-                          \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}{#1}}
+                          \if@oneappendix
+                            \addcontentsline{toc}{chapter}{APPENDIX}
+                          \else
+                            \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}{#1}}
+                          \fi
                         \else
                           \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}\uppercase{#1}}
                         \fi
@@ -803,8 +816,18 @@ ALL RIGHTS RESERVED
                       \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
-                    \@makechapterhead{#2}%
-                    \@afterheading
+                    \if@appendix
+                      \if@oneappendix
+                        \@makechapterhead{APPENDIX. #1}
+                        \@afterheading
+                      \else
+                        \@makechapterhead{#2}%
+                        \@afterheading
+                      \fi
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi
                    }
 
 
