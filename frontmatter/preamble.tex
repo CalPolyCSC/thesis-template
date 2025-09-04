@@ -20,7 +20,7 @@
 \makenomenclature
 \usepackage{etoolbox}
 \renewcommand\nomgroup[1]{%
-    \item[\bfseries
+    \item[%
         \ifstrequal{#1}{P}{Physics constants}{%
         \ifstrequal{#1}{N}{Number sets}{%
         \ifstrequal{#1}{O}{Other symbols}{}}}%
