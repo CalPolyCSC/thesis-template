@@ -752,18 +752,32 @@ ALL RIGHTS RESERVED
 % replace the appendix macro with custom
 \newif\if@appendix
 \@appendixfalse
+\newif\if@oneappendix
+\@oneappendixfalse
 \renewcommand\appendix[1][2]{%
     \def\@chapapp{\appendixname}
-    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
     \renewcommand\thechapter{\Alph{chapter}}
     \setcounter{chapter}{0}
     \ifnum#1>1
-        {\addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}}
+        \addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}
+        % Indent all entries in appendix and still show sub-subsections
+        \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}%
+        \setcounter{tocdepth}{4}
+        \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+        \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
+        \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
+        \addtocontents{toc}{\let\protect\l@subsubsection\protect\l@paragraph}
     \else
-        {\addtocontents{toc}{\noindent\MakeUppercase{\appendixtocname}}}
+        \@oneappendixtrue
+        % Custom format for the one appendix
+        % See: https://tex.stackexchange.com/a/110854
+        \titleformat{\chapter}
+          {\centering} % format
+          {}                % label
+          {0pt}             % sep
+          {}           % before-code
     \fi
-    % Indents Appendix in Table of Contents
-    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    % Set flag to true
     \@appendixtrue
 }
 
@@ -778,36 +792,43 @@ ALL RIGHTS RESERVED
 % make toc entry uppercase
 % see: https://tex.stackexchange.com/a/109948
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
-                    \thispagestyle{plain}%
-                    \global\@topnum\z@
-                    \@afterindentfalse
-                    \secdef\@chapter\@schapter}
+                      \thispagestyle{plain}%
+                      \global\@topnum\z@
+                      \@afterindentfalse
+                      \secdef\@chapter\@schapter}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-                       \if@mainmatter
-                         \refstepcounter{chapter}%
-                         \typeout{\@chapapp\space\thechapter.}%
-                         \if@appendix
-                             \addcontentsline{toc}{chapter}%
-                                    {\protect\numberline{\thechapter.}{#1}}
-                         \else
-                             \addcontentsline{toc}{chapter}%
-                                    {\protect\numberline{\thechapter.}\uppercase{#1}}
-                         \fi
-                       \else
-                         \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
-                       \fi
+                      \if@mainmatter
+                        \refstepcounter{chapter}%
+                        \typeout{\@chapapp\space\thechapter.}%
+                        \if@appendix
+                          \if@oneappendix
+                            \addcontentsline{toc}{chapter}{APPENDIX}
+                          \else
+                            \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}{#1}}
+                          \fi
+                        \else
+                          \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}\uppercase{#1}}
+                        \fi
+                      \else
+                        \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
+                      \fi
                     \else
                       \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
                     \fi
                     \chaptermark{#1}%
-                      % This adds APPENDICES to header of first appendix only
-                      \ifnum\value{chapter}<2
-                          {\centering\MakeUppercase{\appendicestocname} \\} \vspace{\baselineskip}
+                    \if@appendix
+                      \if@oneappendix
+                        \@makechapterhead{APPENDIX. #1}
+                        \@afterheading
+                      \else
+                        \@makechapterhead{#2}%
+                        \@afterheading
                       \fi
+                    \else
                       \@makechapterhead{#2}%
                       \@afterheading
-                    }
-
+                    \fi
+                   }
 
 
 %    ****************************************
