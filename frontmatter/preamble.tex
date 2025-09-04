@@ -20,9 +20,9 @@
 \makenomenclature
 \usepackage{etoolbox}
 \renewcommand\nomgroup[1]{%
-    \item[\bfseries
-        \ifstrequal{#1}{P}{Physics constants}{%
-        \ifstrequal{#1}{N}{Number sets}{%
-        \ifstrequal{#1}{O}{Other symbols}{}}}%
-    ]
+    \item[%
+        \ifstrequal{#1}{P}{Physics Constants}{%
+        \ifstrequal{#1}{N}{Number Sets}{%
+        \ifstrequal{#1}{O}{Other Symbols}{}}}%
+    ]\bigskip
 }
