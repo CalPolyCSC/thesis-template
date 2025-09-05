@@ -104,7 +104,7 @@
 %%% ====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cpthesis}[2024/08/31 DDM's modification of the modified v3.0 University of California Thesis Class]
+\ProvidesClass{cpthesis}[2025/09/04 DDM's modification of the modified v3.0 University of California Thesis Class]
 
 %    ****************************************
 %    *               OPTIONS                *
