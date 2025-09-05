@@ -350,12 +350,18 @@
     See the package documentation for more usage details.
     If you are not going to have an acronyms listing, then simply remove the corresponding input line in the appendices outline tex file.
 
-\section{Citations} \label{sec:Citations}
+\section{References and Citations} \label{sec:Citations}
     This document uses biblatex and the biber bibliography parser to generate the bibliography/references section.
     The bibliography data is located in the bib-file, references.bib, located in the bibliography directory.
     This file provides a small selection of sample source types.
     There are a large number of source types that can be found in the documentation for biblatex.
     \emph{Note that since not every item in the bib-file was cited, this document has a Bibliography after the last chapter (instead of a References section if all items had been cited).}
+
+    Since the thesis format guidelines do not specify the formatting of works, there is freedom to select a style that is best suited for your field.
+    Check with your thesis advisor for their desired format.
+    To change from the default format, you will need to edit the initialization of the biblatex package in the main.tex file.
+    One of the configuration parameters is style=numeric; if your advisor requires you to use the IEEE format, then change that line to style=ieee.
+    There are several other formats that can be selected, see the biblatex documentation for more info.
 
     There are also a number of other resources that can help create source entries.
     Many publishers offer the ability to export a citation in bibtex format, and this can easily be included into the references.bib file (sometimes without any modifications).

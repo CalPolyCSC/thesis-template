@@ -102,6 +102,10 @@ If you plan on providing a Bibliography, then you should keep the ```\nocite{*}`
 If you plan on providing a References section, then you should remove the ```\nocite{*}``` command and uncomment the line redefining the ```\bibname``` macro.
 In this case, biblatex will only use the cited entries from the ```references.bib``` file, and you can keep unused entries in this file without them appearing in your References section.
 
+Finally, there are a number of ways to order and format the citations.
+Since the thesis guidelines do not require a specific format, you should check with your thesis advisor to determine what style they want.
+Changing the style is one of the rare times that you need to modify the ```main.tex``` file, since that is where the biblatex package is initialized with a particulr style.
+
 ## Think Twice About Modifying These Files
 The root file for this project is ```main.tex```.
 This template was setup with the goal of you not needing to edit this file.
