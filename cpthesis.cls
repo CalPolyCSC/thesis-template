@@ -325,10 +325,10 @@
                 \parshape6
                 0.00in \textwidth
                 0.1\textwidth 0.8\textwidth
-                0.2\textwidth 0.7\textwidth
-                0.3\textwidth 0.6\textwidth
-                0.35\textwidth 0.55\textwidth
-                0.4\textwidth 0.5\textwidth
+                0.2\textwidth 0.6\textwidth
+                0.3\textwidth 0.4\textwidth
+                0.35\textwidth 0.3\textwidth
+                0.4\textwidth 0.1\textwidth
                 \strut
                 #1%
         }%
@@ -350,14 +350,14 @@
         \invpyramid{\MakeUppercase{\nohyphens{\@title}}}
 
         %\vfill\null
-        \addvspace{1.4in}
+        \addvspace{1.3in}
 
     A Thesis \\
     presented to \\
     the Faculty of California Polytechnic State University, \\
     \campus
 
-        \addvspace{1.4in}
+        \addvspace{1.3in}
         %\vfill\null
 
 
