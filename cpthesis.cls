@@ -1426,21 +1426,4 @@ rmargin=1in
   {}
   {}
 
-%\def\thenomenclature{%
-%  \providecommand*{\listofnlsname}{\nomname}%
-%  \nompreamble
-%  \if@nomentbl
-%    \let\itemOrig=\item
-%    \def\item{\gdef\item{\\}}%
-%    \expandafter\longtable\expandafter{\@nomtableformat}
-%  \else
-%    \list{}{%
-%      \labelwidth\nom@tempdim
-%      \leftmargin\labelwidth
-%      \advance\leftmargin\labelsep
-%      \itemsep\nomitemsep
-%      \let\makelabel\nomlabel}%
-%  \fi
-%}
-
 \endinput
