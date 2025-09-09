@@ -15,7 +15,8 @@ Making changes to the first type of files should have no impact on the overall f
 The informational files are there to provide additional information and do not have any impact on the resulting thesis.
 
 ## Files to be Modified
-Within this project, there are a number of directories that contain files or are intended to contain files that you will modify for your thesis. These include:
+Within this project, there are a number of directories that contain files or are intended to contain files that you will modify for your thesis.
+These include:
 
 - ```frontmatter``` - files associated with the part of your thesis preceding chapter 1,
 - ```chapters``` - TeX files associated with the chapters of your thesis,
@@ -31,7 +32,7 @@ The ```preamble.tex``` file should be used to put all of the LaTeX configuration
 The current file includes the ```lipsum``` package for the placeholder text used in the example thesis.
 This package should be removed in your thesis.
 This file also contains an example of the package and libraries that might be needed for using [TikZ](https://tikz.dev/).
-Finally, this file also contains an example of how to perform grouping in your nomenclature (list of symbols) using the ```nomencl``` package.
+Finally, this file also contains an example of how to perform grouping in your nomenclature (List of Symbols) using the ```nomencl``` package.
 Your thesis advisor might have a preferred way of organizing your nomenclature, so this code will need to be changed to suit your needs.
 
 The ```abstract.tex``` file should contain the text associated with your abstract.
@@ -138,20 +139,36 @@ In the ```preamble.tex``` file, there is a line including the ```showframe``` pa
 Uncomment this line, and your thesis will be created with a box surrounding the area that the main text needs to be contained as well as a line showing where the footer must be.
 
 ## TL;DR
-Most files have examples on how they should be used inside of them. Here is a handy checklist which outlines what you need to do to start writing (besides overcoming the overwhelming mountain of things you'd rather be doing).
+Most files have examples on how they should be used inside of them.
+Here is a handy checklist which outlines what you need to do to start writing (besides overcoming the overwhelming mountain of things you'd rather be doing).
 
-- [ ] Update the ```information.tex``` file. This is where all the basics are defined, your thesis title, your name, your committee members, etc.
-- [ ] Start writing chapters! Every chapter goes inside of the ```chapters``` folder and should be imported in the ```chapters/outline.tex``` file using the ```\include{chapters/your-chapter}``` syntax. This makes reordering chapters a breeze! (Trust me, you'll do it)
-- [ ] Drop all of your fancy graphs into the ```figures``` folder for safe keeping
-- [ ] Got some appendices? You're covered, same idea as with chapters, but using ```appendices/outline.tex``` and the ```appendices``` folder instead.
-- [ ] Write your abstract in ```abstract.tex```. That's it. The template takes care of all the formatting for you.
-- [ ] Don't forget to thank your family! Fill in ```acknowledgments.tex```.
-- [ ] Make sure your family knows what you are talking about. Create a nomenclature using the ```nomenclature.tex``` file. Or don't have one and let them figure it out on their own. In that case be sure to remove the nomenclature content ```appendices/nomenclature.tex``` and ```frontmatter/preamble.tex```.
-- [ ] Be sure to cite your sources in ```bibliography.bib```. If you use Google Scholar to find your sources, it will provide you with ```bibtex``` output under the "cite" option.
-- [ ] Final cleanup; you're almost there. Remove unnecessary content, such as empty listings, etc., and any placeholder text.
+- [ ] Update the ```information.tex``` file.
+      This is where all the basics are defined, your thesis title, your name, your committee members, etc.
+- [ ] Start writing chapters!
+      Every chapter goes inside of the ```chapters``` folder and should be imported in the ```chapters/outline.tex``` file using the ```\include{chapters/your-chapter}``` syntax.
+      This makes reordering chapters a breeze! (Trust me, you'll do it.)
+- [ ] Drop all of your fancy graphs into the ```figures``` folder for safe keeping.
+- [ ] Got some appendices?
+      You're covered, same idea as with chapters, but using ```appendices/outline.tex``` and the ```appendices``` folder instead.
+- [ ] Write your abstract in ```abstract.tex```.
+      That's it.
+      The template takes care of all the formatting for you.
+- [ ] Don't forget to thank your family!
+      Fill in ```acknowledgments.tex```.
+- [ ] Make sure your family knows what you are talking about.
+      Create a List of Symbols using the ```nomenclature.tex``` file.
+      Or don't have one and let them figure it out on their own.
+      In that case be sure to remove the nomenclature content ```frontmatter/nomenclature.tex```, ```frontmatter/listings.text```, and ```frontmatter/preamble.tex```.
+- [ ] Be sure to cite your sources in ```bibliography.bib```.
+      If you use Google Scholar to find your sources, it will provide you with ```bibtex``` output under the "cite" option.
+- [ ] Final cleanup; you're almost there.
+      Remove unnecessary content, such as empty listings, etc., and any placeholder text.
 
 # Overleaf
-Want to take your thesis writing ***to the cloud?!?!*** Or, you know, don't want to install the ~3GB girthy monstrosity that is LaTeX on your pristine machine? Use [Overleaf](https://www.overleaf.com/). Even better, use [this template](https://www.overleaf.com/latex/templates/cal-poly-thesis-template/vvqzkxgchkvc) on Overleaf.
+Want to take your thesis writing ***to the cloud?!?!***
+Or, you know, don't want to install the ~3GB girthy monstrosity that is LaTeX on your pristine machine?
+Use [Overleaf](https://www.overleaf.com/).
+Even better, use [this template](https://www.overleaf.com/latex/templates/cal-poly-thesis-template/vvqzkxgchkvc) on Overleaf.
 
 # Questions or Bugs?
 If you have a general question about LaTeX, there are a lot of resources on the internet that can help.
