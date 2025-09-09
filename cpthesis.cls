@@ -104,7 +104,7 @@
 %%% ====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cpthesis}[2024/08/31 DDM's modification of the modified v3.0 University of California Thesis Class]
+\ProvidesClass{cpthesis}[2025/09/04 DDM's modification of the modified v3.0 University of California Thesis Class]
 
 %    ****************************************
 %    *               OPTIONS                *
@@ -325,10 +325,10 @@
                 \parshape6
                 0.00in \textwidth
                 0.1\textwidth 0.8\textwidth
-                0.2\textwidth 0.7\textwidth
-                0.3\textwidth 0.6\textwidth
-                0.35\textwidth 0.55\textwidth
-                0.4\textwidth 0.5\textwidth
+                0.2\textwidth 0.6\textwidth
+                0.3\textwidth 0.4\textwidth
+                0.35\textwidth 0.3\textwidth
+                0.4\textwidth 0.1\textwidth
                 \strut
                 #1%
         }%
@@ -350,14 +350,14 @@
         \invpyramid{\MakeUppercase{\nohyphens{\@title}}}
 
         %\vfill\null
-        \addvspace{1.4in}
+        \addvspace{1.3in}
 
     A Thesis \\
     presented to \\
     the Faculty of California Polytechnic State University, \\
     \campus
 
-        \addvspace{1.4in}
+        \addvspace{1.3in}
         %\vfill\null
 
 
@@ -1425,22 +1425,5 @@ rmargin=1in
   {\phantomsection\chapter*{\nomname}\label{sec:Nomenclature}}
   {}
   {}
-
-%\def\thenomenclature{%
-%  \providecommand*{\listofnlsname}{\nomname}%
-%  \nompreamble
-%  \if@nomentbl
-%    \let\itemOrig=\item
-%    \def\item{\gdef\item{\\}}%
-%    \expandafter\longtable\expandafter{\@nomtableformat}
-%  \else
-%    \list{}{%
-%      \labelwidth\nom@tempdim
-%      \leftmargin\labelwidth
-%      \advance\leftmargin\labelsep
-%      \itemsep\nomitemsep
-%      \let\makelabel\nomlabel}%
-%  \fi
-%}
 
 \endinput
