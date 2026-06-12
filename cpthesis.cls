@@ -443,6 +443,51 @@ ALL RIGHTS RESERVED
 % in accordance with UC rules, is numbered separately from the rest
 % of the rest of the dissertation in Arabic.  It requires definition
 % of the \title, \author, \degree, \field, \campus, and \chair macros.
+\RequirePackage{xparse}
+
+\ExplSyntaxOn
+
+\seq_new:N \g_dm_keywords_seq
+
+\RenewDocumentCommand{\keywords}{m}
+  {
+    \seq_gclear:N \g_dm_keywords_seq
+    \clist_map_inline:nn {#1}
+      {
+        \seq_gput_right:Nn \g_dm_keywords_seq {##1}
+      }
+  }
+
+\cs_new_protected:Npn \dm_format_keywords:
+  {
+    \int_case:nnF { \seq_count:N \g_dm_keywords_seq }
+      {
+        {0} {}
+        {1}
+          {
+            \text_titlecase_first:n { \seq_item:Nn \g_dm_keywords_seq {1} }
+          }
+        {2}
+          {
+            \text_titlecase_first:n { \seq_item:Nn \g_dm_keywords_seq {1} }
+            \c_space_tl and \c_space_tl
+            \seq_item:Nn \g_dm_keywords_seq {2}
+          }
+      }
+      {
+        \text_titlecase_first:n { \seq_item:Nn \g_dm_keywords_seq {1} }
+        \int_step_inline:nnn {2} { \seq_count:N \g_dm_keywords_seq - 1 }
+          {
+            ,~\seq_item:Nn \g_dm_keywords_seq {##1}
+          }
+        \c_space_tl and \c_space_tl
+        \seq_item:Nn \g_dm_keywords_seq { \seq_count:N \g_dm_keywords_seq }
+      }
+  }
+
+\cs_new:Npn \@keywords { \dm_format_keywords: }
+
+\ExplSyntaxOff
 
 \def\abstract{
 \begin{center}
@@ -459,7 +504,7 @@ ALL RIGHTS RESERVED
 \vfil\null
 \else
 \vspace*{\fill}
-{\keywordsname}: \@keywords.
+{\keywordsname}: \@keywords .
 \vspace{0.5in}
 \fi
 \newpage
