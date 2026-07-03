@@ -1416,13 +1416,14 @@ rmargin=1in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[intoc,notocbasic]{nomencl}
 % changes to formatting of the list of symbols to be upper case
-\renewcommand{\nomname}{\MakeUppercase{\listsymbolsname}}
-% allow cross-references to the nomenclature
+\renewcommand{\nomname}{\texorpdfstring{\MakeUppercase{\listsymbolsname}}{\listsymbolsname}}
+% - allow cross-references to the nomenclature
 % see: https://tex.stackexchange.com/a/158934
+% - change label name to not be all caps
 \usepackage{etoolbox}
 \patchcmd{\thenomenclature}
   {\chapter*{\nomname}}
-  {\phantomsection\chapter*{\nomname}\label{sec:Nomenclature}}
+  {\phantomsection\chapter*{\nomname}\def\@currentlabelname{\listsymbolsname}\label{sec:Nomenclature}}
   {}
   {}
 
