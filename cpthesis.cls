@@ -480,7 +480,8 @@ ALL RIGHTS RESERVED
           {
             ,~\seq_item:Nn \g_dm_keywords_seq {##1}
           }
-        \c_space_tl and \c_space_tl
+%        \c_space_tl and \c_space_tl  % no Oxford comma
+        ,~and~  % Oxford comman
         \seq_item:Nn \g_dm_keywords_seq { \seq_count:N \g_dm_keywords_seq }
       }
   }
