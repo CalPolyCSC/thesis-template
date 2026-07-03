@@ -459,7 +459,7 @@ ALL RIGHTS RESERVED
 \vfil\null
 \else
 \vspace*{\fill}
-{\keywordsname}: \@keywords
+{\keywordsname}: \@keywords.
 \vspace{0.5in}
 \fi
 \newpage
