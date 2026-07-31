@@ -447,46 +447,15 @@ ALL RIGHTS RESERVED
 
 \ExplSyntaxOn
 
-\seq_new:N \g_dm_keywords_seq
-
 \RenewDocumentCommand{\keywords}{m}
   {
-    \seq_gclear:N \g_dm_keywords_seq
-    \clist_map_inline:nn {#1}
-      {
-        \seq_gput_right:Nn \g_dm_keywords_seq {##1}
-      }
+    \tl_gset:Nn \g_dm_keywords_tl {#1}
   }
 
-\cs_new_protected:Npn \dm_format_keywords:
+\cs_new:Npn \@keywords
   {
-    \int_case:nnF { \seq_count:N \g_dm_keywords_seq }
-      {
-        {0} {}
-        {1}
-          {
-            \text_titlecase_first:n { \seq_item:Nn \g_dm_keywords_seq {1} }
-          }
-        {2}
-          {
-            \text_titlecase_first:n { \seq_item:Nn \g_dm_keywords_seq {1} }
-            \c_space_tl and \c_space_tl
-            \seq_item:Nn \g_dm_keywords_seq {2}
-          }
-      }
-      {
-        \text_titlecase_first:n { \seq_item:Nn \g_dm_keywords_seq {1} }
-        \int_step_inline:nnn {2} { \seq_count:N \g_dm_keywords_seq - 1 }
-          {
-            ,~\seq_item:Nn \g_dm_keywords_seq {##1}
-          }
-%        \c_space_tl and \c_space_tl  % no Oxford comma
-        ,~and~  % Oxford comman
-        \seq_item:Nn \g_dm_keywords_seq { \seq_count:N \g_dm_keywords_seq }
-      }
+    \tl_use:N \g_dm_keywords_tl
   }
-
-\cs_new:Npn \@keywords { \dm_format_keywords: }
 
 \ExplSyntaxOff
 
