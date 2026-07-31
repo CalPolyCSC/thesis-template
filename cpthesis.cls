@@ -443,6 +443,21 @@ ALL RIGHTS RESERVED
 % in accordance with UC rules, is numbered separately from the rest
 % of the rest of the dissertation in Arabic.  It requires definition
 % of the \title, \author, \degree, \field, \campus, and \chair macros.
+\RequirePackage{xparse}
+
+\ExplSyntaxOn
+
+\RenewDocumentCommand{\keywords}{m}
+  {
+    \tl_gset:Nn \g_dm_keywords_tl {#1}
+  }
+
+\cs_new:Npn \@keywords
+  {
+    \tl_use:N \g_dm_keywords_tl
+  }
+
+\ExplSyntaxOff
 
 \def\abstract{
 \begin{center}
@@ -459,7 +474,7 @@ ALL RIGHTS RESERVED
 \vfil\null
 \else
 \vspace*{\fill}
-{\keywordsname}: \@keywords.
+{\keywordsname}: \@keywords .
 \vspace{0.5in}
 \fi
 \newpage
