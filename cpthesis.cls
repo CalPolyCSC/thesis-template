@@ -833,7 +833,7 @@ ALL RIGHTS RESERVED
                     \chaptermark{#1}%
                     \if@appendix
                       \if@oneappendix
-                        \@makechapterhead{APPENDIX. #1}
+                        \@makechapterhead{APPENDIX\\ #1}
                         \@afterheading
                       \else
                         \@makechapterhead{#2}%
