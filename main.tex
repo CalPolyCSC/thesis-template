@@ -85,6 +85,8 @@
 %\AtEveryBibitem{\clearfield{note}}
 \addbibresource{bibliography/references.bib}
 
+\AtBeginBibliography{\setlength{\itemsep}{\baselineskip}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithm and code listing packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,10 +203,13 @@
 
     %% Bibliography/references section
     \input{bibliography/bib_info.tex}
+    \begingroup
+      \setstretch{1}
     \printbibliography[
         heading=bibintoc,
         title={\texorpdfstring{\MakeUppercase{\bibname}}{\bibname}}
     ]
+    \endgroup
 
     %% Input the appendices (if any) as configured from the file
     \input{appendices/outline}
