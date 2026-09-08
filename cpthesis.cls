@@ -314,9 +314,9 @@
 % on the approval page.
 \def\@numberofmembers{2}
 \def\@approvalstretch{1.5}
-\gdef\@approvalspread{1.1}
-\def\numberofmembers#1{\gdef\@numberofmembers{#1}
-\gdef\@approvalstretch{\ifcase\@numberofmembers \or 1.5 \or 1.5 \or 1.5 \or 1.3 \or 1.2 \or 1.0 \or 0.85 \or 0.7 \or 0.6 \or 0.5\fi}}
+\def\numberofmembers#1{\gdef\@numberofmembers{#1}}
+\gdef\@memberspace{\ifcase\@numberofmembers    \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.42in  \or 0.37in\fi}
+\gdef\@committeespace{\ifcase\@numberofmembers \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.4in \or 0.3in \or 0.2in \or 0.1in \or 0.0in \or 0.0in\fi}
 
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
@@ -387,24 +387,24 @@
 \begingroup
 \newlength{\colwidth}
 \setlength\colwidth{3.7in}
-\renewcommand\arraystretch{\@approvalstretch}
+%\renewcommand\arraystretch{\@approvalstretch}
 \begin{tabular}{rp{\colwidth}}
 TITLE:  &\@title     \par\\
 AUTHOR: &\@author     \par\\
 DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
 
-\vspace*{0.5in} \\
+\vspace*{\@committeespace} \\
 
-COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\\\
-\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\\\ \fi
+COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\[\@memberspace]
+\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
 
 \end{tabular}
 
