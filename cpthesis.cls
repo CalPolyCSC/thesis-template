@@ -267,7 +267,24 @@
 % construction of the front matter.
 
 % The month the degree will be officially conferred
-\def\degreemonth#1{\gdef\@degreemonth{#1}}
+\ExplSyntaxOn
+
+\NewDocumentCommand{\degreemonth}{m}
+{
+    \str_case:nnF {#1}
+        {
+            {December}{\gdef\@degreemonth{December}}
+            {May}     {\gdef\@degreemonth{May}}
+            {August}  {\gdef\@degreemonth{August}}
+        }
+        {
+            \PackageError{thesis-template}
+                {Invalid\ degree\ month\ `#1'}
+                {The\ degree\ month\ must\ be\ December,\ May,\ or\ August.}
+      }
+}
+
+\ExplSyntaxOff
 
 % The year the degree will be officially conferred
 \def\degreeyear#1{\gdef\@degreeyear{#1}}
