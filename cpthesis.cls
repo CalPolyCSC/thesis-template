@@ -330,7 +330,7 @@
         \addvspace{1.3in}
 
     A Thesis \\
-    presented to \\
+    Presented to \\
     the Faculty of California Polytechnic State University, \\
     \campus
 
