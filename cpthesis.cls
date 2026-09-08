@@ -753,8 +753,8 @@ ALL RIGHTS RESERVED
     \ifnum#1>1
         \addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}
         % Indent all entries in appendix and still show sub-subsections
-        \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}%
-        \setcounter{tocdepth}{4}
+        \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
+        \setcounter{tocdepth}{1}
         \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
         \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
         \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
