@@ -311,29 +311,6 @@
 \def\fmfont{\fontsize\@xiipt{12}\selectfont}
 \def\fmsmallfont{\fontsize\@xiipt{12pt}\selectfont}
 
-
-% TITLE PAGE - Cal Poly (Added by Mark Barry 2/07)
-% Inverted pyramid title based on https://tex.stackexchange.com/a/19846
-\newcommand\invpyramid[1]{%
-        \vbox{%
-                \hsize=\textwidth
-                \parindent=0pt
-                \leftskip=0pt plus.5fil
-                \rightskip=0pt plus-0.5fil
-                \parfillskip=0pt plus1fil
-                \emergencystretch=1in
-                \parshape6
-                0.00in \textwidth
-                0.1\textwidth 0.8\textwidth
-                0.2\textwidth 0.6\textwidth
-                0.3\textwidth 0.4\textwidth
-                0.35\textwidth 0.3\textwidth
-                0.4\textwidth 0.1\textwidth
-                \strut
-                #1%
-        }%
-}
-
 \RequirePackage{hyphenat}
 
 \def\maketitle{
@@ -347,7 +324,7 @@
 
     \vfill\null
   \begin{center}
-        \invpyramid{\MakeUppercase{\nohyphens{\@title}}}
+        \MakeUppercase{\nohyphens{\@title}}
 
         %\vfill\null
         \addvspace{1.3in}
