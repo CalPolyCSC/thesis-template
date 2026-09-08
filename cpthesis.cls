@@ -1353,7 +1353,7 @@ letterpaper,
 nohead,
 tmargin=1in,
 bmargin=1in,
-lmargin=1.5in,
+lmargin=1in,
 rmargin=1in
 ]{geometry}
 
