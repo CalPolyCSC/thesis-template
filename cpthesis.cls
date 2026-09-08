@@ -267,7 +267,24 @@
 % construction of the front matter.
 
 % The month the degree will be officially conferred
-\def\degreemonth#1{\gdef\@degreemonth{#1}}
+\ExplSyntaxOn
+
+\NewDocumentCommand{\degreemonth}{m}
+{
+    \str_case:nnF {#1}
+        {
+            {December}{\gdef\@degreemonth{December}}
+            {May}     {\gdef\@degreemonth{May}}
+            {August}  {\gdef\@degreemonth{August}}
+        }
+        {
+            \PackageError{thesis-template}
+                {Invalid\ degree\ month\ `#1'}
+                {The\ degree\ month\ must\ be\ December,\ May,\ or\ August.}
+      }
+}
+
+\ExplSyntaxOff
 
 % The year the degree will be officially conferred
 \def\degreeyear#1{\gdef\@degreeyear{#1}}
@@ -297,9 +314,9 @@
 % on the approval page.
 \def\@numberofmembers{2}
 \def\@approvalstretch{1.5}
-\gdef\@approvalspread{1.1}
-\def\numberofmembers#1{\gdef\@numberofmembers{#1}
-\gdef\@approvalstretch{\ifcase\@numberofmembers \or 1.5 \or 1.5 \or 1.5 \or 1.3 \or 1.2 \or 1.0 \or 0.85 \or 0.7 \or 0.6 \or 0.5\fi}}
+\def\numberofmembers#1{\gdef\@numberofmembers{#1}}
+\gdef\@memberspace{\ifcase\@numberofmembers    \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.42in  \or 0.37in\fi}
+\gdef\@committeespace{\ifcase\@numberofmembers \or 0.5in \or 0.5in \or 0.5in \or 0.5in \or 0.4in \or 0.3in \or 0.2in \or 0.1in \or 0.0in \or 0.0in\fi}
 
 % The name of your degree's field (e.g. Psychology, Computer Science)
 \def\field#1{\gdef\@field{#1}}
@@ -310,29 +327,6 @@
 % Set the font that will be used in the front matter headings
 \def\fmfont{\fontsize\@xiipt{12}\selectfont}
 \def\fmsmallfont{\fontsize\@xiipt{12pt}\selectfont}
-
-
-% TITLE PAGE - Cal Poly (Added by Mark Barry 2/07)
-% Inverted pyramid title based on https://tex.stackexchange.com/a/19846
-\newcommand\invpyramid[1]{%
-        \vbox{%
-                \hsize=\textwidth
-                \parindent=0pt
-                \leftskip=0pt plus.5fil
-                \rightskip=0pt plus-0.5fil
-                \parfillskip=0pt plus1fil
-                \emergencystretch=1in
-                \parshape6
-                0.00in \textwidth
-                0.1\textwidth 0.8\textwidth
-                0.2\textwidth 0.6\textwidth
-                0.3\textwidth 0.4\textwidth
-                0.35\textwidth 0.3\textwidth
-                0.4\textwidth 0.1\textwidth
-                \strut
-                #1%
-        }%
-}
 
 \RequirePackage{hyphenat}
 
@@ -347,13 +341,13 @@
 
     \vfill\null
   \begin{center}
-        \invpyramid{\MakeUppercase{\nohyphens{\@title}}}
+        \MakeUppercase{\nohyphens{\@title}}
 
         %\vfill\null
         \addvspace{1.3in}
 
     A Thesis \\
-    presented to \\
+    Presented to \\
     the Faculty of California Polytechnic State University, \\
     \campus
 
@@ -393,24 +387,24 @@
 \begingroup
 \newlength{\colwidth}
 \setlength\colwidth{3.7in}
-\renewcommand\arraystretch{\@approvalstretch}
+%\renewcommand\arraystretch{\@approvalstretch}
 \begin{tabular}{rp{\colwidth}}
 TITLE:  &\@title     \par\\
 AUTHOR: &\@author     \par\\
 DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
 
-\vspace*{0.5in} \\
+\vspace*{\@committeespace} \\
 
-COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\\\
-\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\\\ \fi
-\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\linespread{\@approvalspread}\selectfont{}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\\\ \fi
+COMMITTEE CHAIR:  &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@chair\end{flushleft}\end{minipage}  \\[\@memberspace]
+\ifnum\@numberofmembers>1 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberA\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>2 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberB\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>3 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberC\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>4 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberD\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>5 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberE\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>6 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberF\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>7 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberG\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>8 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberH\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
+\ifnum\@numberofmembers>9 COMMITTEE MEMBER: &\begin{minipage}[t]{\colwidth}\begin{flushleft}\@othermemberI\end{flushleft}\end{minipage}     \\[\@memberspace] \fi
 
 \end{tabular}
 
@@ -776,8 +770,8 @@ ALL RIGHTS RESERVED
     \ifnum#1>1
         \addtocontents{toc}{\noindent\MakeUppercase{\appendicestocname}}
         % Indent all entries in appendix and still show sub-subsections
-        \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}%
-        \setcounter{tocdepth}{4}
+        \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
+        \setcounter{tocdepth}{1}
         \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
         \addtocontents{toc}{\let\protect\l@section\protect\l@subsection}
         \addtocontents{toc}{\let\protect\l@subsection\protect\l@subsubsection}
@@ -1353,7 +1347,7 @@ letterpaper,
 nohead,
 tmargin=1in,
 bmargin=1in,
-lmargin=1.5in,
+lmargin=1in,
 rmargin=1in
 ]{geometry}
 
@@ -1423,7 +1417,7 @@ rmargin=1in
 
 % Set the counter depths
 \setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
