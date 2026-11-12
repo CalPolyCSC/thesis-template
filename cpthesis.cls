@@ -390,7 +390,8 @@
 %\renewcommand\arraystretch{\@approvalstretch}
 \begin{tabular}{rp{\colwidth}}
 TITLE:  &\@title     \par\\
-AUTHOR: &\@author     \par\\
+\\[-8pt]
+AUTHOR: &\@author     \par\\[12pt]
 DATE SUBMITTED: &\@degreemonth~\@degreeyear  \par\\
 
 \vspace*{\@committeespace} \\
