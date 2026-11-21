@@ -1,6 +1,6 @@
 # Cal Poly Thesis Template
 A LaTeX template for Cal Poly Master's theses which conforms to the guidelines given by the Graduate Education department.
-This file was last reviewed by Graduate Education in September 2024.
+This file was last reviewed by Graduate Education in October 2026.
 
 This version is a major departure from previous versions of the LaTeX template.
 Following the LaTeX concept of separating the format from the content, this new template is intended to make the process of writing a correctly formatted thesis easier by allowing you to focus on the content.
